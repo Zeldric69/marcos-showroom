@@ -12,13 +12,13 @@ export function renderNavbar(currentPage = '') {
     navbarMount.innerHTML = `
      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
             <div class="container">
-                <a class="navbar-brand fw-bold text-uppercase gradient-text" href="../front page/index.html" style ="display : inline-block !important; ">Marcos</a>
+                <a class="navbar-brand fw-bold text-uppercase gradient-text" href="./index.html" style ="display : inline-block !important; ">Marcos</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav gap-3">
-                        <li class="nav-item"><a class="nav-link ${currentPage === 'home' ? 'active' : ''}" href="../front page/index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link ${currentPage === 'home' ? 'active' : ''}" href="./index.html">Home</a></li>
                         <li class="nav-item"><a class="nav-link ${currentPage === 'about' ? 'active' : ''}" href="../about page/about.html">About</a></li>
                         <li class="nav-item"><a class="nav-link ${currentPage === 'service' ? 'active' : ''}" href="../services page/services.html">Service</a></li>
                         <li class="nav-item"><a class="nav-link ${currentPage === 'collection' ? 'active' : ''}" href="../collection page/collection.html">Collection</a></li>
