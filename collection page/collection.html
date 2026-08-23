@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fleet Collection - Marcos Premium</title>
+
+    <link rel="stylesheet" href="../main/shared.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="collection.css">
+</head>
+
+<body>
+    <div class="ng"></div>
+
+    <div class="service-hero-stats-wrapper position-relative overflow-hidden">
+    
+    <img src="https://images.unsplash.com/photo-1692863211226-cbba732754c9?w=3840&auto=format&fit=crop&q=100&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2FyJTIwc2hvd3Jvb218ZW58MHx8MHx8fDA%3D" 
+         class="hero-bg-img" alt="Fleet Background">
+    
+    
+    <div class="hero-overlay"></div>
+
+
+    <div class="container banner-text-holder text-center w-100 position-relative" style="z-index: 2;">
+        <h1 class="display-3 text-white fw-bold text-uppercase">The Marcos Fleet</h1>
+        <p class="accent-brand-text fw-bold text-uppercase mt-2">Explore New Arrivals, Best Sellers, and Brand Inventories</p>
+    </div>
+</div>
+
+    <section class="py-5 bg-dark text-white">
+        <div class="container py-4">
+
+            <!-- --- NEW RELEASES SECTION (Last 3 Cars from Database) --- -->
+            <div class="mb-5">
+                <h3 class="fw-bold text-uppercase mb-4" style="color: #c5a059;"> New Releases</h3>
+                <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center" id="newReleasesMount"></div>
+            </div>
+
+            <!-- --- MOST SOLD SECTION (Random 3 Cars) --- -->
+            <div class="mb-5">
+                <h3 class="fw-bold text-uppercase mb-4" style="color: #c5a059;"> Best Sellers & Most Sold</h3>
+                <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center" id="mostSoldMount"></div>
+            </div>
+
+            <hr class="border-secondary mb-5">
+
+            <!-- --- TOP ROW: Quick Search Bar & Price Sorting --- -->
+            <div class="d-flex justify-content-center align-items-center flex-wrap gap-3 mb-3">
+                <div class="search-box-wrapper" style="position: relative; min-width: 280px;">
+                    <input type="text" id="fleetSearchInput"
+                        class="form-control bg-dark text-white border-secondary ps-5"
+                        placeholder="Search models (e.g. 911, Artura)..."
+                        style="border-color: #23382c !important; font-size: 0.9rem;">
+                    <i class="fas fa-search text-warning position-absolute top-50 translate-middle-y start-0 ms-3"></i>
+                </div>
+
+                <select id="priceSortSelect" class="form-select bg-dark text-white border-secondary"
+                    style="width: auto; border-color: #23382c !important; font-size: 0.9rem;">
+                    <option value="default">Sort by: Featured</option>
+                    <option value="low-high">Price: Low to High</option>
+                    <option value="high-low">Price: High to Low</option>
+                </select>
+            </div>
+
+            <!-- --- SECOND ROW: Brand Filter Buttons --- -->
+            <div class="d-flex justify-content-center flex-wrap gap-2 mb-5 catalog-filter-nav">
+                <button class="btn filter-brand-btn active" data-filter="all">All Collection</button>
+                <button class="btn filter-brand-btn" data-filter="porsche">Porsche</button>
+                <button class="btn filter-brand-btn" data-filter="audi">Audi</button>
+                <button class="btn filter-brand-btn" data-filter="mclaren">McLaren</button>
+                <button class="btn filter-brand-btn" data-filter="bmw">BMW</button>
+                <button class="btn filter-brand-btn" data-filter="mercedes">Mercedes-Benz</button>
+                <button class="btn filter-brand-btn" data-filter="ferrari">Ferrari</button>
+                <button class="btn filter-brand-btn" data-filter="lamborghini">Lamborghini</button>
+                <button class="btn filter-brand-btn" data-filter="aston">Aston Martin</button>
+                <button class="btn filter-brand-btn" data-filter="bentley">Bentley</button>
+                <button class="btn filter-brand-btn" data-filter="rolls">Rolls-Royce</button>
+                <button class="btn filter-brand-btn" data-filter="lotus">Lotus</button>
+                <button class="btn filter-brand-btn" data-filter="koenigsegg">Koenigsegg</button>
+                <button class="btn filter-brand-btn" data-filter="bugatti">Bugatti</button>
+                <button class="btn filter-brand-btn" data-filter="pagani">Pagani</button>
+                <button class="btn filter-brand-btn" data-filter="maserati">Maserati</button>
+            </div>
+
+            <!-- --- RESULTS COUNT DISPLAY --- -->
+            <div class="text-center text-muted mb-3" id="showroomCounter"
+                style="font-size: 0.85rem; letter-spacing: 1px;"></div>
+
+            <!-- --- MAIN COLLECTION GRID --- -->
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5 justify-content-center inventory-grid mb-5"
+                id="fleetGridMount">
+                <div class="text-center py-5">
+                    <div class="spinner-border text-warning" role="status">
+                        <span class="visually-hidden">Loading inventory...</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- --- PAGINATION CONTAINER --- -->
+            <nav class="d-flex justify-content-center mt-4">
+                <ul class="pagination justify-content-center custom-pagination shadow" id="showroomPagination"></ul>
+            </nav>
+
+        </div>
+    </section>
+
+    <!-- Configurator Modal Popup -->
+    <div class="modal fade text-dark" id="configuratorModal" tabindex="-1" aria-labelledby="configuratorModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-dark text-white border border-secondary shadow-lg">
+
+                <div class="modal-header border-bottom border-secondary">
+                    <h5 class="modal-title fw-bold" id="configuratorModalLabel">Vehicle Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="row align-items-center">
+                        <!-- Vehicle Image Column -->
+                        <div class="col-md-5 mb-3 mb-md-0">
+                            <img src="" class="img-fluid rounded shadow border border-secondary" alt="Vehicle Image"
+                                style="width: 100%; object-fit: cover; height: 260px;">
+                        </div>
+
+                        <!-- Vehicle Details Column -->
+                        <div class="col-md-7">
+                            <h6 class="text-uppercase fw-bold mb-2" style="color: #c5a059;">Overview Description</h6>
+                            <p class="car-description text-light mb-3" style="font-size: 0.9rem; line-height: 1.5;"></p>
+
+                            <h6 class="text-uppercase fw-bold mb-2" style="color: #c5a059;">Vehicle Features Sheet</h6>
+
+                            <!-- Scrollable container with bullet-pointed list -->
+                            <div style="max-height: 160px; overflow-y: auto; padding-right: 5px;"
+                                class="custom-scrollbar">
+                                <ul class="features-container text-light ps-3 mb-0"
+                                    style="font-size: 0.85rem; line-height: 1.6;">
+                                    <!-- Features populated dynamically -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer border-top border-secondary d-flex justify-content-between">
+                    <div class="d-flex gap-2">
+                        <button type="button" class="btn btn-outline-warning btn-sm"><i
+                                class="fas fa-shopping-cart me-1"></i> Book Now</button>
+                        <button type="button" class="btn btn-outline-light btn-sm"><i
+                                class="fas fa-tachometer-alt me-1"></i> Test Drive</button>
+                    </div>
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close
+                        Details</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer id = "contact-footer" class="footer-section pt-5 pb-3"></footer>
+    <script type="module" src="../main/components.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="collection.js"></script>
+</body>
+
+</html>

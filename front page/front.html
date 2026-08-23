@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcos Premium Showroom</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../main/shared.css">
+    <link rel="stylesheet" href="front.css">
+</head>
+
+<body>
+
+    <div class="ng"></div>
+
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+        <!-- 1. Small indicator bars at the bottom showing how many slides there are -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+                aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        </div>
+
+        <!-- 2. Carousel Slides -->
+        <div class="carousel-inner">
+
+            <!-- Slide 1: Car Collection -->
+            <div class="carousel-item active" style="height: 85vh; background-color: #000;">
+                <div
+                    style="position: absolute; width: 100%; height: 100%; background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1692863211226-cbba732754c9?w=3840&auto=format&fit=crop&q=100&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2FyJTIwc2hvd3Jvb218ZW58MHx8MHx8fDA%3D'); background-size: cover; background-position: center;">
+                </div>
+                <div class="carousel-caption d-flex align-items-center h-100">
+                    <div class="container text-start">
+                        <h6 class="text-danger text-uppercase fw-bold mb-3"> HYBRID SHOWROOM </h6>
+                        <h1 class="display-3 text-white fw-bold mb-4">The Precision Engineered Fleet</h1>
+                        <a href="../collection page/collection.html" class="btn btn-danger py-3 px-5 fw-bold">EXPLORE
+                            CATALOG</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: Car Service -->
+            <div class="carousel-item" style="height: 85vh; background-color: #000;">
+                <div
+                    style="position: absolute; width: 100%; height: 100%; background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1727893153491-392fd2d1c721?w=3840&auto=format&fit=crop&q=100&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzF8fGNhciUyMHNlcnZpY2V8ZW58MHx8MHx8fDA%3D'); background-size: cover; background-position: center;">
+                </div>
+                <div class="carousel-caption d-flex align-items-center h-100">
+                    <div class="container text-start">
+                        <h6 class="text-danger text-uppercase fw-bold mb-3"> EXPERT CARE & MAINTENANCE </h6>
+                        <h1 class="display-3 text-white fw-bold mb-4">Advanced Diagnostics & Tuning</h1>
+                        <a href="../services page/services.html" class="btn btn-danger py-3 px-5 fw-bold">BOOK A
+                            SERVICE</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 3. Big Navigation Arrows on Both Sides -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev"
+            style="width: 8%;">
+            <span class="carousel-control-prev-icon" aria-hidden="true" style="width: 3rem; height: 3rem;"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next"
+            style="width: 8%;">
+            <span class="carousel-control-next-icon" aria-hidden="true" style="width: 3rem; height: 3rem;"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <!-- Main Feature Cards Section Restored -->
+    <section class="container py-5">
+        <div class="row" id="feature-cards-container">
+            <!-- Injected via front.js -->
+        </div>
+    </section>
+    <!-- === SECTION 1: The Hybrid Concept Story === -->
+    <section class="hybrid-about-section py-5 bg-black text-white">
+        <div class="container py-4">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <h6 class="text-danger text-uppercase fw-bold mb-2"> THE ECOSYSTEM </h6>
+                    <h2 class="display-5 fw-bold mb-4">Elite Sales Meet Factory-Grade Precision Care</h2>
+                    <p class="text-muted mb-4">
+                        Marcos redefines ownership by merging a hand-picked inventory of ultra-performance vehicles with
+                        an elite diagnostic and tuning facility. Whether you are expanding your collection or servicing
+                        high-end engineering, everything happens under one roof.
+                    </p>
+                    <a href="../about page/about.html"
+                        class="btn btn-outline-light px-4 py-2 fw-bold text-uppercase">Discover Our Story</a>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hybrid-img-wrapper position-relative">
+                        <div class="hybrid-glow-box"></div>
+                        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80"
+                            alt="Showroom and Service" class="img-fluid rounded shadow-lg position-relative"
+                            style="z-index: 2;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="py-5 bg-dark ">
+        <div class="container text-center">
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4">
+                    <h2 class="text-white display-4 fw-bold" id="statYears">0</h2>
+                    <p class="accent-brand-text fw-bold mb-0">YEARS EXPERIENCE</p>
+                </div>
+                <div class="col-md-4">
+                    <h2 class="text-white display-4 fw-bold" id="statVehicles">0</h2>
+                    <p class="accent-brand-text fw-bold mb-0">FLEET VEHICLES IN STOCK</p>
+                </div>
+                <div class="col-md-4">
+                    <h2 class="text-white display-4 fw-bold" id="statHappyClients">0</h2>
+                    <p class="accent-brand-text fw-bold mb-0">SATISFIED HAPPY DRIVERS</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- === SECTION 2: Final Call-to-Action Banner === -->
+    <section class="cta-banner-section py-5 text-center text-white"
+        style="background: linear-gradient(135deg, #111 0%, #1a1a1a 100%); border-top: 1px solid #333; border-bottom: 1px solid #333;">
+        <div class="container py-4">
+            <h2 class="display-6 fw-bold mb-3">Ready to Elevate Your Driving Experience?</h2>
+            <p class="text-muted mb-4 mx-auto" style="max-width: 600px;">
+                Step into our showroom catalog or book your next diagnostic session with our master technicians today.
+            </p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="../collection page/collection.html"
+                    class="btn btn-danger px-5 py-3 fw-bold text-uppercase">Browse Collection</a>
+                <a href="../services page/services.html"
+                    class="btn btn-outline-light px-5 py-3 fw-bold text-uppercase">Book Service</a>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <footer id="contact-footer" class="footer-section pt-5 pb-3"></footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="front.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,171 @@
+/* shared.css */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html{
+    
+    scroll-behavior: smooth;
+}
+
+body {
+
+    background: linear-gradient(135deg, rgba(13, 148, 136, 0.06) 0%, rgb(35, 27, 72) 45%, rgba(244, 193, 99, 0.05) 100%) ;
+    background-attachment: fixed;
+    /* Keeps the gradient smooth and static as you scroll */
+    min-height: 100vh;
+    color: #ffffff;
+    font-family: 'Segoe UI', sans-serif;
+    padding-top: 79px;
+}
+
+/* --- UNIFIED TRANSPARENT SECTIONS ACROSS ALL PAGES --- */
+.bg-black, 
+.bg-dark, 
+div[style*="background-color: #111827"] {
+    background-color: rgba(17, 24, 39, 0.6) !important;
+    backdrop-filter: blur(10px);
+}
+
+section,
+div[style*="background-color"] {
+    background-color: transparent !important;
+    background-image: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+}
+/* Unified Frosted Glass Cards */
+.card, 
+.col-lg-4 .bg-dark, 
+.col-md-4 .bg-dark,
+.service-journey-step .bg-dark {
+    background: rgba(20, 24, 33, 0.75) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(10px) !important;
+}
+/* Global Navbar & Footer */
+.navbar{
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
+}
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 25px 80px;
+    background-color: #1a1a1a;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.footer-section {
+    padding: 80px 0;
+    border-top: 1px solid #333;
+    background: #000000;
+    text-align: center;
+}
+
+/* --- Navbar Link Golden Hover & Active States --- */
+.navbar-nav .nav-link,
+.navbar-nav .nav-item a {
+    color: #fff !important;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-item a:hover,
+.navbar-nav .nav-item a.active {
+    color: #c5a059 !important;
+    /* Golden Brand Accent */
+}
+
+/* --- Navbar Social Icons Alignment & Hover --- */
+.social-nav-container a {
+    color: #fff  !important;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.social-nav-container a:hover {
+    color: #c5a059 !important;
+}
+
+/* --- Fixed Brand Logo Color --- */
+.navbar-brand,
+.navbar-brand:hover,
+.navbar-brand:focus {
+    text-decoration: none !important;
+}
+/* --- Dedicated Logo Styling --- */
+.navbar-brand, 
+.logo-text {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Put your preferred font here */
+    font-weight: 800 !important;
+    letter-spacing: 1.5px;
+}
+.nav-item{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Put your preferred font here */
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #00E5FF 0%, #FFEB3B 67%, #4A148C 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    display: inline-block !important;
+    font-weight: 800 !important;
+    font-size: 1.5rem !important;
+}
+
+/* --- Social Icon Button Custom Styling --- */
+.button-social {
+    color: #c5a059 !important;                /* Normal icon/border color (white) */
+    border-color: rgba(255, 255, 255, 0.3) !important; /* Subtle border */
+    background-color: transparent !important;   /* Transparent background normally */
+    transition: all 0.3s ease-in-ease-out;
+}
+
+/* --- Hover State (Gold Theme) --- */
+.button-social:hover, 
+.button-social:focus {
+    background-color: #c5a059 !important;       /* Your luxury gold accent color */
+    border-color: #c5a059 !important;          /* Matching gold border */
+    color: #0b0f19 !important;                 /* Dark text/icon color for sharp contrast */
+    transform: translateY(-2px);               /* Slight lift effect */
+}
+
+
+
+
+
+
+
+/* Responsive utility */
+@media (max-width: 768px) {
+    .nav-links {
+        gap: 15px;
+    }
+
+    .navbar-container {
+        padding: 20px;
+    }
+}

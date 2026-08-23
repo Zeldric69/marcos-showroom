@@ -1,0 +1,199 @@
+/* front.css */
+
+/* --- Global Body & Background Settings --- */
+body {
+    background-color: #0b0f19 !important;
+    color: #f3f4f6 !important;
+    background-attachment: fixed;
+    min-height: 100vh;
+    /* Soft off-white for comfortable global reading */
+}
+
+/* --- Typography & Headings --- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #ffffff;
+}
+
+p,
+span {
+    color: #c2c9c5;
+    /* Clear, bright muted green-gray for body text */
+}
+
+/* --- Feature Cards Section --- */
+#feature-cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 60px 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 250px;
+    height: 400px;
+    background-color: #142018;
+    /* Rich dark heritage green-gray */
+    color: #ffffff;
+    border: 1px solid #23382c;
+    /* Subtle contrasting heritage border */
+    border-radius: 8px;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: perspective(1000px) rotate(-6deg) scale(1.05);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+}
+
+.card-img-top {
+    height: 140px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    color: #ffffff !important;
+    /* Force explicit white for card titles */
+}
+
+.card-text {
+    color: #b0bfc0 !important;
+    /* Force explicit light tone for card descriptions */
+}
+
+/* --- Buttons --- */
+.btn-outline-light {
+    border-color: #c5a059;
+    color: #c5a059;
+    transition: 0.3s;
+}
+
+.btn-outline-light:hover {
+    background: #c5a059;
+    color: #0a0f0d;
+    border-color: #c5a059;
+}
+
+/* --- Number Counter Animation Styles (Heritage Tan Theme) --- */
+.counter-section {
+    padding: 60px 0;
+    text-align: center;
+    background-color: #0d1410;
+    border-top: 1px solid #23382c;
+    border-bottom: 1px solid #23382c;
+}
+
+.counter-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.counter-box {
+    flex: 1;
+    min-width: 200px;
+    padding: 20px;
+}
+
+.counter-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #c5a059;
+    /* Warm Saddle Tan Accent */
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.counter-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: #a3b1a8;
+    letter-spacing: 2px;
+}
+
+/* --- Hybrid Concept Section Styles (Ecosystem Text Fixed) --- */
+.hybrid-about-section {
+    border-top: 1px solid #23382c;
+    background-color: #0a0f0d;
+}
+
+.hybrid-about-section h2 {
+    color: #ffffff !important;
+}
+
+.hybrid-about-section p {
+    color: #c2c9c5 !important;
+    /* Ensures the ecosystem description text is fully visible */
+}
+
+.hybrid-about-section h6 {
+    color: #c5a059 !important;
+    /* Heritage tan accent for subheadings */
+}
+
+.hybrid-img-wrapper {
+    position: relative;
+}
+
+.hybrid-glow-box {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(45deg, #c5a059, transparent);
+    /* Warm tan ambient glow */
+    border-radius: 8px;
+    filter: blur(20px);
+    opacity: 0.25;
+    z-index: 1;
+}
+
+/* --- CTA Banner Section (Heritage Tan Buttons) --- */
+.cta-banner-section {
+    background: linear-gradient(135deg, #0d1410 0%, #142018 100%);
+    border-top: 1px solid #23382c;
+    border-bottom: 1px solid #23382c;
+}
+
+.cta-banner-section h2 {
+    color: #ffffff !important;
+}
+
+.cta-banner-section p {
+    color: #b0bfc0 !important;
+}
+
+.cta-banner-section .btn-danger {
+    background-color: #c5a059 !important;
+    border-color: #c5a059 !important;
+    color: #0a0f0d !important;
+    font-weight: bold;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.cta-banner-section .btn-danger:hover {
+    transform: translateY(-3px);
+    background-color: #b08d46 !important;
+    border-color: #b08d46 !important;
+    color: #0a0f0d !important;
+}
+
+.cta-banner-section .btn-outline-light:hover {
+    transform: translateY(-3px);
+}

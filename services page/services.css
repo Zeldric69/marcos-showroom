@@ -1,0 +1,151 @@
+/* ==========================================================================
+   MARCOS PREMIUM SHOWROOM - UNIFIED SERVICE PAGE STYLES (LARGE & READABLE)
+   ========================================================================== */
+
+/* 1. UNIFY ENTIRE PAGE BACKGROUND */
+body {
+    background-color: #0b0f19 !important;
+    color: #f3f4f6 !important;
+    font-size: 1.1rem !important;
+    /* Increased base body font size */
+    font-family: inherit;
+}
+
+/* Ensure all sections share the same base background and clean spacing */
+section,
+div[style*="background-color"] {
+    background-color: transparent !important;
+    background-image: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+}
+
+/* 2. HERO & STATS BANNER */
+
+.service-hero-stats-wrapper {
+    /* Uses a data-uri fallback gradient combined with a high-res Unsplash image that guarantees visibility */
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.65)),
+        url('https://images.unsplash.com/photo-1727893153491-392fd2d1c721?w=3840&auto=format&fit=crop&q=100&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzF8fGNhciUyMHNlcnZpY2V8ZW58MHx8MHx8fDA%3D') !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    min-height: 450px !important;
+    display: flex ;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 15px;
+    /* Forces the container to stay open so the image is fully visible */
+    width: 100% !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.service-header-banner {
+    min-height: 340px !important;
+    padding: 20px 0 0 0 !important;
+    /* Adds breathing room so text doesn't squeeze the container */
+}
+
+.stats-counter-row {
+    background: rgba(17, 24, 39, 0.6) !important;
+    backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.accent-brand-text {
+    color: #c5a059 !important;
+    letter-spacing: 2px;
+}
+
+/* 3. UNIFORM GLASS CARDS */
+.col-lg-4 .bg-dark,
+.service-journey-step .bg-dark,
+.col-md-3 .bg-dark,
+.card {
+    background: rgba(20, 24, 33, 0.75) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.col-lg-4 .bg-dark:hover,
+.service-journey-step .bg-dark:hover {
+    transform: translateY(-5px);
+    border-color: #c5a059 !important;
+}
+
+/* 4. COMFORTABLE & READABLE TEXT SIZES */
+p,
+span,
+.text-muted {
+    color: #e5e7eb !important;
+    font-size: 1.05rem !important;
+    /* Larger, easily readable description text */
+    line-height: 1.7 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+li {
+    color: #e5e7eb !important;
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+}
+
+h1 {
+    font-size: 3rem !important;
+}
+
+h2 {
+    font-size: 2.25rem !important;
+}
+
+h3 {
+    font-size: 1.75rem !important;
+}
+
+h4 {
+    font-size: 1.35rem !important;
+    color: #ffffff !important;
+}
+
+h5 {
+    font-size: 1.15rem !important;
+    color: #ffffff !important;
+}
+
+/* 5. WORKFLOW STEP SPACING */
+.service-journey-step {
+    padding: 0 15px !important;
+}
+
+/* 6. MODULAR FORM STYLING */
+.modular-form-card {
+    background: rgba(17, 24, 39, 0.9) !important;
+    border: 1px solid rgba(197, 160, 89, 0.3) !important;
+    backdrop-filter: blur(12px);
+}
+
+.modular-form-input {
+    background-color: #121824 !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    color: #fff !important;
+    font-size: 1rem !important;
+}
+
+.modular-form-input:focus {
+    border-color: #c5a059 !important;
+    box-shadow: 0 0 0 0.25rem rgba(197, 160, 89, 0.25) !important;
+}
+
+.modular-form-submit-btn {
+    background-color: #c5a059 !important;
+    color: #000 !important;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background 0.3s ease;
+}
+
+.modular-form-submit-btn:hover {
+    background-color: #b08d46 !important;
+}

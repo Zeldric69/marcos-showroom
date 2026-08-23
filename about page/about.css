@@ -1,0 +1,76 @@
+/* --- About Page Specific Styles --- */
+
+/* --- Cohesive Page Background & Section Flow --- */
+body {
+    background-color: #0b0f19 !important;
+    color: #f3f4f6 !important;
+}    
+
+/* Force content sections to share a translucent dark tone so the global background flows smoothly */
+.bg-black, 
+.bg-dark, 
+div[style*="background-color: #111827"] {
+    background-color: rgba(17, 24, 39, 0.6) !important;
+    backdrop-filter: blur(10px);
+}
+
+/* Header Banner Style */
+.about-header-banner {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.85)), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1600') center/cover no-repeat;
+    height: 350px;
+    border-bottom: 1px solid #333;
+}
+
+/* Brand Accent & Text Typography */
+.accent-brand-text {
+    color: #c5a059 !important;
+    letter-spacing: 2px;
+}
+
+.about-section {
+    padding: 80px 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+#company-history {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #ccc;
+}
+
+.description-text {
+    color: #aaa;
+    line-height: 1.7;
+}
+
+/* --- Core Values Cards Glassmorphism & Readability --- */
+.col-md-4 .bg-dark {
+    background: rgba(26, 26, 26, 0.7) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.col-md-4 .bg-dark:hover {
+    transform: translateY(-5px);
+    border-color: #c5a059 !important;
+}
+
+.col-md-4 p.small, 
+.col-md-4 p.text-muted {
+    color: #d1d5db !important;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.col-md-4 h4 {
+    color: #ffffff !important;
+}
+/* --- Distinct Footer Separation --- */
+footer.footer-section {
+    background: #09090b !important; /* Deep, solid base tone */
+    border-top: 1px solid rgba(197, 160, 89, 0.3) !important; /* Subtle golden top border to separate it */
+    margin-top: 40px;
+    position: relative;
+    z-index: 10;
+}
