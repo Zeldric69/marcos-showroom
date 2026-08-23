@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //0. gives the browser a micro-moment to paint the loading spinner
     setTimeout(() => {
-        renderNavbar('collection');
+        renderNavbar('collection', '../');
         renderFooter();
         initConfiguratorModal();
 

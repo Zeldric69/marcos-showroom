@@ -5,23 +5,23 @@
 import { vehicleShowroomDatabase } from './carDashboard.js';
 
 // 2. EXPORT: REUSABLE NAVIGATION BAR COMPONENT
-export function renderNavbar(currentPage = '') {
+export function renderNavbar(currentPage , basePath = '') {
     const navbarMount = document.querySelector('.ng') || document.querySelector('header') || document.getElementById('navbarMount');
     if (!navbarMount) return;
 
     navbarMount.innerHTML = `
      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
             <div class="container">
-                <a class="navbar-brand fw-bold text-uppercase gradient-text" href="../index.html" style ="display : inline-block !important; ">Marcos</a>
+                <a class="navbar-brand fw-bold text-uppercase gradient-text" href="${basePath}index.html" style ="display : inline-block !important; ">Marcos</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav gap-3">
-                        <li class="nav-item"><a class="nav-link ${currentPage === 'home' ? 'active' : ''}" href="../index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link ${currentPage === 'about' ? 'active' : ''}" href="../about_page/about.html">About</a></li>
-                        <li class="nav-item"><a class="nav-link ${currentPage === 'service' ? 'active' : ''}" href="../services_page/services.html">Service</a></li>
-                        <li class="nav-item"><a class="nav-link ${currentPage === 'collection' ? 'active' : ''}" href="../collection_page/collection.html">Collection</a></li>
+                        <li class="nav-item"><a class="nav-link ${currentPage === 'home' ? 'active' : ''}" href="${basePath}index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link ${currentPage === 'about' ? 'active' : ''}" href="${basePath}about_page/about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link ${currentPage === 'service' ? 'active' : ''}" href="${basePath}services_page/services.html">Service</a></li>
+                        <li class="nav-item"><a class="nav-link ${currentPage === 'collection' ? 'active' : ''}" href="${basePath}collection_page/collection.html">Collection</a></li>
                         <li class="nav-item"><a class="nav-link ${currentPage === 'contact' ? 'active' : ''}" href="#contact-footer">Contact</a></li>
                 
                         <li class="nav-item d-flex align-items-center gap-3 ms-2 social-nav-container">

@@ -6,7 +6,7 @@ if (history.scrollRestoration) {
 
 document.addEventListener("DOMContentLoaded", () => {
     // 1. Initialize global header, footer, and modals
-    renderNavbar('about');
+    renderNavbar('about', '../');
     renderFooter();
     initConfiguratorModal();
 

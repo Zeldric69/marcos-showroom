@@ -6,7 +6,7 @@ if (history.scrollRestoration) {
 
 document.addEventListener("DOMContentLoaded", () => {
     // 1. Initialize global UI templates & Modals
-    renderNavbar('service');
+    renderNavbar('service', '../');
     renderFooter();
     initConfiguratorModal();
 
