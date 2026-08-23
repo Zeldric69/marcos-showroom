@@ -19,9 +19,9 @@ export function renderNavbar(currentPage = '') {
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav gap-3">
                         <li class="nav-item"><a class="nav-link ${currentPage === 'home' ? 'active' : ''}" href="./index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link ${currentPage === 'about' ? 'active' : ''}" href="../about page/about.html">About</a></li>
-                        <li class="nav-item"><a class="nav-link ${currentPage === 'service' ? 'active' : ''}" href="../services page/services.html">Service</a></li>
-                        <li class="nav-item"><a class="nav-link ${currentPage === 'collection' ? 'active' : ''}" href="../collection page/collection.html">Collection</a></li>
+                        <li class="nav-item"><a class="nav-link ${currentPage === 'about' ? 'active' : ''}" href="../about_page/about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link ${currentPage === 'service' ? 'active' : ''}" href="../services_page/services.html">Service</a></li>
+                        <li class="nav-item"><a class="nav-link ${currentPage === 'collection' ? 'active' : ''}" href="../collection_page/collection.html">Collection</a></li>
                         <li class="nav-item"><a class="nav-link ${currentPage === 'contact' ? 'active' : ''}" href="#contact-footer">Contact</a></li>
                 
                         <li class="nav-item d-flex align-items-center gap-3 ms-2 social-nav-container">

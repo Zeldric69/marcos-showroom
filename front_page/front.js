@@ -31,13 +31,13 @@ const featureCards = [
         title: "Explore Collection",
         text: "Curated fleet of high-performance luxury vehicles.", // Short and direct
         img: "https://imgs.search.brave.com/aLO4MdYB_iiKucL3QKOpoeWHNTaJBG6ROv37-DjnTe0/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly80a3dh/bGxwYXBlcnMuY29t/L2ltYWdlcy93YWxs/cy90aHVtYnNfMnQv/MjY4MzkuanBn",
-        link: "collection.html"
+        link: "../collection_page/collection.html"
     },
     {
         title: "Book a Service",
         text: "Expert diagnostic, tuning, and maintenance services.", // Short and direct
         img: "https://plus.unsplash.com/premium_photo-1661411119301-8cae0adce9a7?w=3840&auto=format&fit=crop&q=100&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjV8fGNhciUyMHNlcnZpY2V8ZW58MHx8MHx8fDA%3D",
-        link: "services.html"
+        link: "../services_page/services.html"
     },
     {
         title: "Exchange Your Car",
