@@ -25,6 +25,29 @@ span {
     /* Clear, bright muted green-gray for body text */
 }
 
+/* Bottom-aligned luxury carousel captions */
+.carousel-caption-bottom {
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+    padding-bottom: 4px; /* Controls distance from the bottom edge */
+}
+
+/* Luxury typography styling */
+.hero-subtitle {
+    color: #ffffff !important;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+.hero-title {
+    color: #c5a059 !important;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
 /* --- Feature Cards Section --- */
 #feature-cards-container {
     display: flex;
@@ -64,7 +87,7 @@ span {
 }
 
 .card-title {
-    color: #ffffff !important;
+    color: #c5a059 !important;
     /* Force explicit white for card titles */
 }
 
@@ -113,7 +136,7 @@ span {
 .counter-number {
     font-size: 3rem;
     font-weight: 700;
-    color: #c5a059;
+    color: #c5a059 ;
     /* Warm Saddle Tan Accent */
     margin-bottom: 10px;
     letter-spacing: 1px;
@@ -172,7 +195,7 @@ span {
 }
 
 .cta-banner-section h2 {
-    color: #ffffff !important;
+    color: #c5a059 !important;
 }
 
 .cta-banner-section p {

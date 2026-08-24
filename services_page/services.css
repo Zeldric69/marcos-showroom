@@ -8,7 +8,7 @@ body {
     color: #f3f4f6 !important;
     font-size: 1.1rem !important;
     /* Increased base body font size */
-    font-family: inherit;
+    
 }
 
 /* Ensure all sections share the same base background and clean spacing */
@@ -23,26 +23,32 @@ div[style*="background-color"] {
 /* 2. HERO & STATS BANNER */
 
 .service-hero-stats-wrapper {
-    /* Uses a data-uri fallback gradient combined with a high-res Unsplash image that guarantees visibility */
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.65)),
         url('https://images.unsplash.com/photo-1727893153491-392fd2d1c721?w=3840&auto=format&fit=crop&q=100&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzF8fGNhciUyMHNlcnZpY2V8ZW58MHx8MHx8fDA%3D') !important;
     background-position: center center !important;
     background-repeat: no-repeat !important;
     background-size: cover !important;
-    min-height: 450px !important;
-    display: flex ;
+    
+    /* Keep a minimum height so the image and space exist */
+    min-height: 400px !important;
+    
+    display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    padding-bottom: 15px;
-    /* Forces the container to stay open so the image is fully visible */
+    
+    /* This pushes the text down to the bottom */
+    justify-content: flex-end !important;
+    
+    /* Adjust this padding-bottom to control how close it sits to the bottom edge */
+    padding-bottom: 40px !important;
+    padding-top: 40px !important;
+    
     width: 100% !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .service-header-banner {
-    min-height: 340px !important;
-    padding: 20px 0 0 0 !important;
-    /* Adds breathing room so text doesn't squeeze the container */
+    min-height: auto !important;
+    padding: 0 !important;
 }
 
 .stats-counter-row {
@@ -55,7 +61,6 @@ div[style*="background-color"] {
     color: #c5a059 !important;
     letter-spacing: 2px;
 }
-
 /* 3. UNIFORM GLASS CARDS */
 .col-lg-4 .bg-dark,
 .service-journey-step .bg-dark,
@@ -148,4 +153,17 @@ h5 {
 
 .modular-form-submit-btn:hover {
     background-color: #b08d46 !important;
+}
+/* Custom styling for input placeholder text */
+.modular-form-input::placeholder {
+    color: rgba(255, 255, 255, 0.989) !important; /* Makes it a clean, brighter translucent white */
+    opacity: 1 !important;
+}
+
+/* For older web browsers compatibility */
+.modular-form-input:-ms-input-placeholder {
+    color: rgb(255, 255, 255) !important;
+}
+.modular-form-input::-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.989) !important;
 }
