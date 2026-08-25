@@ -16,7 +16,7 @@ body {
     /* Keeps the gradient smooth and static as you scroll */
     min-height: 100vh;
     color: #ffffff;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Segoe UI', sans-serif ;
     padding-top: 79px;
 }
 
@@ -154,7 +154,24 @@ div[style*="background-color"] {
 }
 
 
+/* --- Proper Color Swatch Styling --- */
+.color-swatch {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50% !important;
+    display: inline-block !important;
+    cursor: pointer !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
 
+/* Active or hovered state so users know it's clickable */
+.color-swatch:hover,
+.color-swatch.active {
+    transform: scale(1.15);
+    border-color: #c5a059 !important; /* Your signature gold accent */
+    box-shadow: 0 0 10px rgba(197, 160, 89, 0.5);
+}
 
 
 

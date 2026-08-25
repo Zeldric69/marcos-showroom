@@ -212,36 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 8. Handle "See More Details" Modal Popups & Features Sheet
-    document.addEventListener("click", (e) => {
-        const detailsBtn = e.target.closest(".view-details-btn");
-        if (!detailsBtn) return;
-
-        const carKey = detailsBtn.getAttribute("data-car-id");
-        const carData = vehicleShowroomDatabase[carKey];
-        if (!carData) return;
-
-        const modalEl = document.getElementById("configuratorModal") || document.querySelector(".modal");
-        if (modalEl) {
-            const titleEl = modalEl.querySelector(".modal-title");
-            const descEl = modalEl.querySelector(".car-description");
-            const imgEl = modalEl.querySelector("img");
-
-            if (titleEl) titleEl.textContent = carData.name;
-            if (descEl) descEl.textContent = carData.desc;
-            if (imgEl && carData.colors && carData.colors.length > 0) {
-                imgEl.src = carData.colors[0].img;
-            }
-
-            const featuresContainer = modalEl.querySelector(".features-container");
-            if (featuresContainer && carData.features) {
-                featuresContainer.innerHTML = carData.features.map(f => `<li class="mb-1">${f}</li>`).join('');
-            }
-
-            const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
-            modal.show();
-        }
-    });
+    
 
     // 9. Initial catalog load call
     updateShowroomPagination();

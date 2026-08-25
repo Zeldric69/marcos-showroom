@@ -261,7 +261,7 @@ export function initConfiguratorModal() {
                                         </button>
                                     </div>
                                     <div class="col-sm-6">
-                                        <button class="btn btn-outline-light w-100 py-2" onclick="alert('Test drive booking initiated!')">
+                                        <button class="btn btn-outline-light w-100 py-2" onclick="alert('Test drive booking initiated , please visit our showroom to finalize the schedule.')">
                                             <i class="fa fa-tachometer-alt me-2"></i>Test Drive
                                         </button>
                                     </div>
@@ -322,6 +322,10 @@ export function initConfiguratorModal() {
                 });
                 swatchBox.appendChild(swatch);
             });
+        } else {
+            if (exteriorFinishesSection) {
+                exteriorFinishesSection.style.display = "none";
+            }
         }
 
         const featuresBox = document.getElementById("modalFeaturesContainer");
