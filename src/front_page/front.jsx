@@ -5,13 +5,24 @@ import '../main/shared.css';
 
 export default function Front() {
     const [isExchangeModalOpen, setIsExchangeModalOpen] = useState(false);
+    const [activeIndex, setActiveIndex] = useState(0);
 
+    // Automated hero slide rotation
     useEffect(() => {
         if (window.history.scrollRestoration) {
             window.history.scrollRestoration = 'manual';
         }
         window.scrollTo(0, 0);
 
+        const slideInterval = setInterval(() => {
+            setActiveIndex((prevIndex) => (prevIndex === 0 ? 1 : 0));
+        }, 5000);
+
+        return () => clearInterval(slideInterval);
+    }, []);
+
+    // Stats counter animation
+    useEffect(() => {
         const animateCounter = (elId, target, suffix = "", duration = 1500) => {
             const el = document.getElementById(elId);
             if (!el) return;
@@ -45,19 +56,19 @@ export default function Front() {
     const featureCards = [
         {
             title: "Explore Collection",
-            text: "Curated fleet of high-performance luxury vehicles.", 
+            text: "Curated fleet of high-performance luxury vehicles.",
             img: "https://imgs.search.brave.com/aLO4MdYB_iiKucL3QKOpoeWHNTaJBG6ROv37-DjnTe0/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly80a3dh/bGxwYXBlcnMuY29t/L2ltYWdlcy93YWxs/cy90aHVtYnNfMnQv/MjY4MzkuanBn",
             link: "/collection"
         },
         {
             title: "Book a Service",
-            text: "Expert diagnostic, tuning, and maintenance services.", 
+            text: "Expert diagnostic, tuning, and maintenance services.",
             img: "https://plus.unsplash.com/premium_photo-1661411119301-8cae0adce9a7?w=1940&auto=format&fit=crop&q=100",
             link: "/services"
         },
         {
             title: "Exchange Your Car",
-            text: "Seamless trade and upgrade with valuation specialists.", 
+            text: "Seamless trade and upgrade with valuation specialists.",
             img: "https://plus.unsplash.com/premium_photo-1683133731787-60b51a51a9e1?w=1940&auto=format&fit=crop&q=100",
             link: "#exchangePopup"
         }
@@ -74,14 +85,25 @@ export default function Front() {
         <div className="front-page-wrapper text-light bg-dark">
             <div className="ng"></div>
 
-            <div id="heroCarousel" className="carousel slide carousel-fade" data-bs-ride="carousel">
-                <div className="carousel-indicators">
-                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            {/* --- CONTROLLED HERO BANNER CAROUSEL --- */}
+            <div id="heroCarousel" className="carousel slide carousel-fade">
+                <div className="carousel-indicators" style={{ zIndex: 12 }}>
+                    <button
+                        type="button"
+                        className={activeIndex === 0 ? "active" : ""}
+                        onClick={() => setActiveIndex(0)}
+                        aria-label="Slide 1">
+                    </button>
+                    <button
+                        type="button"
+                        className={activeIndex === 1 ? "active" : ""}
+                        onClick={() => setActiveIndex(1)}
+                        aria-label="Slide 2">
+                    </button>
                 </div>
 
                 <div className="carousel-inner">
-                    <div className="carousel-item active" style={{ height: '85vh', backgroundColor: '#000' }}>
+                    <div className={`carousel-item ${activeIndex === 0 ? 'active d-block' : 'd-none'}`} style={{ height: '85vh', backgroundColor: '#000' }}>
                         <div style={{ position: 'absolute', width: '100%', height: '100%', backgroundImage: 'linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url("https://images.unsplash.com/photo-1692863211226-cbba732754c9?w=3840&auto=format&fit=crop&q=100")', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
                         <div className="carousel-caption carousel-caption-bottom">
                             <div className="container text-start">
@@ -92,7 +114,7 @@ export default function Front() {
                         </div>
                     </div>
 
-                    <div className="carousel-item" style={{ height: '85vh', backgroundColor: '#000' }}>
+                    <div className={`carousel-item ${activeIndex === 1 ? 'active d-block' : 'd-none'}`} style={{ height: '85vh', backgroundColor: '#000' }}>
                         <div style={{ position: 'absolute', width: '100%', height: '100%', backgroundImage: 'linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url("https://images.unsplash.com/photo-1727893153491-392fd2d1c721?w=3840&auto=format&fit=crop&q=100")', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
                         <div className="carousel-caption carousel-caption-bottom">
                             <div className="container text-start">
@@ -104,11 +126,19 @@ export default function Front() {
                     </div>
                 </div>
 
-                <button className="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev" style={{ width: '8%' }}>
+                <button
+                    className="carousel-control-prev"
+                    type="button"
+                    onClick={() => setActiveIndex(prev => (prev === 0 ? 1 : 0))}
+                    style={{ width: '8%', zIndex: 15, cursor: 'pointer' }}>
                     <span className="carousel-control-prev-icon" aria-hidden="true" style={{ width: '3rem', height: '3rem' }}></span>
                     <span className="visually-hidden">Previous</span>
                 </button>
-                <button className="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next" style={{ width: '8%' }}>
+                <button
+                    className="carousel-control-next"
+                    type="button"
+                    onClick={() => setActiveIndex(prev => (prev === 1 ? 0 : 1))}
+                    style={{ width: '8%', zIndex: 15, cursor: 'pointer' }}>
                     <span className="carousel-control-next-icon" aria-hidden="true" style={{ width: '3rem', height: '3rem' }}></span>
                     <span className="visually-hidden">Next</span>
                 </button>
@@ -123,11 +153,12 @@ export default function Front() {
                 </div>
             </div>
 
+            {/* FEATURE CARDS SECTION */}
             <section className="container py-5">
-                <div className="row g-4" id="feature-cards-container">
+                <div className="row g-3 justify-content-center" id="feature-cards-container">
                     {featureCards.map((c, index) => (
-                        <div className="col-md-4" key={index}>
-                            <div className="card bg-dark text-white border-secondary h-100 shadow">
+                        <div className="col-lg-3 col-md-5 d-flex justify-content-center" key={index}>
+                            <div className="card bg-dark text-white border-secondary h-100 shadow w-100">
                                 <div className="card-body">
                                     <h4 className="card-title fw-bold">{c.title}</h4>
                                 </div>
@@ -135,7 +166,7 @@ export default function Front() {
                                 <div className="card-body d-flex flex-column">
                                     <p className="card-text text-muted small mb-4">{c.text}</p>
                                     {c.link === '#exchangePopup' ? (
-                                        <button 
+                                        <button
                                             className="btn btn-outline-light mt-auto"
                                             onClick={() => setIsExchangeModalOpen(true)}
                                         >
@@ -151,10 +182,12 @@ export default function Front() {
                 </div>
             </section>
 
-            <section className="hybrid-about-section py-5 bg-black text-white">
-                <div className="container py-4">
-                    <div className="row align-items-center g-5">
-                        <div className="col-lg-6">
+            <section className="hybrid-about-section py-5 bg-black text-white overflow-hidden">
+                {/* Using container-fluid with padding instead of a fixed container */}
+                <div className="container-fluid px-lg-5 py-4">
+                    <div className="row align-items-center">
+                        {/* Text block aligned cleanly with some left margin on large screens */}
+                        <div className="col-lg-5 offset-lg-1 mb-4 mb-lg-0">
                             <h6 className="text-danger text-uppercase fw-bold mb-2"> THE ECOSYSTEM </h6>
                             <h2 className="display-5 fw-bold mb-4">Elite Sales Meet Factory-Grade Precision Care</h2>
                             <p className="text-muted mb-4">
@@ -164,16 +197,17 @@ export default function Front() {
                             </p>
                             <Link to="/about" className="btn btn-outline-light px-4 py-2 fw-bold text-uppercase">Discover Our Story</Link>
                         </div>
-                        <div className="col-lg-6">
+
+                        {/* Image stretches all the way to the right screen corner with zero padding */}
+                        <div className="col-lg-6 pe-0">
                             <div className="hybrid-img-wrapper position-relative">
                                 <div className="hybrid-glow-box"></div>
-                                <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" alt="Showroom and Service" className="img-fluid rounded shadow-lg position-relative" style={{ zIndex: 2 }} />
+                                <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80" alt="Showroom and Service" className="img-fluid rounded-start shadow-lg position-relative w-100" style={{ zIndex: 2, objectFit: 'cover' }} />
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-
             <div className="py-5 bg-dark">
                 <div className="container text-center">
                     <div className="row g-4 justify-content-center">

@@ -1,0 +1,27 @@
+{
+  "auth": {
+    "providers": {
+      "emailPassword": true,
+      "googleSignIn": {
+        "oAuthBrandDisplayName": "marcos",
+        "supportEmail": "dmrlunatic161@gmail.com"
+      }
+    }
+  },
+  "hosting": {
+    "site": "marcos-the-grand-fleet-0",
+    "public": "dist",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
+

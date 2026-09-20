@@ -1,4 +1,6 @@
-/* front.css */
+/* ==========================================
+   FRONT PAGE CUSTOM STYLING
+   ========================================== */
 
 /* --- Global Body & Background Settings --- */
 body {
@@ -6,23 +8,15 @@ body {
     color: #f3f4f6 !important;
     background-attachment: fixed;
     min-height: 100vh;
-    /* Soft off-white for comfortable global reading */
 }
 
 /* --- Typography & Headings --- */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
     color: #ffffff;
 }
 
-p,
-span {
+p, span {
     color: #c2c9c5;
-    /* Clear, bright muted green-gray for body text */
 }
 
 /* Bottom-aligned luxury carousel captions */
@@ -30,7 +24,8 @@ span {
     display: flex;
     align-items: flex-end;
     height: 100%;
-    padding-bottom: 4px; /* Controls distance from the bottom edge */
+    bottom: 15% !important;
+    z-index: 10;
 }
 
 /* Luxury typography styling */
@@ -50,50 +45,47 @@ span {
 
 /* --- Feature Cards Section --- */
 #feature-cards-container {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    padding: 60px 20px;
-    flex-wrap: wrap;
+    padding: 20px 0;
+}
+#feature-cards-container .card .card-title {
+    color: #c5a059 !important;
+    font-size: 1.1rem;
 }
 
 .card {
-    width: 250px;
-    height: 400px;
     background-color: #142018;
-    /* Rich dark heritage green-gray */
     color: #ffffff;
     border: 1px solid #23382c;
-    /* Subtle contrasting heritage border */
     border-radius: 8px;
-    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
     cursor: pointer;
+    margin: 0px;
+    max-width: 230px; 
+    justify-content: center;
 }
 
 .card:hover {
-    transform: perspective(1000px) rotate(-6deg) scale(1.05);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
 }
 
 .card-img-top {
-    height: 140px;
+    height: 100px;
     object-fit: cover;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .card-body {
-    padding: 20px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
 }
 
-.card-title {
-    color: #c5a059 !important;
-    /* Force explicit white for card titles */
-}
+
 
 .card-text {
     color: #b0bfc0 !important;
-    /* Force explicit light tone for card descriptions */
+    font-size: 0.84rem;
 }
 
 /* --- Buttons --- */
@@ -109,47 +101,7 @@ span {
     border-color: #c5a059;
 }
 
-/* --- Number Counter Animation Styles (Heritage Tan Theme) --- */
-.counter-section {
-    padding: 60px 0;
-    text-align: center;
-    background-color: #0d1410;
-    border-top: 1px solid #23382c;
-    border-bottom: 1px solid #23382c;
-}
-
-.counter-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.counter-box {
-    flex: 1;
-    min-width: 200px;
-    padding: 20px;
-}
-
-.counter-number {
-    font-size: 3rem;
-    font-weight: 700;
-    color: #c5a059 ;
-    /* Warm Saddle Tan Accent */
-    margin-bottom: 10px;
-    letter-spacing: 1px;
-}
-
-.counter-label {
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    color: #a3b1a8;
-    letter-spacing: 2px;
-}
-
-/* --- Hybrid Concept Section Styles (Ecosystem Text Fixed) --- */
+/* --- Hybrid Concept Section Styles --- */
 .hybrid-about-section {
     border-top: 1px solid #23382c;
     background-color: #0a0f0d;
@@ -161,12 +113,10 @@ span {
 
 .hybrid-about-section p {
     color: #c2c9c5 !important;
-    /* Ensures the ecosystem description text is fully visible */
 }
 
 .hybrid-about-section h6 {
     color: #c5a059 !important;
-    /* Heritage tan accent for subheadings */
 }
 
 .hybrid-img-wrapper {
@@ -175,19 +125,16 @@ span {
 
 .hybrid-glow-box {
     position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
-    background: linear-gradient(45deg, #c5a059, transparent);
-    /* Warm tan ambient glow */
-    border-radius: 8px;
-    filter: blur(20px);
-    opacity: 0.25;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(197, 160, 89, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+    top: 0;
+    left: 0;
     z-index: 1;
+    pointer-events: none;
 }
 
-/* --- CTA Banner Section (Heritage Tan Buttons) --- */
+/* --- CTA Banner Section --- */
 .cta-banner-section {
     background: linear-gradient(135deg, #0d1410 0%, #142018 100%);
     border-top: 1px solid #23382c;
@@ -221,8 +168,35 @@ span {
     transform: translateY(-3px);
 }
 
-/* Customizes placeholder text color for the dynamic exchange modal inputs */
-#carExchangeModal input::placeholder {
-    color: rgba(255, 255, 255, 0.7) !important; /* Increases brightness/opacity */
+/* Customizes placeholder text color for modals */
+input::placeholder {
+    color: rgba(255, 255, 255, 0.7) !important;
     opacity: 1 !important;
+}
+
+/* Remove unwanted background filter or shadow blur from hero wrapper elements */
+.service-hero-stats-wrapper, 
+.ng, 
+.front-hero-section {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+/* Change carousel dots into horizontal bars ("_") */
+.carousel-indicators [data-bs-target],
+.carousel-indicators button {
+    width: 23px !important;
+    height: 4px !important;
+    border-radius: 2px !important;
+    border: none !important;
+    background-color: rgba(255, 255, 255, 0.4) !important;
+    transition: background-color 0.3s ease, width 0.3s ease;
+    margin: 0 4px !important;
+}
+
+/* Active indicator bar style */
+.carousel-indicators .active {
+    background-color: #c5a059 !important; /* Matches your luxury accent color */
+    width: 23px !important;
 }

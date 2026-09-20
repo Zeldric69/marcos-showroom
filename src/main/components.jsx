@@ -5,7 +5,7 @@ import { vehicleShowroomDatabase } from '../collection_page/carDashboard.js';
 // ==========================================
 // 1. REUSABLE NAVIGATION BAR COMPONENT
 // ==========================================
-export function Navbar({ currentPage }) {
+export function Navbar({ currentPage, user, onOpenAuth, onLogout }) {
     const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
@@ -27,11 +27,14 @@ export function Navbar({ currentPage }) {
         boxShadow: '0 4px 20px rgba(0, 0, 0, 0.4)',
         transition: 'background-color 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease'
     } : {
-        backgroundColor: '#212529',
+        backgroundColor: 'rgba(33, 37, 41, 0.95)',
         backdropFilter: 'none',
         WebkitBackdropFilter: 'none',
         boxShadow: 'none'
     };
+
+    // Extract first initial from user email if logged in
+    const userInitial = user && user.email ? user.email.charAt(0).toUpperCase() : 'U';
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow" style={navbarStyle}>
@@ -62,6 +65,36 @@ export function Navbar({ currentPage }) {
                         <li className="nav-item d-flex align-items-center gap-3 ms-2 social-nav-container">
                             <a className="nav-link p-0" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a>
                             <a className="nav-link p-0" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-f"></i></a>
+                        </li>
+                        
+                        {/* --- DYNAMIC AUTH BUTTON / INITIAL AVATAR --- */}
+                        <li className="nav-item ms-lg-2">
+                            {user ? (
+                                <div className="dropdown">
+                                    <button 
+                                        className="btn btn-warning rounded-circle fw-bold text-dark d-flex align-items-center justify-content-center p-0 shadow-sm"
+                                        style={{ width: '36px', height: '36px', backgroundColor: '#c5a059', border: 'none' }}
+                                        type="button" 
+                                        data-bs-toggle="dropdown" 
+                                        aria-expanded="false"
+                                        title={user.email}
+                                    >
+                                        {userInitial}
+                                    </button>
+                                    <ul className="dropdown-menu dropdown-menu-dark dropdown-menu-end shadow border-secondary mt-2">
+                                        <li><span className="dropdown-item-text text-muted small text-truncate" style={{ maxWidth: '200px' }}>{user.email}</span></li>
+                                        <li><hr className="dropdown-divider border-secondary" /></li>
+                                        <li><button className="dropdown-item text-danger fw-semibold" onClick={onLogout}>Sign Out</button></li>
+                                    </ul>
+                                </div>
+                            ) : (
+                                <button 
+                                    className="btn btn-outline-warning btn-sm px-3 fw-bold text-uppercase"
+                                    onClick={onOpenAuth}
+                                >
+                                    <i className="fa fa-user me-1"></i> Login
+                                </button>
+                            )}
                         </li>
                     </ul>
                 </div>

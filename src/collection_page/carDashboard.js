@@ -20,7 +20,7 @@ export const vehicleShowroomDatabase = {
         ],
         colors: [
             { name: "Carrara White", hex: "#FFFFFF", img: "https://commons.wikimedia.org/wiki/Special:FilePath/Porsche_992_Turbo_S_1X7A0411.jpg" },
-            { name: "Jet Black", hex: "#000000", img: "https://commons.wikimedia.org/wiki/Special:FilePath/Porsche_992_Turbo_S_1X7A0411.jpg" }
+            { name: "Jet Black", hex: "#000000", img: "https://imgs.search.brave.com/IZbXGy88I2G4gH7PmvxHw-46SH57GYjN0p1MF0z5LeQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/cGlzdG9uaGVhZHMu/Y29tL0Z1bGxzaXpl/L3BvcnNjaGUvOTEx/Lzk5Mi10dXJiby1j/YWJyaW9sZXQtcy0y/ZHItcGRrL3BvcnNj/aGUtOTExLTk5Mi10/dXJiby1jYWJyaW9s/ZXQtcy0yZHItcGRr/LTE0MTU3MDIxOTMt/NC5qcGc" }
         ]
     },
 
