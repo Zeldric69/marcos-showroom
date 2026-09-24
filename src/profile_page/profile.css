@@ -59,6 +59,93 @@
     opacity: 0.7;
 }
 
+.preference-saved {
+    color: #73d69a;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.preference-control {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    height: 100%;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 0.35rem;
+    cursor: pointer;
+}
+
+.preference-control input {
+    accent-color: #c5a059;
+    margin-top: 0.25rem;
+}
+
+.preference-control span {
+    display: grid;
+    gap: 0.25rem;
+}
+
+.preference-control strong {
+    color: #fff;
+}
+
+.preference-control small {
+    color: #adb5bd;
+}
+
+.admin-panel {
+    border-color: rgba(115, 214, 154, 0.45);
+}
+
+.admin-badge {
+    color: #73d69a;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+}
+
+.admin-stat {
+    display: grid;
+    gap: 0.35rem;
+    min-height: 100%;
+    padding: 1rem;
+    background: rgba(115, 214, 154, 0.08);
+    border: 1px solid rgba(115, 214, 154, 0.2);
+    border-radius: 0.35rem;
+}
+
+.admin-stat strong {
+    color: #fff;
+}
+
+.admin-stat span {
+    color: #adb5bd;
+    font-size: 0.85rem;
+}
+
+.admin-link {
+    text-decoration: none;
+}
+
+.admin-link:hover {
+    border-color: #73d69a;
+    background: rgba(115, 214, 154, 0.15);
+}
+
+.admin-link small {
+    color: #73d69a;
+    font-weight: 700;
+}
+
+.profile-compact-view .profile-page .profile-panel {
+    padding: 1.25rem;
+}
+
+.profile-compact-view .profile-page .profile-panel.mt-4 {
+    margin-top: 1rem !important;
+}
+
 .profile-primary {
     background: #c5a059;
     border-color: #c5a059;

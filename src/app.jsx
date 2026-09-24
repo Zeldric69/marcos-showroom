@@ -11,11 +11,14 @@ import Services from './services_page/services.jsx';
 import Profile from './profile_page/profile.jsx';
 import { AuthModal } from './main/authmodel.jsx'; // Double check this matches your folder structure
 
+const ADMIN_EMAIL = (import.meta.env.VITE_ADMIN_EMAIL || '').trim().toLowerCase();
+
 function Layout() {
     const location = useLocation();
     const [user, setUser] = useState(null);
     const [isAuthReady, setIsAuthReady] = useState(false);
     const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+    const isAdmin = Boolean(user?.email && ADMIN_EMAIL && user.email.toLowerCase() === ADMIN_EMAIL);
 
     // Track Firebase authentication state live
     useEffect(() => {
@@ -45,6 +48,7 @@ function Layout() {
             <Navbar 
                 currentPage={currentPage} 
                 user={user} 
+                isAdmin={isAdmin}
                 onOpenAuth={() => setIsAuthModalOpen(true)} 
                 onLogout={handleLogout}
             />
@@ -53,7 +57,7 @@ function Layout() {
                 <Route path="/collection" element={<Collection />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/services" element={<Services />} />
-                <Route path="/profile" element={<Profile user={user} isAuthReady={isAuthReady} onOpenAuth={() => setIsAuthModalOpen(true)} onLogout={handleLogout} />} />
+                <Route path="/profile" element={<Profile user={user} isAdmin={isAdmin} isAuthReady={isAuthReady} onOpenAuth={() => setIsAuthModalOpen(true)} onLogout={handleLogout} />} />
             </Routes>
             <Footer />
 
