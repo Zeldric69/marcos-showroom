@@ -84,6 +84,7 @@ export function Navbar({ currentPage, user, onOpenAuth, onLogout }) {
                                     <ul className="dropdown-menu dropdown-menu-dark dropdown-menu-end shadow border-secondary mt-2">
                                         <li><span className="dropdown-item-text text-muted small text-truncate" style={{ maxWidth: '200px' }}>{user.email}</span></li>
                                         <li><hr className="dropdown-divider border-secondary" /></li>
+                                        <li><Link className="dropdown-item" to="/profile"><i className="fa fa-user me-2 text-warning"></i>My Profile</Link></li>
                                         <li><button className="dropdown-item text-danger fw-semibold" onClick={onLogout}>Sign Out</button></li>
                                     </ul>
                                 </div>

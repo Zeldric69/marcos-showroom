@@ -8,6 +8,7 @@ import Front from './front_page/front.jsx';
 import Collection from './collection_page/collection.jsx';
 import About from './about_page/about.jsx';
 import Services from './services_page/services.jsx';
+import Profile from './profile_page/profile.jsx';
 import { AuthModal } from './main/authmodel.jsx'; // Double check this matches your folder structure
 
 function Layout() {
@@ -50,6 +51,7 @@ function Layout() {
                 <Route path="/collection" element={<Collection />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/services" element={<Services />} />
+                <Route path="/profile" element={<Profile user={user} onOpenAuth={() => setIsAuthModalOpen(true)} onLogout={handleLogout} />} />
             </Routes>
             <Footer />
 

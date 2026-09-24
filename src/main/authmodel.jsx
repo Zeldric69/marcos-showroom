@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { auth } from '../firebase/firebaseconfig.js';
 import { 
     signInWithEmailAndPassword, 
@@ -7,29 +7,47 @@ import {
     FacebookAuthProvider, 
     GithubAuthProvider,
     OAuthProvider,
-    signInWithPopup 
+    signInWithPopup,
+    sendPasswordResetEmail,
+    updateProfile
 } from 'firebase/auth';
 
 export function AuthModal({ isOpen, onClose }) {
     const [isRegistering, setIsRegistering] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [displayName, setDisplayName] = useState('');
     const [error, setError] = useState('');
+    const [notice, setNotice] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    useEffect(() => {
+        if (!isOpen) return;
+        setError('');
+        setNotice('');
+    }, [isOpen, isRegistering]);
 
     if (!isOpen) return null;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
+        setNotice('');
+        setIsSubmitting(true);
         try {
             if (isRegistering) {
-                await createUserWithEmailAndPassword(auth, email, password);
+                const credentials = await createUserWithEmailAndPassword(auth, email, password);
+                if (displayName.trim()) {
+                    await updateProfile(credentials.user, { displayName: displayName.trim() });
+                }
             } else {
                 await signInWithEmailAndPassword(auth, email, password);
             }
             onClose();
         } catch (err) {
-            setError(err.message);
+            setError(getAuthErrorMessage(err));
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -40,8 +58,34 @@ export function AuthModal({ isOpen, onClose }) {
             await signInWithPopup(auth, provider);
             onClose();
         } catch (err) {
-            setError(err.message);
+            setError(getAuthErrorMessage(err));
         }
+    };
+
+    const handlePasswordReset = async () => {
+        if (!email.trim()) {
+            setError('Enter your email address first, then choose reset password.');
+            return;
+        }
+        setError('');
+        try {
+            await sendPasswordResetEmail(auth, email.trim());
+            setNotice('Password reset instructions have been sent to your email.');
+        } catch (err) {
+            setError(getAuthErrorMessage(err));
+        }
+    };
+
+    const getAuthErrorMessage = (err) => {
+        const messages = {
+            'auth/invalid-credential': 'The email or password is incorrect.',
+            'auth/email-already-in-use': 'An account already exists for this email.',
+            'auth/weak-password': 'Choose a password with at least 6 characters.',
+            'auth/invalid-email': 'Enter a valid email address.',
+            'auth/popup-closed-by-user': 'The sign-in window was closed before completion.',
+            'auth/too-many-requests': 'Too many attempts. Please wait and try again.'
+        };
+        return messages[err.code] || 'Authentication failed. Please check your details and try again.';
     };
 
     const loginWithGoogle = () => handleSocialLogin(new GoogleAuthProvider());
@@ -69,7 +113,8 @@ export function AuthModal({ isOpen, onClose }) {
                     </div>
                     
                     <div className="modal-body">
-                        {error && <div className="alert alert-danger py-2 small mb-3">{error}</div>}
+                        {error && <div className="alert alert-danger py-2 small mb-3" role="alert">{error}</div>}
+                        {notice && <div className="alert alert-success py-2 small mb-3" role="status">{notice}</div>}
                         
                         {/* --- SOCIAL / MULTI-PLATFORM LOGIN BUTTONS --- */}
                         <div className="d-grid gap-2 mb-3">
@@ -114,6 +159,17 @@ export function AuthModal({ isOpen, onClose }) {
 
                         {/* Email & Password Form */}
                         <form onSubmit={handleSubmit}>
+                            {isRegistering && <div className="mb-3">
+                                <label className="form-label small text-uppercase text-warning fw-bold">Display Name</label>
+                                <input
+                                    type="text"
+                                    className="form-control bg-black text-white border-secondary py-2"
+                                    placeholder="Your name"
+                                    value={displayName}
+                                    onChange={(e) => setDisplayName(e.target.value)}
+                                    maxLength={60}
+                                />
+                            </div>}
                             <div className="mb-3">
                                 <label className="form-label small text-uppercase text-warning fw-bold">Email Address</label>
                                 <input 
@@ -140,10 +196,15 @@ export function AuthModal({ isOpen, onClose }) {
                                 type="submit" 
                                 className="btn w-100 py-2 fw-bold text-uppercase mt-2 shadow-sm text-black" 
                                 style={{ backgroundColor: '#c5a059', letterSpacing: '1px' }}
+                                disabled={isSubmitting}
                             >
-                                {isRegistering ? 'Register Account' : 'Sign In'}
+                                {isSubmitting ? 'Please wait...' : (isRegistering ? 'Register Account' : 'Sign In')}
                             </button>
                         </form>
+
+                        {!isRegistering && <button type="button" className="btn btn-link text-warning text-decoration-none small w-100 mt-2" onClick={handlePasswordReset}>
+                            Forgot your password?
+                        </button>}
                         
                         <div className="text-center mt-3 pt-2 border-top border-secondary border-opacity-25">
                             <button className="btn btn-link text-decoration-none text-muted small" onClick={() => setIsRegistering(!isRegistering)}>
