@@ -37,7 +37,6 @@
     border: 1px solid rgba(197, 160, 89, 0.25);
     border-radius: 0.5rem;
     padding: 2rem;
-    backdrop-filter: blur(10px);
 }
 
 .profile-avatar {
@@ -141,6 +140,42 @@
 .admin-link:hover {
     border-color: #73d69a;
     background: rgba(115, 214, 154, 0.15);
+}
+
+.vehicle-request-list {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.vehicle-request-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.9rem 1rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.35rem;
+}
+
+.vehicle-request-row > div {
+    display: grid;
+    gap: 0.2rem;
+}
+
+.vehicle-request-row span {
+    color: #adb5bd;
+    font-size: 0.8rem;
+}
+
+@media (max-width: 575.98px) {
+    .vehicle-request-row {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .vehicle-request-row .text-end {
+        text-align: left !important;
+    }
 }
 
 .admin-link small {

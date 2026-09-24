@@ -56,7 +56,7 @@ function Layout() {
             <Suspense fallback={<main className="d-flex justify-content-center align-items-center min-vh-100 text-light">Loading showroom...</main>}>
                 <Routes>
                     <Route path="/" element={<Front />} />
-                    <Route path="/collection" element={<Collection />} />
+                    <Route path="/collection" element={<Collection user={user} onOpenAuth={() => setIsAuthModalOpen(true)} />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/services" element={<Services />} />
                     <Route path="/profile" element={<Profile user={user} isAdmin={isAdmin} isAuthReady={isAuthReady} onOpenAuth={() => setIsAuthModalOpen(true)} onLogout={handleLogout} />} />

@@ -14,7 +14,6 @@ h1, h2, h3, h4, h5, h6 {
 .bg-dark, 
 div[style*="background-color: #111827"] {
     background-color: rgba(17, 24, 39, 0.6) !important;
-    backdrop-filter: blur(10px);
 }
 
 /* --- Unified Hero Banner (Matching Services Page Style) --- */

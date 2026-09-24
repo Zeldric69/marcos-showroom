@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { auth } from '../firebase/firebaseconfig.js';
 import { sendPasswordResetEmail, signOut, updateProfile } from 'firebase/auth';
+import { getVehicleRequests } from '../services/vehicleRequests.js';
 import './profile.css';
 
 function authMessage(error) {
@@ -31,6 +32,9 @@ export default function Profile({ user, isAdmin, isAuthReady, onOpenAuth, onLogo
     const [error, setError] = useState('');
     const [preferences, setPreferences] = useState(defaultPreferences);
     const [preferencesSaved, setPreferencesSaved] = useState(false);
+    const [vehicleRequests, setVehicleRequests] = useState([]);
+    const [requestsLoading, setRequestsLoading] = useState(false);
+    const [requestsError, setRequestsError] = useState('');
 
     useEffect(() => {
         setDisplayName(user?.displayName || '');
@@ -56,6 +60,29 @@ export default function Profile({ user, isAdmin, isAuthReady, onOpenAuth, onLogo
     useEffect(() => {
         if (isAuthReady && !user) onOpenAuth?.();
     }, [isAuthReady, user, onOpenAuth]);
+
+    useEffect(() => {
+        if (!user) return undefined;
+
+        let isCancelled = false;
+        setRequestsLoading(true);
+        setRequestsError('');
+        getVehicleRequests(user, isAdmin)
+            .then((requests) => {
+                if (!isCancelled) setVehicleRequests(requests);
+            })
+            .catch((loadError) => {
+                console.error('Vehicle request loading error:', loadError);
+                if (!isCancelled) setRequestsError('Vehicle requests are unavailable until the showroom database is enabled.');
+            })
+            .finally(() => {
+                if (!isCancelled) setRequestsLoading(false);
+            });
+
+        return () => {
+            isCancelled = true;
+        };
+    }, [user, isAdmin]);
 
     if (!isAuthReady) {
         return (
@@ -205,6 +232,35 @@ export default function Profile({ user, isAdmin, isAuthReady, onOpenAuth, onLogo
                             </label>
                         </div>
                     </div>
+                </section>
+
+                <section className="profile-panel mt-4" aria-labelledby="requests-heading">
+                    <div className="d-flex flex-wrap justify-content-between align-items-start gap-3 mb-4">
+                        <div>
+                            <h2 id="requests-heading" className="h4 mb-1">{isAdmin ? 'Vehicle request inbox' : 'Your vehicle requests'}</h2>
+                            <p className="text-muted small mb-0">{isAdmin ? 'Review purchase and test-drive requests from showroom users.' : 'Track the vehicle requests you have submitted.'}</p>
+                        </div>
+                        {!requestsLoading && <span className="profile-kicker">{vehicleRequests.length} REQUESTS</span>}
+                    </div>
+                    {requestsError && <div className="alert alert-warning py-2" role="alert">{requestsError}</div>}
+                    {requestsLoading && <p className="text-muted small mb-0">Loading vehicle requests...</p>}
+                    {!requestsLoading && !requestsError && vehicleRequests.length === 0 && <p className="text-muted small mb-0">No vehicle requests yet.</p>}
+                    {!requestsLoading && vehicleRequests.length > 0 && (
+                        <div className="vehicle-request-list">
+                            {vehicleRequests.map((request) => (
+                                <div className="vehicle-request-row" key={request.id}>
+                                    <div>
+                                        <strong>{request.vehicleName}</strong>
+                                        <span>{request.actionType === 'purchase' ? 'Purchase request' : 'Test-drive request'}{isAdmin ? ` · ${request.userEmail}` : ''}</span>
+                                    </div>
+                                    <div className="text-end">
+                                        <strong className="numeric-text">{request.vehiclePrice}</strong>
+                                        <span>{request.createdAt?.toDate ? request.createdAt.toDate().toLocaleDateString() : 'Pending timestamp'}</span>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
                 </section>
 
                 {isAdmin && <section id="admin-panel" className="profile-panel admin-panel mt-4" aria-labelledby="admin-heading">

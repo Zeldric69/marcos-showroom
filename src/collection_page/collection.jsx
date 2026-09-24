@@ -1,14 +1,34 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { createPortal } from 'react-dom';
 import './collection.css';
 import '../main/shared.css';
 import { getVehicleImage, vehicleShowroomDatabase } from './carDashboard.js';
+import { createVehicleRequest } from '../services/vehicleRequests.js';
 
-export default function Collection() {
+export default function Collection({ user, onOpenAuth }) {
     const [activePage, setActivePage] = useState(1);
     const [currentBrandFilter, setCurrentBrandFilter] = useState('all');
     const [currentSearchQuery, setCurrentSearchQuery] = useState('');
     const [currentSortOrder, setCurrentSortOrder] = useState('default');
     const [selectedCar, setSelectedCar] = useState(null);
+    const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
+    const [requestMessage, setRequestMessage] = useState('');
+    const [requestError, setRequestError] = useState('');
+    const [isRequestSubmitting, setIsRequestSubmitting] = useState(false);
+
+    useEffect(() => {
+        if (!isDetailsModalOpen) return undefined;
+
+        const previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+        requestAnimationFrame(() => {
+            document.getElementById('configuratorModal')?.scrollTo(0, 0);
+        });
+
+        return () => {
+            document.body.style.overflow = previousOverflow;
+        };
+    }, [isDetailsModalOpen]);
 
     const itemsPerPage = 12;
     const keys = useMemo(() => Object.keys(vehicleShowroomDatabase), []);
@@ -53,20 +73,45 @@ export default function Collection() {
     const newReleases = keys.slice(-3);
     const mostSold = useMemo(() => [...keys].sort(() => 0.5 - Math.random()).slice(0, 3), [keys]);
 
+    const handleVehicleRequest = async (actionType) => {
+        setRequestMessage('');
+        setRequestError('');
+
+        if (!user) {
+            setRequestError('Please sign in before submitting a vehicle request.');
+            onOpenAuth?.();
+            return;
+        }
+
+        setIsRequestSubmitting(true);
+        try {
+            await createVehicleRequest({ user, actionType, vehicle: selectedCar });
+            setRequestMessage(actionType === 'purchase'
+                ? 'Your purchase request has been recorded. Our team will contact you shortly.'
+                : 'Your test-drive request has been recorded. Our team will contact you shortly.');
+        } catch (error) {
+            console.error('Vehicle request error:', error);
+            setRequestError('We could not save your request. Please ensure the showroom database is enabled and try again.');
+        } finally {
+            setIsRequestSubmitting(false);
+        }
+    };
+
     // Card Renderer Helper Component matching your generator function
     const renderCarCard = (key, car) => (
         <div className="col" key={key}>
             <div className="card bg-dark text-white border-secondary h-100 shadow-sm vehicle-card">
-                <img loading="lazy" src={getVehicleImage(car)} className="card-img-top" alt={car.name} style={{ height: '220px', objectFit: 'cover' }} />
+                <img loading="lazy" decoding="async" src={getVehicleImage(car)} className="card-img-top" alt={car.name} style={{ height: '220px', objectFit: 'cover' }} />
                 <div className="card-body d-flex flex-column">
                     <h5 className="card-title fw-bold">{car.name}</h5>
-                    <p className="text-warning fw-bold mb-2">{car.price}</p>
+                    <p className="text-warning fw-bold mb-2 numeric-text">{car.price}</p>
                     <p className="card-text text-muted small mb-4" style={{ fontSize: '0.85rem' }}>{car.desc}</p>
                     <button 
                         className="btn btn-outline-warning btn-sm mt-auto w-100"
-                        data-bs-toggle="modal"
-                        data-bs-target="#configuratorModal"
-                        onClick={() => setSelectedCar(car)}
+                        onClick={() => {
+                            setSelectedCar({ ...car, id: key });
+                            setIsDetailsModalOpen(true);
+                        }}
                     >
                         View Details
                     </button>
@@ -81,8 +126,8 @@ export default function Collection() {
 
             {/* --- HERO BANNER --- */}
             <div className="service-hero-stats-wrapper position-relative overflow-hidden">
-                <img 
-                    src="https://images.unsplash.com/photo-1692863211226-cbba732754c9?w=1940&auto=format&fit=crop&q=100" 
+                <img decoding="async"
+                    src="https://images.unsplash.com/photo-1692863211226-cbba732754c9?w=1280&auto=format&fit=crop&q=75" 
                     className="hero-bg-img w-100" 
                     alt="Fleet Background"
                     style={{ height: '350px', objectFit: 'cover', filter: 'brightness(0.4)' }} 
@@ -199,21 +244,23 @@ export default function Collection() {
             </section>
 
             {/* --- CONFIGURATOR MODAL --- */}
-            <div className="modal fade text-dark" id="configuratorModal" tabIndex="-1" aria-hidden="true">
+            {isDetailsModalOpen && selectedCar && createPortal((
+            <div className="modal fade show d-block text-dark" id="configuratorModal" tabIndex="-1" role="dialog" aria-modal="true" style={{ backgroundColor: 'rgba(0, 0, 0, 0.75)', zIndex: 1060 }}>
                 <div className="modal-dialog modal-dialog-centered modal-lg">
                     <div className="modal-content bg-dark text-white border border-secondary shadow-lg">
                         <div className="modal-header border-bottom border-secondary">
                             <h5 className="modal-title fw-bold">Vehicle Details</h5>
-                            <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" className="btn-close btn-close-white" onClick={() => setIsDetailsModalOpen(false)} aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
-                            {selectedCar && (
-                                <div className="row align-items-center">
+                            {requestMessage && <div className="alert alert-success py-2" role="status">{requestMessage}</div>}
+                            {requestError && <div className="alert alert-danger py-2" role="alert">{requestError}</div>}
+                            <div className="row align-items-center">
                                     <div className="col-md-5 mb-3 mb-md-0">
-                                        <img loading="lazy" src={getVehicleImage(selectedCar)} className="img-fluid rounded shadow border border-secondary w-100" alt="Vehicle" style={{ height: '260px', objectFit: 'cover' }} />
+                                        <img loading="lazy" decoding="async" src={getVehicleImage(selectedCar)} className="img-fluid rounded shadow border border-secondary w-100" alt="Vehicle" style={{ height: '260px', objectFit: 'cover' }} />
                                     </div>
                                     <div className="col-md-7">
-                                        <h6 className="text-uppercase fw-bold mb-2" style={{ color: '#c5a059' }}>{selectedCar.name} - {selectedCar.price}</h6>
+                                        <h6 className="text-uppercase fw-bold mb-2" style={{ color: '#c5a059' }}>{selectedCar.name} - <span className="numeric-text">{selectedCar.price}</span></h6>
                                         <p className="text-light mb-3" style={{ fontSize: '0.9rem', lineHeight: '1.5' }}>{selectedCar.desc}</p>
                                         <h6 className="text-uppercase fw-bold mb-2" style={{ color: '#c5a059' }}>Vehicle Features Sheet</h6>
                                         <div style={{ maxHeight: '160px', overflowY: 'auto' }} className="custom-scrollbar">
@@ -224,19 +271,19 @@ export default function Collection() {
                                             </ul>
                                         </div>
                                     </div>
-                                </div>
-                            )}
+                            </div>
                         </div>
                         <div className="modal-footer border-top border-secondary d-flex justify-content-between">
                             <div className="d-flex gap-2">
-                                <button type="button" className="btn btn-outline-warning btn-sm"><i className="fas fa-shopping-cart me-1"></i> Book Now</button>
-                                <button type="button" className="btn btn-outline-light btn-sm"><i className="fas fa-tachometer-alt me-1"></i> Test Drive</button>
+                                <button type="button" className="btn btn-outline-warning btn-sm" onClick={() => handleVehicleRequest('purchase')} disabled={isRequestSubmitting}><i className="fas fa-shopping-cart me-1"></i> {isRequestSubmitting ? 'Saving...' : 'Book Now'}</button>
+                                <button type="button" className="btn btn-outline-light btn-sm" onClick={() => handleVehicleRequest('testDrive')} disabled={isRequestSubmitting}><i className="fas fa-tachometer-alt me-1"></i> Test Drive</button>
                             </div>
-                            <button type="button" className="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close Details</button>
+                            <button type="button" className="btn btn-secondary btn-sm" onClick={() => setIsDetailsModalOpen(false)}>Close Details</button>
                         </div>
                     </div>
                 </div>
             </div>
+            ), document.body)}
         </div>
     );
 }

@@ -9,15 +9,21 @@ export function Navbar({ currentPage, user, isAdmin, onOpenAuth, onLogout }) {
     const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
+        let frameId = null;
+
         const handleScroll = () => {
-            if (window.scrollY > 50) {
-                setScrolled(true);
-            } else {
-                setScrolled(false);
-            }
+            if (frameId !== null) return;
+            frameId = window.requestAnimationFrame(() => {
+                const nextScrolled = window.scrollY > 50;
+                setScrolled((currentScrolled) => currentScrolled === nextScrolled ? currentScrolled : nextScrolled);
+                frameId = null;
+            });
         };
         window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            if (frameId !== null) window.cancelAnimationFrame(frameId);
+        };
     }, []);
 
     const navbarStyle = scrolled ? {
@@ -40,7 +46,7 @@ export function Navbar({ currentPage, user, isAdmin, onOpenAuth, onLogout }) {
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow" style={navbarStyle}>
             <div className="container">
                 <Link className="navbar-brand fw-bold text-uppercase gradient-text" to="/" style={{ display: 'inline-block' }}>
-                    Marcos
+                    MARCOS
                 </Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span className="navbar-toggler-icon"></span>

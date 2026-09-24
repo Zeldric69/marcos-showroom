@@ -54,7 +54,6 @@ div[style*="background-color"] {
 
 .stats-counter-row {
     background: rgba(17, 24, 39, 0.6) !important;
-    backdrop-filter: blur(8px);
     border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
@@ -69,7 +68,6 @@ div[style*="background-color"] {
 .card {
     background: rgba(20, 24, 33, 0.75) !important;
     border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    backdrop-filter: blur(10px);
     transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
@@ -128,7 +126,6 @@ h5 {
 .modular-form-card {
     background: rgba(17, 24, 39, 0.9) !important;
     border: 1px solid rgba(197, 160, 89, 0.3) !important;
-    backdrop-filter: blur(12px);
 }
 
 .modular-form-input {

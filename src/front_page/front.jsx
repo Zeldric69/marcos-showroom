@@ -162,7 +162,7 @@ export default function Front() {
                                 <div className="card-body">
                                     <h4 className="card-title fw-bold">{c.title}</h4>
                                 </div>
-                                <img loading="lazy" src={c.img} className="card-img-top" alt={c.title} style={{ height: '200px', objectFit: 'cover' }} />
+                                <img loading="lazy" decoding="async" src={c.img} className="card-img-top" alt={c.title} style={{ height: '200px', objectFit: 'cover' }} />
                                 <div className="card-body d-flex flex-column">
                                     <p className="card-text text-muted small mb-4">{c.text}</p>
                                     {c.link === '#exchangePopup' ? (
@@ -202,7 +202,7 @@ export default function Front() {
                         <div className="col-lg-6 pe-0">
                             <div className="hybrid-img-wrapper position-relative">
                                 <div className="hybrid-glow-box"></div>
-                                <img loading="lazy" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80" alt="Showroom and Service" className="img-fluid rounded-start shadow-lg position-relative w-100" style={{ zIndex: 2, objectFit: 'cover' }} />
+                                <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80" alt="Showroom and Service" className="img-fluid rounded-start shadow-lg position-relative w-100" style={{ zIndex: 2, objectFit: 'cover' }} />
                             </div>
                         </div>
                     </div>
@@ -212,15 +212,15 @@ export default function Front() {
                 <div className="container text-center">
                     <div className="row g-4 justify-content-center">
                         <div className="col-md-4">
-                            <h2 className="display-4 fw-bold" style={{ color: '#c5a059' }} id="statYears">0</h2>
+                            <h2 className="display-4 fw-bold numeric-text" style={{ color: '#c5a059' }} id="statYears">0</h2>
                             <p className="fw-bold mb-0 text-white">YEARS EXPERIENCE</p>
                         </div>
                         <div className="col-md-4">
-                            <h2 className="display-4 fw-bold" style={{ color: '#c5a059' }} id="statVehicles">0</h2>
+                            <h2 className="display-4 fw-bold numeric-text" style={{ color: '#c5a059' }} id="statVehicles">0</h2>
                             <p className="fw-bold mb-0 text-white">FLEET VEHICLES IN STOCK</p>
                         </div>
                         <div className="col-md-4">
-                            <h2 className="display-4 fw-bold" style={{ color: '#c5a059' }} id="statHappyClients">0</h2>
+                            <h2 className="display-4 fw-bold numeric-text" style={{ color: '#c5a059' }} id="statHappyClients">0</h2>
                             <p className="fw-bold mb-0 text-white">SATISFIED HAPPY DRIVERS</p>
                         </div>
                     </div>

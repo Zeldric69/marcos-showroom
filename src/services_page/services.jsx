@@ -186,15 +186,15 @@ export default function Services() {
                     </div>
                     <div className="row text-center g-4">
                         <div className="col-md-4">
-                            <h2 className="display-5 fw-bold text-warning mb-1" id="statYears">0+</h2>
+                            <h2 className="display-5 fw-bold text-warning mb-1 numeric-text" id="statYears">0+</h2>
                             <p className="text-uppercase text-light small fw-bold mb-0" style={{ letterSpacing: '1px' }}>Years of Excellence</p>
                         </div>
                         <div className="col-md-4">
-                            <h2 className="display-5 fw-bold text-warning mb-1" id="statMechanics">0</h2>
+                            <h2 className="display-5 fw-bold text-warning mb-1 numeric-text" id="statMechanics">0</h2>
                             <p className="text-uppercase text-light small fw-bold mb-0" style={{ letterSpacing: '1px' }}>Master Mechanics</p>
                         </div>
                         <div className="col-md-4">
-                            <h2 className="display-5 fw-bold text-warning mb-1" id="statClients">0+</h2>
+                            <h2 className="display-5 fw-bold text-warning mb-1 numeric-text" id="statClients">0+</h2>
                             <p className="text-uppercase text-light small fw-bold mb-0" style={{ letterSpacing: '1px' }}>Satisfied Collectors</p>
                         </div>
                     </div>
