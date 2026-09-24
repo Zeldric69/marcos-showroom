@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: './', // Ensures paths resolve correctly on Firebase Hosting
+  base: '/marcos-showroom/',
 })
