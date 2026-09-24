@@ -83,7 +83,8 @@ export function AuthModal({ isOpen, onClose }) {
             'auth/weak-password': 'Choose a password with at least 6 characters.',
             'auth/invalid-email': 'Enter a valid email address.',
             'auth/popup-closed-by-user': 'The sign-in window was closed before completion.',
-            'auth/too-many-requests': 'Too many attempts. Please wait and try again.'
+            'auth/too-many-requests': 'Too many attempts. Please wait and try again.',
+            'auth/unauthorized-domain': `This site (${window.location.hostname}) is not authorized for social sign-in. Add it in Firebase Console > Authentication > Settings > Authorized domains.`
         };
         return messages[err.code] || 'Authentication failed. Please check your details and try again.';
     };
