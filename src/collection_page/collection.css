@@ -6,6 +6,7 @@ body {
     color: #f3f4f6 !important;
     background-attachment: fixed;
     min-height: 100vh;
+    font-family: 'Manrope', sans-serif;
    
 }
 .bg-black, 
@@ -64,6 +65,7 @@ div[style*="background-color"] {
 
 /* --- Typography & Headings --- */
 h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', serif;
     color: #ffffff;
 }
 
@@ -105,10 +107,34 @@ p, span {
     object-fit: cover;
 }
 
+.vehicle-card {
+    position: relative;
+}
+
+.vehicle-card::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: 220px;
+    background: linear-gradient(180deg, rgba(8, 12, 16, 0.04), rgba(8, 12, 16, 0.28));
+    pointer-events: none;
+    z-index: 1;
+}
+
+.vehicle-card .card-img-top {
+    aspect-ratio: 16 / 10;
+    height: auto !important;
+    object-fit: cover !important;
+    object-position: center;
+    filter: saturate(0.78) contrast(1.06) brightness(0.86);
+}
+
 .card-body {
     padding: 20px;
     display: flex;
     flex-direction: column;
+    position: relative;
+    z-index: 2;
 }
 
 .card-title {
@@ -176,4 +202,78 @@ p, span {
     will-change: transform;
     transform: translateZ(0);
     backface-visibility: hidden;
+}
+
+@media (min-width: 576px) and (max-width: 991.98px) {
+    .service-hero-stats-wrapper {
+        min-height: 340px !important;
+        padding-bottom: 28px !important;
+    }
+
+    .service-hero-stats-wrapper .hero-bg-img {
+        height: 340px !important;
+    }
+
+    .banner-text-holder h1 {
+        font-size: clamp(2.7rem, 7vw, 4.5rem) !important;
+    }
+
+    #showroom-grid,
+    .inventory-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 20px;
+        padding: 28px 20px;
+    }
+
+    .collection-page-wrapper .container.py-4 {
+        padding-top: 2rem !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .service-hero-stats-wrapper {
+        min-height: 300px !important;
+        padding-bottom: 22px !important;
+    }
+
+    .service-hero-stats-wrapper .hero-bg-img {
+        height: 300px !important;
+    }
+
+    .banner-text-holder h1 {
+        font-size: clamp(2.25rem, 12vw, 3.5rem) !important;
+        line-height: 0.92;
+    }
+
+    .banner-text-holder p {
+        font-size: 0.68rem;
+        letter-spacing: 1px;
+        line-height: 1.4;
+    }
+
+    #showroom-grid,
+    .inventory-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px;
+        padding: 20px 12px;
+    }
+
+    .collection-page-wrapper .container.py-4 {
+        padding-top: 1.25rem !important;
+        padding-bottom: 1.25rem !important;
+    }
+
+    .collection-page-wrapper .d-flex.justify-content-center.align-items-center {
+        align-items: stretch !important;
+    }
+
+    .search-box-wrapper,
+    .collection-page-wrapper .form-select {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    .vehicle-card .card-img-top {
+        aspect-ratio: 16 / 9;
+    }
 }

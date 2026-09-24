@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import './collection.css';
 import '../main/shared.css';
-import { vehicleShowroomDatabase } from './carDashboard.js';
+import { getVehicleImage, vehicleShowroomDatabase } from './carDashboard.js';
 
 export default function Collection() {
     const [activePage, setActivePage] = useState(1);
@@ -57,7 +57,7 @@ export default function Collection() {
     const renderCarCard = (key, car) => (
         <div className="col" key={key}>
             <div className="card bg-dark text-white border-secondary h-100 shadow-sm vehicle-card">
-                <img src={car.img || car.image} className="card-img-top" alt={car.name} style={{ height: '220px', objectFit: 'cover' }} />
+                <img loading="lazy" src={getVehicleImage(car)} className="card-img-top" alt={car.name} style={{ height: '220px', objectFit: 'cover' }} />
                 <div className="card-body d-flex flex-column">
                     <h5 className="card-title fw-bold">{car.name}</h5>
                     <p className="text-warning fw-bold mb-2">{car.price}</p>
@@ -210,7 +210,7 @@ export default function Collection() {
                             {selectedCar && (
                                 <div className="row align-items-center">
                                     <div className="col-md-5 mb-3 mb-md-0">
-                                        <img src={selectedCar.img || selectedCar.image} className="img-fluid rounded shadow border border-secondary w-100" alt="Vehicle" style={{ height: '260px', objectFit: 'cover' }} />
+                                        <img loading="lazy" src={getVehicleImage(selectedCar)} className="img-fluid rounded shadow border border-secondary w-100" alt="Vehicle" style={{ height: '260px', objectFit: 'cover' }} />
                                     </div>
                                     <div className="col-md-7">
                                         <h6 className="text-uppercase fw-bold mb-2" style={{ color: '#c5a059' }}>{selectedCar.name} - {selectedCar.price}</h6>

@@ -2501,3 +2501,7 @@ export const vehicleShowroomDatabase = {
         ]
     }
 };
+
+export const getVehicleImage = (vehicle) => (
+    vehicle?.img || vehicle?.image || vehicle?.colors?.[0]?.img || ''
+);

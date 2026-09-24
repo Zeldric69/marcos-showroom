@@ -16,8 +16,13 @@ body {
     /* Keeps the gradient smooth and static as you scroll */
     min-height: 100vh;
     color: #ffffff;
-    font-family: 'Segoe UI', sans-serif ;
+    font-family: 'Manrope', sans-serif;
     padding-top: 79px;
+}
+
+h1, h2, h3, h4, h5, h6,
+.hero-title {
+    font-family: 'Cormorant Garamond', serif;
 }
 
 /* --- UNIFIED TRANSPARENT SECTIONS ACROSS ALL PAGES --- */
@@ -117,12 +122,12 @@ div[style*="background-color"] {
 /* --- Dedicated Logo Styling --- */
 .navbar-brand, 
 .logo-text {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Put your preferred font here */
+    font-family: 'Cormorant Garamond', serif;
     font-weight: 800 !important;
     letter-spacing: 1.5px;
 }
 .nav-item{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Put your preferred font here */
+    font-family: 'Manrope', sans-serif;
 }
 
 .gradient-text {

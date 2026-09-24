@@ -119,7 +119,7 @@ export default function Front() {
                         <div className="carousel-caption carousel-caption-bottom">
                             <div className="container text-start">
                                 <h6 className="hero-subtitle">EXPERT CARE & MAINTENANCE</h6>
-                                <h1 className="display-3 hero-title">Advanced Diagnostics & Tuning</h1>
+                                <h2 className="display-3 hero-title">Advanced Diagnostics & Tuning</h2>
                                 <Link to="/services" className="btn btn-danger py-3 px-5 fw-bold">BOOK A SERVICE</Link>
                             </div>
                         </div>
@@ -162,7 +162,7 @@ export default function Front() {
                                 <div className="card-body">
                                     <h4 className="card-title fw-bold">{c.title}</h4>
                                 </div>
-                                <img src={c.img} className="card-img-top" alt={c.title} style={{ height: '200px', objectFit: 'cover' }} />
+                                <img loading="lazy" src={c.img} className="card-img-top" alt={c.title} style={{ height: '200px', objectFit: 'cover' }} />
                                 <div className="card-body d-flex flex-column">
                                     <p className="card-text text-muted small mb-4">{c.text}</p>
                                     {c.link === '#exchangePopup' ? (
@@ -202,7 +202,7 @@ export default function Front() {
                         <div className="col-lg-6 pe-0">
                             <div className="hybrid-img-wrapper position-relative">
                                 <div className="hybrid-glow-box"></div>
-                                <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80" alt="Showroom and Service" className="img-fluid rounded-start shadow-lg position-relative w-100" style={{ zIndex: 2, objectFit: 'cover' }} />
+                                <img loading="lazy" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80" alt="Showroom and Service" className="img-fluid rounded-start shadow-lg position-relative w-100" style={{ zIndex: 2, objectFit: 'cover' }} />
                             </div>
                         </div>
                     </div>

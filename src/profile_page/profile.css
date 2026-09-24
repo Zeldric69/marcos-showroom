@@ -1,5 +1,15 @@
 .profile-page {
+    font-family: 'Manrope', sans-serif;
     min-height: 70vh;
+}
+
+.profile-page h1,
+.profile-page h2,
+.profile-page h3,
+.profile-page h4,
+.profile-page h5,
+.profile-page h6 {
+    font-family: 'Cormorant Garamond', serif;
 }
 
 .profile-loading {

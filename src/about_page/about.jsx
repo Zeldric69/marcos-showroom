@@ -59,7 +59,7 @@ export default function About() {
                     </div>
                     <div className="col-lg-5">
                         <div className="position-relative">
-                            <img 
+                            <img loading="lazy"
                                 src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=800" 
                                 className="img-fluid rounded-3 shadow-lg border border-secondary w-100" 
                                 alt="Marcos Heritage" 
@@ -97,7 +97,7 @@ export default function About() {
                         </div>
                         <div className="col-lg-5">
                             <div className="position-relative">
-                                <img 
+                                <img loading="lazy"
                                     src="https://images.unsplash.com/photo-1616788494707-ec28f08d05a1?q=80&w=800" 
                                     className="img-fluid rounded-3 shadow-lg border border-secondary w-100"
                                     alt="Marcos Luxury Showroom" 

@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { lazy, Suspense, useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Navbar, Footer } from './main/components.jsx';
 import { auth } from './firebase/firebaseconfig.js';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 
-import Front from './front_page/front.jsx';
-import Collection from './collection_page/collection.jsx';
-import About from './about_page/about.jsx';
-import Services from './services_page/services.jsx';
-import Profile from './profile_page/profile.jsx';
 import { AuthModal } from './main/authmodel.jsx'; // Double check this matches your folder structure
+
+const Front = lazy(() => import('./front_page/front.jsx'));
+const Collection = lazy(() => import('./collection_page/collection.jsx'));
+const About = lazy(() => import('./about_page/about.jsx'));
+const Services = lazy(() => import('./services_page/services.jsx'));
+const Profile = lazy(() => import('./profile_page/profile.jsx'));
 
 const ADMIN_EMAIL = (import.meta.env.VITE_ADMIN_EMAIL || '').trim().toLowerCase();
 
@@ -52,13 +53,15 @@ function Layout() {
                 onOpenAuth={() => setIsAuthModalOpen(true)} 
                 onLogout={handleLogout}
             />
-            <Routes>
-                <Route path="/" element={<Front />} />
-                <Route path="/collection" element={<Collection />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/services" element={<Services />} />
-                <Route path="/profile" element={<Profile user={user} isAdmin={isAdmin} isAuthReady={isAuthReady} onOpenAuth={() => setIsAuthModalOpen(true)} onLogout={handleLogout} />} />
-            </Routes>
+            <Suspense fallback={<main className="d-flex justify-content-center align-items-center min-vh-100 text-light">Loading showroom...</main>}>
+                <Routes>
+                    <Route path="/" element={<Front />} />
+                    <Route path="/collection" element={<Collection />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/services" element={<Services />} />
+                    <Route path="/profile" element={<Profile user={user} isAdmin={isAdmin} isAuthReady={isAuthReady} onOpenAuth={() => setIsAuthModalOpen(true)} onLogout={handleLogout} />} />
+                </Routes>
+            </Suspense>
             <Footer />
 
             <AuthModal 
