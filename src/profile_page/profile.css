@@ -2,6 +2,10 @@
     min-height: 70vh;
 }
 
+.profile-loading {
+    min-height: 55vh;
+}
+
 .profile-container {
     max-width: 1040px;
 }

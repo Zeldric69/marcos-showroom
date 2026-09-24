@@ -14,12 +14,14 @@ import { AuthModal } from './main/authmodel.jsx'; // Double check this matches y
 function Layout() {
     const location = useLocation();
     const [user, setUser] = useState(null);
+    const [isAuthReady, setIsAuthReady] = useState(false);
     const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 
     // Track Firebase authentication state live
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
+            setIsAuthReady(true);
         });
         return () => unsubscribe();
     }, []);
@@ -51,7 +53,7 @@ function Layout() {
                 <Route path="/collection" element={<Collection />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/services" element={<Services />} />
-                <Route path="/profile" element={<Profile user={user} onOpenAuth={() => setIsAuthModalOpen(true)} onLogout={handleLogout} />} />
+                <Route path="/profile" element={<Profile user={user} isAuthReady={isAuthReady} onOpenAuth={() => setIsAuthModalOpen(true)} onLogout={handleLogout} />} />
             </Routes>
             <Footer />
 

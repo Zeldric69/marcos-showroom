@@ -13,7 +13,7 @@ function authMessage(error) {
     return messages[error.code] || 'We could not update your profile. Please try again.';
 }
 
-export default function Profile({ user, onOpenAuth, onLogout }) {
+export default function Profile({ user, isAuthReady, onOpenAuth, onLogout }) {
     const [displayName, setDisplayName] = useState('');
     const [isSaving, setIsSaving] = useState(false);
     const [message, setMessage] = useState('');
@@ -24,8 +24,19 @@ export default function Profile({ user, onOpenAuth, onLogout }) {
     }, [user]);
 
     useEffect(() => {
-        if (!user) onOpenAuth?.();
-    }, [user, onOpenAuth]);
+        if (isAuthReady && !user) onOpenAuth?.();
+    }, [isAuthReady, user, onOpenAuth]);
+
+    if (!isAuthReady) {
+        return (
+            <main className="profile-page profile-loading d-flex align-items-center justify-content-center">
+                <div className="text-center text-muted">
+                    <div className="spinner-border text-warning mb-3" role="status" aria-label="Loading profile"></div>
+                    <p className="mb-0">Loading your profile...</p>
+                </div>
+            </main>
+        );
+    }
 
     if (!user) {
         return <Navigate to="/" replace state={{ openAuth: true }} />;
