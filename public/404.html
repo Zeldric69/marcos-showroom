@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Marcos Premium Showroom</title>
+  <!--
+    GitHub Pages has no server-side rewrites, so a direct visit or refresh on
+    a client-side route (e.g. /collection) returns this 404 page instead of
+    index.html. This script bounces the browser back to index.html while
+    preserving the intended path in sessionStorage, and app.jsx's router
+    restores it. This is the standard spa-github-pages redirect trick.
+  -->
+  <script>
+    sessionStorage.redirect = location.href;
+  </script>
+  <meta http-equiv="refresh" content="0;URL='/marcos-showroom/'"></meta>
+</head>
+<body></body>
+</html>

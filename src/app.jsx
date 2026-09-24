@@ -4,9 +4,9 @@ import { Navbar, Footer } from './main/components.jsx';
 import { auth } from './firebase/firebaseconfig.js';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 
-import Front from './front_page/Front.jsx';
-import Collection from './collection_page/Collection.jsx';
-import About from './about_page/About.jsx';
+import Front from './front_page/front.jsx';
+import Collection from './collection_page/collection.jsx';
+import About from './about_page/about.jsx';
 import Services from './services_page/services.jsx';
 import { AuthModal } from './main/authmodel.jsx'; // Double check this matches your folder structure
 
