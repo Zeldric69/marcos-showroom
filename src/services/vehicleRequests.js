@@ -1,6 +1,8 @@
 import {
     addDoc,
     collection,
+    deleteDoc,
+    doc,
     getDocs,
     query,
     serverTimestamp,
@@ -27,6 +29,29 @@ export async function createVehicleRequest({ user, actionType, vehicle }) {
         status: 'new',
         createdAt: serverTimestamp()
     });
+}
+
+export async function createServiceBooking({ user, serviceType, carModel, preferredDate }) {
+    if (!user) {
+        throw new Error('Please sign in before submitting a service booking.');
+    }
+
+    return addDoc(requestsCollection, {
+        requestType: 'service',
+        userId: user.uid,
+        userEmail: user.email || '',
+        actionType: 'serviceBooking',
+        vehicleName: carModel || 'Service appointment',
+        vehiclePrice: '',
+        serviceType,
+        preferredDate,
+        status: 'new',
+        createdAt: serverTimestamp()
+    });
+}
+
+export async function removeVehicleRequest(requestId) {
+    return deleteDoc(doc(db, 'vehicleRequests', requestId));
 }
 
 export async function getVehicleRequests(user, isAdmin) {

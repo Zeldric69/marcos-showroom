@@ -9,14 +9,26 @@ html{
 }
 
 body {
-
-    background: linear-gradient(135deg, rgba(13, 148, 136, 0.06) 0%, rgb(35, 27, 72) 45%, rgba(244, 193, 99, 0.05) 100%) ;
-    background-attachment: scroll;
-    /* Keeps the gradient smooth and static as you scroll */
+    background-color: #0b0f19 !important;
+    background-image: none !important;
     min-height: 100vh;
     color: #ffffff;
     font-family: 'Manrope', sans-serif;
     padding-top: 79px;
+}
+
+html,
+#root {
+    background-color: #0b0f19;
+}
+
+.front-page-wrapper,
+.collection-page-wrapper,
+.about-page-wrapper,
+.services-page-wrapper,
+.profile-page {
+    background-color: #0b0f19 !important;
+    background-image: none !important;
 }
 
 h1, h2, h3, h4, h5, h6,
@@ -56,7 +68,7 @@ div[style*="background-color"] {
 }
 /* Global Navbar & Footer */
 .navbar{
-    transition: background-color 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
+    transition: none;
 }
 .navbar-container {
     display: flex;

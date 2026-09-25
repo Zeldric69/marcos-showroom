@@ -1,6 +1,20 @@
 .profile-page {
     font-family: 'Manrope', sans-serif;
     min-height: 70vh;
+    color: #f3f4f6;
+}
+
+.profile-page .text-muted,
+.profile-page p,
+.profile-page label,
+.profile-page .form-label {
+    color: #d1d5db !important;
+}
+
+.profile-page .profile-heading p,
+.profile-page .profile-panel p,
+.profile-page .inventory-form p {
+    color: #cbd5e1 !important;
 }
 
 .profile-page h1,
@@ -17,8 +31,108 @@
 }
 
 .profile-container {
-    max-width: 1040px;
+    max-width: 1180px;
 }
+
+.account-dashboard {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.account-sidebar {
+    position: sticky;
+    top: 90px;
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem;
+    isolation: isolate;
+    background: #141821;
+    border: 1px solid rgba(197, 160, 89, 0.25);
+    border-radius: 0.5rem;
+}
+
+.sidebar-user-name,
+.sidebar-user-email {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sidebar-user-name { color: #fff; }
+.sidebar-user-email { color: #adb5bd; font-size: 0.78rem; }
+
+.account-nav {
+    display: grid;
+    gap: 0.35rem;
+}
+
+.account-nav button,
+.admin-tabs button {
+    border: 0;
+    color: #adb5bd;
+    background: transparent;
+    text-align: left;
+    padding: 0.65rem 0.75rem;
+    border-radius: 0.3rem;
+}
+
+.account-nav button:hover,
+.account-nav button.active,
+.admin-tabs button:hover,
+.admin-tabs button.active {
+    color: #111827;
+    background: #c5a059;
+}
+
+.account-content { min-width: 0; }
+
+.overview-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+}
+
+.overview-stats > div,
+.admin-summary {
+    display: grid;
+    gap: 0.25rem;
+    padding: 1rem;
+    border: 1px solid rgba(197, 160, 89, 0.2);
+    background: #1a1d24;
+}
+
+.overview-stats strong,
+.admin-summary strong { color: #c5a059; font-size: 1.25rem; }
+.overview-stats span,
+.admin-summary span { color: #adb5bd; font-size: 0.78rem; }
+
+.admin-tabs {
+    display: flex;
+    gap: 0.35rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.inventory-form {
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: #11151d;
+}
+
+.inventory-list { display: grid; gap: 0.6rem; }
+
+.inventory-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.inventory-row > div:first-child { display: grid; gap: 0.2rem; }
+.inventory-row span { color: #adb5bd; font-size: 0.8rem; }
 
 .profile-heading {
     border-left: 3px solid #c5a059;
@@ -33,7 +147,7 @@
 }
 
 .profile-panel {
-    background: rgba(20, 24, 33, 0.78);
+    background: #141821;
     border: 1px solid rgba(197, 160, 89, 0.25);
     border-radius: 0.5rem;
     padding: 2rem;
@@ -55,6 +169,21 @@
     background: rgba(0, 0, 0, 0.35);
     border-color: rgba(255, 255, 255, 0.2);
     color: #fff;
+}
+
+.profile-input::placeholder {
+    color: #cbd5e1;
+    opacity: 1;
+}
+
+.inventory-form .profile-input {
+    background: #4b5563 !important;
+    border-color: #6b7280;
+    color: #fff;
+}
+
+.inventory-form .profile-input::placeholder {
+    color: #e5e7eb;
 }
 
 .profile-input:focus {
@@ -104,11 +233,12 @@
 }
 
 .admin-panel {
-    border-color: rgba(115, 214, 154, 0.45);
+    background: #141821 !important;
+    border-color: rgba(197, 160, 89, 0.45);
 }
 
 .admin-badge {
-    color: #73d69a;
+    color: #c5a059;
     font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.12em;
@@ -119,8 +249,8 @@
     gap: 0.35rem;
     min-height: 100%;
     padding: 1rem;
-    background: rgba(115, 214, 154, 0.08);
-    border: 1px solid rgba(115, 214, 154, 0.2);
+    background: #1a1d24;
+    border: 1px solid rgba(197, 160, 89, 0.2);
     border-radius: 0.35rem;
 }
 
@@ -138,8 +268,8 @@
 }
 
 .admin-link:hover {
-    border-color: #73d69a;
-    background: rgba(115, 214, 154, 0.15);
+    border-color: #c5a059;
+    background: #22262f;
 }
 
 .vehicle-request-list {
@@ -179,7 +309,7 @@
 }
 
 .admin-link small {
-    color: #73d69a;
+    color: #c5a059;
     font-weight: 700;
 }
 
@@ -221,6 +351,31 @@
 }
 
 @media (max-width: 576px) {
+    .account-dashboard { display: block; }
+
+    .account-sidebar {
+        position: static;
+        margin-bottom: 1rem;
+    }
+
+    .account-nav {
+        display: flex;
+        overflow-x: auto;
+        margin-right: -0.25rem;
+        padding-bottom: 0.25rem;
+    }
+
+    .account-nav button {
+        flex: 0 0 auto;
+        white-space: nowrap;
+    }
+
+    .overview-stats { grid-template-columns: 1fr; }
+    .admin-tabs { overflow-x: auto; }
+    .admin-tabs button { flex: 0 0 auto; white-space: nowrap; }
+
+    .inventory-row { align-items: flex-start; flex-direction: column; }
+
     .profile-panel {
         padding: 1.25rem;
     }

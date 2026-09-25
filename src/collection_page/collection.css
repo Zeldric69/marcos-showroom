@@ -151,7 +151,7 @@ p, span {
 }
 
 .card-body {
-    padding: 20px;
+    padding: 16px;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -218,13 +218,6 @@ p, span {
     color: #0a0f0d !important;
     border-color: #c5a059 !important;
 }
-/* --- Prevent Black Screen Flash / Layer Tearing on Scroll --- */
-.inventory-grid .card {
-    will-change: transform;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-}
-
 @media (min-width: 576px) and (max-width: 991.98px) {
     .service-hero-stats-wrapper {
         min-height: 340px !important;
@@ -282,6 +275,22 @@ p, span {
     .collection-page-wrapper .container.py-4 {
         padding-top: 1.25rem !important;
         padding-bottom: 1.25rem !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    .collection-page-wrapper .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .collection-page-wrapper .row > .col {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    .collection-page-wrapper .vehicle-card {
+        width: 100%;
     }
 
     .collection-page-wrapper .d-flex.justify-content-center.align-items-center {
@@ -296,5 +305,10 @@ p, span {
 
     .vehicle-card .card-img-top {
         aspect-ratio: 16 / 9;
+        max-height: 170px;
+    }
+
+    .vehicle-card .card-body {
+        padding: 14px;
     }
 }

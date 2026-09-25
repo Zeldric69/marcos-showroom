@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { vehicleShowroomDatabase } from '../collection_page/carDashboard.js';
+import { createServiceBooking } from '../services/vehicleRequests.js';
 
 // ==========================================
 // 1. REUSABLE NAVIGATION BAR COMPONENT
@@ -31,7 +31,7 @@ export function Navbar({ currentPage, user, isAdmin, onOpenAuth, onLogout }) {
         backdropFilter: 'blur(10px)',
         WebkitBackdropFilter: 'blur(10px)',
         boxShadow: '0 4px 20px rgba(0, 0, 0, 0.4)',
-        transition: 'background-color 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease'
+        transition: 'none'
     } : {
         backgroundColor: 'rgba(33, 37, 41, 0.95)',
         backdropFilter: 'none',
@@ -152,31 +152,31 @@ export function Footer() {
 // ==========================================
 // 3. REUSABLE DYNAMIC FORM COMPONENT
 // ==========================================
-export function DynamicForm({ formType }) {
+export function DynamicForm({ formType, user, onOpenAuth }) {
     const formConfigs = {
         "booking": {
             title: "Book A Service Appointment",
             desc: "Schedule certified mechanical support or factory diagnostics.",
             buttonText: "Request Appointment",
             fields: [
-                { id: "bookName", type: "text", placeholder: "Full Name", required: true },
-                { id: "bookEmail", type: "email", placeholder: "Email Address", required: true },
+                { id: "bookName", name: "fullName", type: "text", placeholder: "Full Name", required: true },
+                { id: "bookEmail", name: "email", type: "email", placeholder: "Email Address", required: true },
                 {
-                    id: "carType",
+                    id: "carType", name: "vehicleCategory",
                     type: "select",
                     placeholder: "Select Vehicle Category",
                     required: true,
                     options: ["Supercar / Sports Car", "Luxury Sedan", "Grand Tourer", "Electric Performance"]
                 },
-                { id: "carModel", type: "text", placeholder: "Vehicle Make & Model (e.g. Porsche 911 GT3)", required: true },
+                { id: "carModel", name: "carModel", type: "text", placeholder: "Vehicle Make & Model (e.g. Porsche 911 GT3)", required: true },
                 {
-                    id: "bookService",
+                    id: "bookService", name: "serviceType",
                     type: "select",
                     placeholder: "Select Service Type",
                     required: true,
                     options: ["Maintenance & Inspection", "OEM Diagnostics", "Custom Detailing", "Performance Tuning"]
                 },
-                { id: "bookDate", type: "date", placeholder: "Preferred Date", required: true }
+                { id: "bookDate", name: "preferredDate", type: "date", placeholder: "Preferred Date", required: true }
             ]
         },
         "testdrive": {
@@ -194,34 +194,63 @@ export function DynamicForm({ formType }) {
     const config = formConfigs[formType];
     if (!config) return null;
 
-    const handleSubmit = (e) => {
+    const [submitState, setSubmitState] = useState({ saving: false, message: '', error: '' });
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        alert('Request submitted successfully! Our specialists will contact you.');
-        e.target.reset();
+        setSubmitState({ saving: false, message: '', error: '' });
+        if (formType === 'booking' && !user) {
+            setSubmitState({ saving: false, message: '', error: 'Please sign in before booking a service.' });
+            onOpenAuth?.();
+            return;
+        }
+
+        const formData = new FormData(e.currentTarget);
+        setSubmitState({ saving: true, message: '', error: '' });
+        try {
+            if (formType === 'booking') {
+                await createServiceBooking({
+                    user,
+                    serviceType: formData.get('serviceType'),
+                    carModel: formData.get('carModel'),
+                    preferredDate: formData.get('preferredDate')
+                });
+            }
+            setSubmitState({ saving: false, message: 'Your request has been recorded. Our specialists will contact you.', error: '' });
+            e.currentTarget.reset();
+        } catch (submitError) {
+            console.error('Service booking error:', submitError);
+            const errorMessage = submitError.code === 'permission-denied'
+                ? 'Your account is not authorized to save this request. Please sign out and sign in again.'
+                : 'We could not save your request. Please try again.';
+            setSubmitState({ saving: false, message: '', error: errorMessage });
+        }
     };
 
     return (
         <div className="modular-form-card p-5 rounded shadow bg-dark border border-secondary">
             <h3 className="text-white fw-bold mb-2 text-center">{config.title}</h3>
             <p className="text-muted text-center mb-4 small">{config.desc}</p>
+            {submitState.message && <div className="alert alert-success py-2" role="status">{submitState.message}</div>}
+            {submitState.error && <div className="alert alert-warning py-2" role="alert">{submitState.error}</div>}
             <form onSubmit={handleSubmit}>
                 <div className="row g-3">
                     {config.fields.map((field, idx) => (
                         <div className="col-12" key={idx}>
                             {field.type === "select" ? (
-                                <select className="form-select modular-form-input bg-dark text-white border-secondary" required={field.required} defaultValue="">
+                                <select name={field.name || field.id} className="form-select modular-form-input bg-dark text-white border-secondary" required={field.required} defaultValue="">
                                     <option value="" disabled>{field.placeholder}</option>
                                     {field.options.map((opt, oIdx) => (
                                         <option key={oIdx} value={opt}>{opt}</option>
                                     ))}
                                 </select>
                             ) : (
-                                <input type={field.type} className="form-control form-control-lg modular-form-input bg-dark text-white border-secondary" placeholder={field.placeholder} required={field.required} />
+                                <input name={field.name || field.id} type={field.type} className="form-control form-control-lg modular-form-input bg-dark text-white border-secondary" placeholder={field.placeholder} required={field.required} />
                             )}
                         </div>
                     ))}
                     <div className="col-12">
-                        <button className="btn btn-warning modular-form-submit-btn w-100 py-3 mt-2 fw-bold text-uppercase" type="submit">{config.buttonText}</button>
+                        <button className="btn btn-warning modular-form-submit-btn w-100 py-3 mt-2 fw-bold text-uppercase" type="submit" disabled={submitState.saving}>{submitState.saving ? 'Saving...' : config.buttonText}</button>
                     </div>
                 </div>
             </form>

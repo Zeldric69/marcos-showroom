@@ -3,7 +3,7 @@ import { DynamicForm } from '../main/components.jsx';
 import './services.css';
 import '../main/shared.css';
 
-export default function Services() {
+export default function Services({ user, onOpenAuth }) {
     useEffect(() => {
         if (window.history.scrollRestoration) {
             window.history.scrollRestoration = 'manual';
@@ -222,7 +222,7 @@ export default function Services() {
                 <div className="container py-4">
                     <div className="row justify-content-center">
                         <div className="col-lg-8">
-                            <DynamicForm formType="booking" />
+                            <DynamicForm formType="booking" user={user} onOpenAuth={onOpenAuth} />
                         </div>
                     </div>
                 </div>

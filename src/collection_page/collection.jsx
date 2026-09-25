@@ -2,8 +2,9 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import './collection.css';
 import '../main/shared.css';
-import { getVehicleImage, vehicleShowroomDatabase } from './carDashboard.js';
+import { getVehicleImage } from './vehicleImages.js';
 import { createVehicleRequest } from '../services/vehicleRequests.js';
+import { subscribeToVehicles } from '../services/vehicles.js';
 
 export default function Collection({ user, onOpenAuth }) {
     const [activePage, setActivePage] = useState(1);
@@ -15,6 +16,25 @@ export default function Collection({ user, onOpenAuth }) {
     const [requestMessage, setRequestMessage] = useState('');
     const [requestError, setRequestError] = useState('');
     const [isRequestSubmitting, setIsRequestSubmitting] = useState(false);
+    const [vehicles, setVehicles] = useState([]);
+    const [vehiclesLoading, setVehiclesLoading] = useState(true);
+    const [vehiclesError, setVehiclesError] = useState('');
+
+    useEffect(() => {
+        setVehiclesLoading(true);
+        return subscribeToVehicles(
+            (nextVehicles) => {
+                setVehicles(nextVehicles);
+                setVehiclesLoading(false);
+                setVehiclesError('');
+            },
+            (loadError) => {
+                console.error('Vehicle loading error:', loadError);
+                setVehiclesLoading(false);
+                setVehiclesError('The showroom inventory is temporarily unavailable.');
+            }
+        );
+    }, []);
 
     useEffect(() => {
         if (!isDetailsModalOpen) return undefined;
@@ -31,7 +51,8 @@ export default function Collection({ user, onOpenAuth }) {
     }, [isDetailsModalOpen]);
 
     const itemsPerPage = 12;
-    const keys = useMemo(() => Object.keys(vehicleShowroomDatabase), []);
+    const vehicleMap = useMemo(() => Object.fromEntries(vehicles.map((vehicle) => [vehicle.id, vehicle])), [vehicles]);
+    const keys = useMemo(() => vehicles.map((vehicle) => vehicle.id), [vehicles]);
 
     useEffect(() => {
         if (window.history.scrollRestoration) {
@@ -49,7 +70,7 @@ export default function Collection({ user, onOpenAuth }) {
     // Filter and Sort Keys
     const visibleKeys = useMemo(() => {
         let filtered = keys.filter(key => {
-            const carData = vehicleShowroomDatabase[key];
+            const carData = vehicleMap[key];
             const matchesBrand = currentBrandFilter === "all" || 
                 (carData.class && carData.class.toLowerCase() === currentBrandFilter.toLowerCase()) || 
                 (carData.make && carData.make.toLowerCase() === currentBrandFilter.toLowerCase());
@@ -58,13 +79,13 @@ export default function Collection({ user, onOpenAuth }) {
         });
 
         if (currentSortOrder === "low-high") {
-            filtered.sort((a, b) => parsePrice(vehicleShowroomDatabase[a].price) - parsePrice(vehicleShowroomDatabase[b].price));
+            filtered.sort((a, b) => parsePrice(vehicleMap[a].price) - parsePrice(vehicleMap[b].price));
         } else if (currentSortOrder === "high-low") {
-            filtered.sort((a, b) => parsePrice(vehicleShowroomDatabase[b].price) - parsePrice(vehicleShowroomDatabase[a].price));
+            filtered.sort((a, b) => parsePrice(vehicleMap[b].price) - parsePrice(vehicleMap[a].price));
         }
 
         return filtered;
-    }, [keys, currentBrandFilter, currentSearchQuery, currentSortOrder]);
+    }, [keys, vehicleMap, currentBrandFilter, currentSearchQuery, currentSortOrder]);
 
     const totalPages = Math.ceil(visibleKeys.length / itemsPerPage);
     const paginatedKeys = visibleKeys.slice((activePage - 1) * itemsPerPage, activePage * itemsPerPage);
@@ -101,11 +122,11 @@ export default function Collection({ user, onOpenAuth }) {
     const renderCarCard = (key, car) => (
         <div className="col" key={key}>
             <div className="card bg-dark text-white border-secondary h-100 shadow-sm vehicle-card">
-                <img loading="lazy" decoding="async" src={getVehicleImage(car)} className="card-img-top" alt={car.name} style={{ height: '220px', objectFit: 'cover' }} />
+                <img loading="lazy" decoding="async" src={getVehicleImage(car)} className="card-img-top" alt={car.name} style={{ height: '190px', objectFit: 'cover' }} />
                 <div className="card-body d-flex flex-column">
-                    <h5 className="card-title fw-bold">{car.name}</h5>
-                    <p className="text-warning fw-bold mb-2 numeric-text">{car.price}</p>
-                    <p className="card-text text-muted small mb-4" style={{ fontSize: '0.85rem' }}>{car.desc}</p>
+                    <h5 className="card-title fw-bold mb-1">{car.name}</h5>
+                    <p className="text-warning fw-bold mb-1 numeric-text">{car.price}</p>
+                    <p className="card-text text-muted small mb-2 text-uppercase">{car.class || 'Luxury vehicle'}</p>
                     <button 
                         className="btn btn-outline-warning btn-sm mt-auto w-100"
                         onClick={() => {
@@ -145,16 +166,16 @@ export default function Collection({ user, onOpenAuth }) {
                     {/* --- NEW RELEASES SECTION --- */}
                     <div className="mb-5">
                         <h3 className="fw-bold text-uppercase mb-4" style={{ color: '#c5a059' }}>New Releases</h3>
-                        <div className="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
-                            {newReleases.map(key => renderCarCard(key, vehicleShowroomDatabase[key]))}
+                        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center">
+                            {newReleases.map(key => renderCarCard(key, vehicleMap[key]))}
                         </div>
                     </div>
 
                     {/* --- MOST SOLD SECTION --- */}
                     <div className="mb-5">
                         <h3 className="fw-bold text-uppercase mb-4" style={{ color: '#c5a059' }}>Best Sellers & Most Sold</h3>
-                        <div className="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
-                            {mostSold.map(key => renderCarCard(key, vehicleShowroomDatabase[key]))}
+                        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center">
+                            {mostSold.map(key => renderCarCard(key, vehicleMap[key]))}
                         </div>
                     </div>
 
@@ -211,7 +232,7 @@ export default function Collection({ user, onOpenAuth }) {
                                 <h5 className="fw-light">No luxury vehicles found matching your criteria.</h5>
                             </div>
                         ) : (
-                            paginatedKeys.map(key => renderCarCard(key, vehicleShowroomDatabase[key]))
+                            paginatedKeys.map(key => renderCarCard(key, vehicleMap[key]))
                         )}
                     </div>
 

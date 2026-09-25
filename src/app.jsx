@@ -19,12 +19,25 @@ function Layout() {
     const [user, setUser] = useState(null);
     const [isAuthReady, setIsAuthReady] = useState(false);
     const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
-    const isAdmin = Boolean(user?.email && ADMIN_EMAIL && user.email.toLowerCase() === ADMIN_EMAIL);
+    const [hasAdminClaim, setHasAdminClaim] = useState(false);
+    const isConfiguredAdmin = Boolean(user?.email && ADMIN_EMAIL && user.email.toLowerCase() === ADMIN_EMAIL);
+    const isAdmin = hasAdminClaim || isConfiguredAdmin;
 
     // Track Firebase authentication state live
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+        const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
             setUser(currentUser);
+            if (currentUser) {
+                try {
+                    const tokenResult = await currentUser.getIdTokenResult();
+                    setHasAdminClaim(tokenResult.claims.admin === true);
+                } catch (tokenError) {
+                    console.error('Admin claim lookup failed:', tokenError);
+                    setHasAdminClaim(false);
+                }
+            } else {
+                setHasAdminClaim(false);
+            }
             setIsAuthReady(true);
         });
         return () => unsubscribe();
@@ -58,7 +71,7 @@ function Layout() {
                     <Route path="/" element={<Front />} />
                     <Route path="/collection" element={<Collection user={user} onOpenAuth={() => setIsAuthModalOpen(true)} />} />
                     <Route path="/about" element={<About />} />
-                    <Route path="/services" element={<Services />} />
+                    <Route path="/services" element={<Services user={user} onOpenAuth={() => setIsAuthModalOpen(true)} />} />
                     <Route path="/profile" element={<Profile user={user} isAdmin={isAdmin} isAuthReady={isAuthReady} onOpenAuth={() => setIsAuthModalOpen(true)} onLogout={handleLogout} />} />
                 </Routes>
             </Suspense>
