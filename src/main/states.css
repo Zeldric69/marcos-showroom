@@ -135,12 +135,84 @@
     animation: state-spin .7s linear infinite;
 }
 
+.state-skeleton-card {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    min-height: 350px;
+    border-radius: 8px;
+    background-color: var(--surface);
+    border: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+}
+
+.state-skeleton-card::after,
+.state-skeleton::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.05) 50%,
+        transparent 100%
+    );
+    animation: gpu-state-shimmer 1.5s ease-in-out infinite;
+    will-change: transform;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.state-skeleton-img {
+    height: 190px;
+    width: 100%;
+    background-color: var(--surface-2);
+}
+
+.state-skeleton-body {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    flex: 1;
+}
+
+.state-skeleton-line {
+    background-color: var(--surface-2);
+    border-radius: 4px;
+}
+
+.state-skeleton-title {
+    height: 18px;
+    width: 70%;
+}
+
+.state-skeleton-price {
+    height: 16px;
+    width: 40%;
+}
+
+.state-skeleton-tag {
+    height: 12px;
+    width: 50%;
+}
+
+.state-skeleton-btn {
+    height: 32px;
+    border-radius: 4px;
+    margin-top: auto;
+    background-color: var(--surface-2);
+    width: 100%;
+}
+
 .state-skeleton {
+    position: relative;
+    overflow: hidden;
     height: 340px;
     border-radius: 12px;
-    background: linear-gradient(110deg, var(--surface) 30%, var(--surface-2) 50%, var(--surface) 70%);
-    background-size: 200% 100%;
-    animation: state-shimmer 1.4s linear infinite;
+    background-color: var(--surface);
 }
 
 @keyframes state-draw {
@@ -151,8 +223,16 @@
     to { transform: rotate(360deg); }
 }
 
+@keyframes gpu-state-shimmer {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
 @keyframes state-shimmer {
-    to { background-position: -200% 0; }
+    100% {
+        transform: translateX(100%);
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -339,6 +339,16 @@ export function EmptyState({ icon = 'fa-car-side', title, message, action }) {
 
 export function SkeletonGrid({ count = 12, columnClass = 'col' }) {
     return Array.from({ length: count }, (_, index) => (
-        <div className={columnClass} key={index} aria-hidden="true"><div className="state-skeleton" /></div>
+        <div className={columnClass} key={index} aria-hidden="true">
+            <div className="state-skeleton-card">
+                <div className="state-skeleton-img" />
+                <div className="state-skeleton-body">
+                    <div className="state-skeleton-line state-skeleton-title" />
+                    <div className="state-skeleton-line state-skeleton-price" />
+                    <div className="state-skeleton-line state-skeleton-tag" />
+                    <div className="state-skeleton-btn" />
+                </div>
+            </div>
+        </div>
     ));
 }

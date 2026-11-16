@@ -8,37 +8,15 @@ import { validateBooking } from './validators.js';
 // 1. REUSABLE NAVIGATION BAR COMPONENT
 // ==========================================
 export function Navbar({ currentPage, user, isAdmin, onOpenAuth, onLogout }) {
-    const [scrolled, setScrolled] = useState(false);
-
     useEffect(() => {
         document.getElementById('navbarNav')?.classList.remove('show');
     }, [currentPage]);
 
-    useEffect(() => {
-        let frameId = null;
-
-        const handleScroll = () => {
-            if (frameId !== null) return;
-            frameId = window.requestAnimationFrame(() => {
-                const nextScrolled = window.scrollY > 50;
-                setScrolled((currentScrolled) => currentScrolled === nextScrolled ? currentScrolled : nextScrolled);
-                frameId = null;
-            });
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-            if (frameId !== null) window.cancelAnimationFrame(frameId);
-        };
-    }, []);
-
     const navbarStyle = {
-        backgroundColor: 'rgb(var(--bg-rgb) / 0.96)',
-        backdropFilter: 'blur(12px)',
-        WebkitBackdropFilter: 'blur(12px)',
+        backgroundColor: '#0B0C0E',
         borderBottom: '1px solid var(--line)',
-        boxShadow: scrolled ? '0 6px 24px rgba(0, 0, 0, 0.45)' : 'none',
-        transition: 'none',
+        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.45)',
+        transform: 'translateZ(0)',
         paddingTop: '1.65rem',
         paddingBottom: '1.65rem',
         minHeight: '96px',
@@ -50,9 +28,9 @@ export function Navbar({ currentPage, user, isAdmin, onOpenAuth, onLogout }) {
     const userInitial = user && user.email ? user.email.charAt(0).toUpperCase() : 'U';
 
     return (
-        <nav className="navbar navbar-expand-lg fixed-top shadow py-0 d-flex align-items-center" style={navbarStyle}>
+        <nav className="navbar navbar-expand-lg fixed-top py-0 d-flex align-items-center" style={navbarStyle}>
             <div className="container-fluid px-3 px-sm-4" style={{ maxWidth: '100%', paddingLeft: '1.25rem', paddingRight: '1.25rem' }}>
-                <Link className="navbar-brand text-uppercase" to="/" style={{ display: 'inline-block', color: 'var(--text-strong)', margin: 0, padding: 0, fontWeight: 800, fontSize: '1.35rem', letterSpacing: '0.14em' }}>
+                <Link className="navbar-brand text-uppercase" to="/" style={{ display: 'inline-block', margin: 0, padding: 0, fontWeight: 800, fontSize: '1.35rem', letterSpacing: '0.14em' }}>
                     MARCOS
                 </Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">

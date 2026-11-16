@@ -76,6 +76,8 @@ p, span {
     margin: 0px;
     max-width: 230px;
     justify-content: center;
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 .card:hover {

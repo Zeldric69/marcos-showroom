@@ -51,9 +51,24 @@ h1, h2, h3, h4, h5, h6,
     position: relative;
     overflow: hidden;
     width: 100%;
-    background: linear-gradient(110deg, var(--surface) 30%, var(--surface-2) 50%, var(--surface) 70%);
-    background-size: 200% 100%;
-    animation: shimmer 1.4s linear infinite;
+    background-color: var(--surface);
+}
+
+.smart-img:not(.is-loaded)::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.06) 50%,
+        transparent 100%
+    );
+    animation: gpu-shimmer 1.5s ease-in-out infinite;
+    will-change: transform;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .smart-img img {
@@ -62,12 +77,11 @@ h1, h2, h3, h4, h5, h6,
     height: 100%;
     object-fit: cover;
     opacity: 0;
-    transition: opacity 0.35s ease;
+    transition: opacity 0.3s ease;
 }
 
-.smart-img.is-loaded {
-    animation: none;
-    background: none;
+.smart-img.is-loaded::after {
+    display: none;
 }
 
 .smart-img.is-loaded img {
@@ -89,13 +103,18 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .below-fold {
-    content-visibility: auto;
-    contain-intrinsic-size: auto 700px;
+    content-visibility: visible;
+}
+
+@keyframes gpu-shimmer {
+    100% {
+        transform: translateX(100%);
+    }
 }
 
 @keyframes shimmer {
-    to {
-        background-position: -200% 0;
+    100% {
+        transform: translateX(100%);
     }
 }
 
@@ -115,8 +134,7 @@ h1, h2, h3, h4, h5, h6,
     background-color: rgb(var(--bg-rgb) / 0.6);
 }
 
-section,
-div[style*="background-color"] {
+section {
     background-color: transparent;
     background-image: none;
     border-top: none;
@@ -134,9 +152,7 @@ div[style*="background-color"] {
 
 /* Global Navbar & Footer */
 .navbar {
-    background: rgb(var(--bg-rgb) / 0.92) !important;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: #0B0C0E !important;
     border-bottom: 1px solid var(--line);
     transition: none;
 }
@@ -210,17 +226,27 @@ div[style*="background-color"] {
 .navbar-brand,
 .logo-text,
 .gradient-text {
-    font-family: var(--font-label);
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    color: var(--text-strong) !important;
-    background: none !important;
-    -webkit-background-clip: unset !important;
-    background-clip: unset !important;
-    -webkit-text-fill-color: var(--text-strong) !important;
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    background: linear-gradient(90deg, #65CDBA 0%, #85D5AC 22%, #A6D69B 45%, #C4D78E 68%, #D7D77E 88%, #D6C974 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
     display: inline-block;
-    font-size: 1.55rem;
+    font-size: 1.35rem;
     line-height: 1;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus {
+    background: linear-gradient(90deg, #7BE1CE 0%, #99E2BC 22%, #B5E2AB 45%, #D0E29E 68%, #E2E28E 88%, #E2D684 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    text-decoration: none;
 }
 
 .nav-item {

@@ -180,9 +180,7 @@ a { text-underline-offset: 0.25em; }
   --bs-navbar-active-color: var(--accent);
   --bs-navbar-brand-color: var(--text-strong);
   --bs-navbar-brand-hover-color: var(--accent);
-  background-color: rgb(var(--bg-rgb) / 0.92) !important;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background-color: #0B0C0E !important;
   border-bottom: 1px solid var(--line) !important;
 }
 .navbar .nav-link.active,

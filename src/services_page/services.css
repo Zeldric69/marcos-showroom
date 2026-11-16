@@ -11,8 +11,7 @@ body {
 }
 
 /* Ensure all sections share the same base background and clean spacing */
-section,
-div[style*="background-color"] {
+section {
     background-color: transparent;
     background-image: none;
     border-top: none;
