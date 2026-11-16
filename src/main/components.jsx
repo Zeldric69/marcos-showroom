@@ -1,12 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { createServiceBooking } from '../services/vehicleRequests.js';
+import { ErrorState, LoadingButton, SuccessState, ValidationError, offlineError, signInRequired, useAsyncAction } from './states.jsx';
+import { validateBooking } from './validators.js';
 
 // ==========================================
 // 1. REUSABLE NAVIGATION BAR COMPONENT
 // ==========================================
 export function Navbar({ currentPage, user, isAdmin, onOpenAuth, onLogout }) {
     const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        document.getElementById('navbarNav')?.classList.remove('show');
+    }, [currentPage]);
 
     useEffect(() => {
         let frameId = null;
@@ -26,33 +32,34 @@ export function Navbar({ currentPage, user, isAdmin, onOpenAuth, onLogout }) {
         };
     }, []);
 
-    const navbarStyle = scrolled ? {
-        backgroundColor: 'rgba(26, 26, 26, 0.85)',
-        backdropFilter: 'blur(10px)',
-        WebkitBackdropFilter: 'blur(10px)',
-        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.4)',
-        transition: 'none'
-    } : {
-        backgroundColor: 'rgba(33, 37, 41, 0.95)',
-        backdropFilter: 'none',
-        WebkitBackdropFilter: 'none',
-        boxShadow: 'none'
+    const navbarStyle = {
+        backgroundColor: 'rgb(var(--bg-rgb) / 0.96)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+        borderBottom: '1px solid var(--line)',
+        boxShadow: scrolled ? '0 6px 24px rgba(0, 0, 0, 0.45)' : 'none',
+        transition: 'none',
+        paddingTop: '1.65rem',
+        paddingBottom: '1.65rem',
+        minHeight: '96px',
+        paddingLeft: 0,
+        paddingRight: 0
     };
 
     // Extract first initial from user email if logged in
     const userInitial = user && user.email ? user.email.charAt(0).toUpperCase() : 'U';
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow" style={navbarStyle}>
-            <div className="container">
-                <Link className="navbar-brand fw-bold text-uppercase gradient-text" to="/" style={{ display: 'inline-block' }}>
+        <nav className="navbar navbar-expand-lg fixed-top shadow py-0 d-flex align-items-center" style={navbarStyle}>
+            <div className="container-fluid px-3 px-sm-4" style={{ maxWidth: '100%', paddingLeft: '1.25rem', paddingRight: '1.25rem' }}>
+                <Link className="navbar-brand text-uppercase" to="/" style={{ display: 'inline-block', color: 'var(--text-strong)', margin: 0, padding: 0, fontWeight: 800, fontSize: '1.35rem', letterSpacing: '0.14em' }}>
                     MARCOS
                 </Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <ul className="navbar-nav gap-3 align-items-lg-center">
+                    <ul className="navbar-nav gap-3 align-items-lg-center ms-auto" style={{ marginRight: 0 }}>
                         <li className="nav-item">
                             <Link className={`nav-link ${currentPage === 'home' ? 'active' : ''}`} to="/">Home</Link>
                         </li>
@@ -78,8 +85,8 @@ export function Navbar({ currentPage, user, isAdmin, onOpenAuth, onLogout }) {
                             {user ? (
                                 <div className="dropdown">
                                     <button 
-                                        className="btn btn-warning rounded-circle fw-bold text-dark d-flex align-items-center justify-content-center p-0 shadow-sm"
-                                        style={{ width: '36px', height: '36px', backgroundColor: '#c5a059', border: 'none' }}
+                                        className="btn btn-brand rounded-circle d-flex align-items-center justify-content-center p-0 shadow-sm"
+                                        style={{ width: '36px', height: '36px', border: 'none', color: 'var(--on-accent)' }}
                                         type="button" 
                                         data-bs-toggle="dropdown" 
                                         aria-expanded="false"
@@ -115,7 +122,7 @@ export function Navbar({ currentPage, user, isAdmin, onOpenAuth, onLogout }) {
 // ==========================================
 export function Footer() {
     return (
-        <footer id="contact-footer" className="footer-section pt-5 pb-3 bg-dark text-white border-top border-secondary">
+        <footer id="contact-footer" className="footer-section pt-5 pb-3 text-white below-fold">
             <div className="container py-5">
                 <div className="row g-5 align-items-center justify-content-center">
                     {/* Added text-center here */}
@@ -124,7 +131,7 @@ export function Footer() {
                         <h2 className="mb-4 fw-bold text-white">Visit Our Headquarters</h2>
                         <p className="mb-2 text-light"><i className="fa fa-map-marker-alt me-3 text-primary"></i>123 Corporate Plaza, Manhattan, NY, USA</p>
                         <p className="mb-2 text-light"><i className="fa fa-phone-alt me-3 text-primary"></i>+1 (212) 555-0199</p>
-                        <p className="mb-4 text-light"><i className="fa fa-envelope me-3 text-primary"></i>marcothefenix@gmail.com</p>
+                        <p className="mb-4 text-light"><i className="fa fa-envelope me-3 text-primary"></i>Contact the showroom for assistance</p>
                         {/* Changed justify-content-start to justify-content-center */}
                         <div className="d-flex justify-content-center pt-2">
                             <a className="btn btn-outline-light button-social me-2" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a>
@@ -153,6 +160,8 @@ export function Footer() {
 // 3. REUSABLE DYNAMIC FORM COMPONENT
 // ==========================================
 export function DynamicForm({ formType, user, onOpenAuth }) {
+    const booking = useAsyncAction({ context: 'booking' });
+    const formRef = useRef(null);
     const formConfigs = {
         "booking": {
             title: "Book A Service Appointment",
@@ -194,67 +203,108 @@ export function DynamicForm({ formType, user, onOpenAuth }) {
     const config = formConfigs[formType];
     if (!config) return null;
 
-    const [submitState, setSubmitState] = useState({ saving: false, message: '', error: '' });
+    const todayDate = new Date();
+    const today = `${todayDate.getFullYear()}-${String(todayDate.getMonth() + 1).padStart(2, '0')}-${String(todayDate.getDate()).padStart(2, '0')}`;
+    const invalidFields = booking.error?.fields || {};
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setSubmitState({ saving: false, message: '', error: '' });
+        if (typeof navigator !== 'undefined' && navigator.onLine === false) {
+            booking.fail(offlineError());
+            return;
+        }
         if (formType === 'booking' && !user) {
-            setSubmitState({ saving: false, message: '', error: 'Please sign in before booking a service.' });
+            booking.fail(signInRequired());
             onOpenAuth?.();
             return;
         }
 
-        const formData = new FormData(e.currentTarget);
-        setSubmitState({ saving: true, message: '', error: '' });
-        try {
+        const values = Object.fromEntries(new FormData(e.currentTarget));
+        const problems = formType === 'booking' ? validateBooking(values) : null;
+        if (problems) {
+            booking.fail(new ValidationError(problems));
+            return;
+        }
+
+        await booking.run(async () => {
             if (formType === 'booking') {
                 await createServiceBooking({
                     user,
-                    serviceType: formData.get('serviceType'),
-                    carModel: formData.get('carModel'),
-                    preferredDate: formData.get('preferredDate')
+                    serviceType: values.serviceType,
+                    carModel: values.carModel,
+                    preferredDate: values.preferredDate,
+                    fullName: values.fullName,
+                    contactEmail: values.email,
+                    vehicleCategory: values.vehicleCategory
                 });
             }
-            setSubmitState({ saving: false, message: 'Your request has been recorded. Our specialists will contact you.', error: '' });
-            e.currentTarget.reset();
-        } catch (submitError) {
-            console.error('Service booking error:', submitError);
-            const errorMessage = submitError.code === 'permission-denied'
-                ? 'Your account is not authorized to save this request. Please sign out and sign in again.'
-                : 'We could not save your request. Please try again.';
-            setSubmitState({ saving: false, message: '', error: errorMessage });
-        }
+        });
     };
 
+    if (booking.status === 'success') {
+        return (
+            <div className="modular-form-card p-5 rounded shadow">
+                <SuccessState title="Request received" message="Our specialists will contact you to confirm the details.">
+                    <button type="button" className="btn btn-outline-light btn-sm mt-2" onClick={booking.reset}>Make another request</button>
+                </SuccessState>
+            </div>
+        );
+    }
+
     return (
-        <div className="modular-form-card p-5 rounded shadow bg-dark border border-secondary">
+        <div className="modular-form-card p-5 rounded shadow">
             <h3 className="text-white fw-bold mb-2 text-center">{config.title}</h3>
             <p className="text-muted text-center mb-4 small">{config.desc}</p>
-            {submitState.message && <div className="alert alert-success py-2" role="status">{submitState.message}</div>}
-            {submitState.error && <div className="alert alert-warning py-2" role="alert">{submitState.error}</div>}
-            <form onSubmit={handleSubmit}>
+            {booking.status === 'error' && (
+                <ErrorState
+                    compact
+                    error={booking.error}
+                    onRetry={() => formRef.current?.requestSubmit()}
+                    onDismiss={booking.reset}
+                />
+            )}
+            <form ref={formRef} onSubmit={handleSubmit}>
                 <div className="row g-3">
                     {config.fields.map((field, idx) => (
                         <div className="col-12" key={idx}>
                             {field.type === "select" ? (
-                                <select name={field.name || field.id} className="form-select modular-form-input bg-dark text-white border-secondary" required={field.required} defaultValue="">
+                                <select
+                                    name={field.name || field.id}
+                                    className={`form-select modular-form-input${invalidFields[field.name || field.id] ? ' is-invalid' : ''}`}
+                                    required={field.required}
+                                    defaultValue=""
+                                    onChange={() => { if (booking.status === 'error') booking.reset(); }}
+                                >
                                     <option value="" disabled>{field.placeholder}</option>
                                     {field.options.map((opt, oIdx) => (
                                         <option key={oIdx} value={opt}>{opt}</option>
                                     ))}
                                 </select>
                             ) : (
-                                <input name={field.name || field.id} type={field.type} className="form-control form-control-lg modular-form-input bg-dark text-white border-secondary" placeholder={field.placeholder} required={field.required} />
+                                <input
+                                    name={field.name || field.id}
+                                    type={field.type}
+                                    min={field.type === 'date' ? today : undefined}
+                                    className={`form-control form-control-lg modular-form-input${invalidFields[field.name || field.id] ? ' is-invalid' : ''}`}
+                                    placeholder={field.placeholder}
+                                    required={field.required}
+                                    onChange={() => { if (booking.status === 'error') booking.reset(); }}
+                                />
                             )}
                         </div>
                     ))}
                     <div className="col-12">
-                        <button className="btn btn-warning modular-form-submit-btn w-100 py-3 mt-2 fw-bold text-uppercase" type="submit" disabled={submitState.saving}>{submitState.saving ? 'Saving...' : config.buttonText}</button>
+                        <LoadingButton
+                            className="btn btn-brand modular-form-submit-btn w-100 py-3 mt-2 text-uppercase"
+                            type="submit"
+                            loading={booking.loading}
+                            loadingText="Sending your request..."
+                        >
+                            {config.buttonText}
+                        </LoadingButton>
                     </div>
                 </div>
             </form>
         </div>
     );
 }
-

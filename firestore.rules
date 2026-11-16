@@ -1,30 +1,104 @@
+// Data model: vehicles contain class/name/price/desc/features/order and may
+// include image/img/colors and an admin-managed archived flag. Requests have an
+// immutable owner/email/timestamp, status, action, and type-specific fields.
 rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && request.auth.token.admin == true;
+    }
+
+    function isValidOptionalString(data, field, maxLength) {
+      return !(field in data)
+        || (data[field] is string && data[field].size() <= maxLength);
+    }
+
+    function isValidOptionalUrl(data, field, maxLength) {
+      return !(field in data)
+        || (data[field] is string
+            && data[field].size() <= maxLength
+            && (data[field].matches('https://.*') || data[field].matches('/.*')));
+    }
+
+    function isValidVehicle(data) {
+      return data.keys().hasOnly([
+          'class', 'name', 'price', 'desc', 'features', 'colors', 'image', 'img', 'order', 'archived'
+        ])
+        && data.keys().hasAll(['class', 'name', 'price', 'desc', 'features', 'order'])
+        && data.class is string && data.class.size() > 0 && data.class.size() <= 80
+        && data.name is string && data.name.size() > 0 && data.name.size() <= 160
+        && data.price is string && data.price.size() > 0 && data.price.size() <= 50
+        && data.desc is string && data.desc.size() <= 2000
+        && data.features is list && data.features.size() <= 20
+        && (!('colors' in data) || (data.colors is list && data.colors.size() <= 10))
+        && isValidOptionalUrl(data, 'image', 2048)
+        && isValidOptionalUrl(data, 'img', 2048)
+        && (!('archived' in data) || data.archived is bool)
+        && data.order is number && data.order >= 0;
+    }
+
+    function hasValidRequestIdentity(data) {
+      return data.keys().hasOnly([
+          'userId', 'userEmail', 'actionType', 'requestType', 'vehicleId', 'vehicleName',
+          'vehiclePrice', 'serviceType', 'preferredDate', 'status', 'createdAt',
+          'fullName', 'contactEmail', 'vehicleCategory', 'vehicleMileage', 'contactInfo'
+        ])
+        && data.keys().hasAll(['userId', 'userEmail', 'actionType', 'status', 'createdAt'])
+        && data.userId is string && data.userId == request.auth.uid
+        && data.userEmail is string && data.userEmail == request.auth.token.get('email', '')
+        && data.userEmail.size() <= 254
+        && data.status == 'new'
+        && data.createdAt is timestamp && data.createdAt == request.time
+        && data.actionType in ['purchase', 'testDrive', 'serviceBooking', 'tradeIn'];
+    }
+
+    function isValidRequest(data) {
+      return hasValidRequestIdentity(data)
+        && isValidOptionalString(data, 'vehicleId', 128)
+        && isValidOptionalString(data, 'vehicleName', 160)
+        && isValidOptionalString(data, 'vehiclePrice', 50)
+        && isValidOptionalString(data, 'serviceType', 100)
+        && isValidOptionalString(data, 'preferredDate', 10)
+        && isValidOptionalString(data, 'fullName', 100)
+        && isValidOptionalString(data, 'contactEmail', 254)
+        && isValidOptionalString(data, 'vehicleCategory', 100)
+        && isValidOptionalString(data, 'vehicleMileage', 7)
+        && isValidOptionalString(data, 'contactInfo', 200)
+        && isValidRequestType(data);
+    }
+
+    function isValidRequestType(data) {
+      return (data.actionType in ['purchase', 'testDrive']
+          && !('requestType' in data)
+          && data.keys().hasAll(['vehicleId', 'vehicleName', 'vehiclePrice']))
+        || (data.actionType == 'serviceBooking'
+          && data.get('requestType', '') == 'service'
+          && data.keys().hasAll(['vehicleName', 'vehiclePrice', 'serviceType', 'preferredDate', 'fullName', 'contactEmail', 'vehicleCategory']))
+        || (data.actionType == 'tradeIn'
+          && data.get('requestType', '') == 'tradeIn'
+          && data.keys().hasAll(['vehicleName', 'vehicleMileage', 'contactInfo']));
+    }
+
     match /vehicles/{vehicleId} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow create: if isAdmin() && isValidVehicle(request.resource.data);
+      allow update: if isAdmin()
+        && isValidVehicle(request.resource.data)
+        && request.resource.data.order == resource.data.order;
+      allow delete: if isAdmin();
     }
 
     match /vehicleRequests/{requestId} {
-      allow create: if isSignedIn()
-        && request.resource.data.userId == request.auth.uid
-        && request.resource.data.status == 'new';
-
+      allow create: if isSignedIn() && isValidRequest(request.resource.data);
       allow read: if isSignedIn()
         && (resource.data.userId == request.auth.uid || isAdmin());
-
-      allow update: if isAdmin();
+      allow update: if false;
       allow delete: if isAdmin();
     }
-  }
-
-  function isSignedIn() {
-    return request.auth != null;
-  }
-
-  function isAdmin() {
-    return isSignedIn() && request.auth.token.admin == true;
   }
 }

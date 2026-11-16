@@ -20,7 +20,7 @@ export const vehicleShowroomDatabase = {
         ],
         colors: [
             { name: "Carrara White", hex: "#FFFFFF", img: "https://commons.wikimedia.org/wiki/Special:FilePath/Porsche_992_Turbo_S_1X7A0411.jpg" },
-            { name: "Jet Black", hex: "#000000", img: "https://imgs.search.brave.com/IZbXGy88I2G4gH7PmvxHw-46SH57GYjN0p1MF0z5LeQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/cGlzdG9uaGVhZHMu/Y29tL0Z1bGxzaXpl/L3BvcnNjaGUvOTEx/Lzk5Mi10dXJiby1j/YWJyaW9sZXQtcy0y/ZHItcGRrL3BvcnNj/aGUtOTExLTk5Mi10/dXJiby1jYWJyaW9s/ZXQtcy0yZHItcGRr/LTE0MTU3MDIxOTMt/NC5qcGc" }
+            { name: "Jet Black", hex: "#000000", img: "https://commons.wikimedia.org/wiki/Special:FilePath/Porsche_992_Turbo_S_1X7A0411.jpg" }
         ]
     },
 
@@ -142,7 +142,7 @@ export const vehicleShowroomDatabase = {
             "473 Horsepower / 420 lb-ft of Torque Profile",
             "8-Speed PDK Transmission",
             "All-Wheel Drive (AWD) Drivetrain System",
-            "Raised Off-Road Tuned Suspension Suspension System",
+            "Raised Off-Road Tuned Suspension System",
             "Rally-Inspired Livery with Reinforced Underbody"
         ],
         colors: [
@@ -211,10 +211,10 @@ export const vehicleShowroomDatabase = {
         price: "$209,900",
         desc: "Porsche's electric flagship, delivering repeatable launch-control acceleration lap after lap.",
         features: [
-            "938 Horsepower / UNVERIFIED lb-ft of Torque Profile",
-            "2-Speed Rear Transmission Transmission",
+            "938 Horsepower / Electric Performance",
+            "2-Speed Rear Transmission",
             "All-Wheel Drive (AWD) Drivetrain System",
-            "3-Chamber Adaptive Air Suspension Suspension System",
+            "3-Chamber Adaptive Air Suspension System",
             "800V High-Performance Charging Architecture"
         ],
         colors: [
@@ -230,9 +230,9 @@ export const vehicleShowroomDatabase = {
         desc: "The performance-leaning middle child of the Taycan lineup, tuned for driver engagement.",
         features: [
             "690 Horsepower / 582 lb-ft of Torque Profile",
-            "2-Speed Rear Transmission Transmission",
+            "2-Speed Rear Transmission",
             "All-Wheel Drive (AWD) Drivetrain System",
-            "3-Chamber Adaptive Air Suspension Suspension System",
+            "3-Chamber Adaptive Air Suspension System",
             "800V High-Performance Charging Architecture"
         ],
         colors: [
@@ -248,7 +248,7 @@ export const vehicleShowroomDatabase = {
         desc: "An accessible entry point into Porsche's electric performance sedan.",
         features: [
             "536 Horsepower / 479 lb-ft of Torque Profile",
-            "2-Speed Rear Transmission Transmission",
+            "2-Speed Rear Transmission",
             "All-Wheel Drive (AWD) Drivetrain System",
             "PASM Adaptive Damping Suspension System",
             "800V High-Performance Charging Architecture"
@@ -268,7 +268,7 @@ export const vehicleShowroomDatabase = {
             "771 Horsepower / 737 lb-ft of Torque Profile",
             "8-Speed PDK Transmission",
             "All-Wheel Drive (AWD) Drivetrain System",
-            "3-Chamber Adaptive Air Suspension Suspension System",
+            "3-Chamber Adaptive Air Suspension System",
             "Plug-In Hybrid Twin-Turbo V8 Powertrain"
         ],
         colors: [
@@ -322,7 +322,7 @@ export const vehicleShowroomDatabase = {
             "563 Horsepower / 704 lb-ft of Torque Profile",
             "1-Speed Direct Drive (Dual Motor) Transmission",
             "Electric All-Wheel Drive Drivetrain System",
-            "Adaptive Air Suspension Suspension System",
+            "Adaptive Air Suspension System",
             "Dual-Motor Electric Powertrain with Overboost Function"
         ],
         colors: [
@@ -342,10 +342,10 @@ export const vehicleShowroomDatabase = {
         price: "$180,390",
         desc: "A pure electric grand tourer combining visceral dual-motor propulsion with zero-emissions aerodynamics — now Audi's quickest-accelerating production model ever.",
         features: [
-            "912 Horsepower / UNVERIFIED lb-ft of Torque Profile",
+            "912 Horsepower / Electric Performance",
             "1-Speed Direct Drive (2-Speed Rear) Transmission",
             "Electric quattro All-Wheel Drive Drivetrain System",
-            "Adaptive 3-Chamber Air Suspension Suspension System",
+            "Adaptive 3-Chamber Air Suspension System",
             "800V Fast-Charging Architecture with Launch Control"
         ],
         colors: [
@@ -363,7 +363,7 @@ export const vehicleShowroomDatabase = {
             "621 Horsepower / 627 lb-ft of Torque Profile",
             "8-Speed Tiptronic Transmission",
             "quattro All-Wheel Drive Drivetrain System",
-            "Adaptive Air Suspension Suspension System",
+            "Adaptive Air Suspension System",
             "Dynamic Ride Control with Active Roll Stabilization"
         ],
         colors: [
@@ -381,7 +381,7 @@ export const vehicleShowroomDatabase = {
             "621 Horsepower / 627 lb-ft of Torque Profile",
             "8-Speed Tiptronic Transmission",
             "quattro All-Wheel Drive Drivetrain System",
-            "Adaptive Air Suspension Suspension System",
+            "Adaptive Air Suspension System",
             "Coupe-Profile Roofline with Active Rear Spoiler"
         ],
         colors: [
@@ -429,13 +429,13 @@ export const vehicleShowroomDatabase = {
     "audi-rs5-coupe": {
         class: "audi",
         name: "Audi RS5 Coupe",
-        price: "$94,900 (est., unconfirmed)",
+        price: "Price on request",
         desc: "A twin-turbo hybrid coupe that balances daily comfort with genuine back-road bite, now with a first-ever electric assist boosting output well past the outgoing car.",
         features: [
             "630 Horsepower / 608 lb-ft of Torque Profile",
             "8-Speed Tiptronic (PHEV) Transmission",
             "quattro All-Wheel Drive Drivetrain System",
-            "Adaptive Sport Suspension Suspension System",
+            "Adaptive Sport Suspension System",
             "Plug-In Hybrid Twin-Turbo V6 with Electric Torque Vectoring Rear Axle"
         ],
         colors: [
@@ -453,7 +453,7 @@ export const vehicleShowroomDatabase = {
             "394 Horsepower / 354 lb-ft of Torque Profile",
             "7-Speed S Tronic Dual-Clutch Transmission",
             "quattro All-Wheel Drive Drivetrain System",
-            "Adaptive Sport Suspension Suspension System",
+            "Adaptive Sport Suspension System",
             "RS Torque Splitter Rear-Axle Vectoring"
         ],
         colors: [
@@ -471,7 +471,7 @@ export const vehicleShowroomDatabase = {
             "394 Horsepower / 369 lb-ft of Torque Profile",
             "8-Speed S Tronic Dual-Clutch Transmission",
             "quattro All-Wheel Drive Drivetrain System",
-            "Adaptive Sport Suspension Suspension System",
+            "Adaptive Sport Suspension System",
             "Turbocharged Five-Cylinder Engine with Sport Exhaust"
         ],
         colors: [
@@ -490,7 +490,7 @@ export const vehicleShowroomDatabase = {
             "563 Horsepower / 590 lb-ft of Torque Profile",
             "8-Speed Tiptronic Transmission",
             "quattro All-Wheel Drive Drivetrain System",
-            "Adaptive Air Suspension with Predictive Active Suspension Suspension System",
+            "Adaptive Air Suspension with Predictive Active Suspension System",
             "Twin-Turbo V8 with All-Wheel Steering"
         ],
         colors: [
@@ -508,7 +508,7 @@ export const vehicleShowroomDatabase = {
             "402 Horsepower / 490 lb-ft of Torque Profile",
             "1-Speed Direct Drive Transmission",
             "Electric quattro All-Wheel Drive Drivetrain System",
-            "Adaptive Air Suspension Suspension System",
+            "Adaptive Air Suspension System",
             "95 kWh Battery with 170 kW DC Fast Charging"
         ],
         colors: [
@@ -526,7 +526,7 @@ export const vehicleShowroomDatabase = {
             "394 Horsepower / 354 lb-ft of Torque Profile",
             "7-Speed S Tronic Dual-Clutch Transmission",
             "quattro All-Wheel Drive Drivetrain System",
-            "Adaptive Sport Suspension Suspension System",
+            "Adaptive Sport Suspension System",
             "Turbocharged Five-Cylinder Engine with Signature Exhaust Note"
         ],
         colors: [
@@ -542,9 +542,9 @@ export const vehicleShowroomDatabase = {
         desc: "The standard e-tron GT offers most of the RS model's drama at a more accessible price.",
         features: [
             "670 Horsepower / 546 lb-ft of Torque Profile",
-            "2-Speed Rear Transmission Transmission",
+            "2-Speed Rear Transmission",
             "Electric quattro All-Wheel Drive Drivetrain System",
-            "Adaptive 3-Chamber Air Suspension Suspension System",
+            "Adaptive 3-Chamber Air Suspension System",
             "800V High-Performance Charging Architecture"
         ],
         colors: [
@@ -562,7 +562,7 @@ export const vehicleShowroomDatabase = {
             "444 Horsepower / 443 lb-ft of Torque Profile",
             "8-Speed Tiptronic Transmission",
             "quattro All-Wheel Drive Drivetrain System",
-            "Adaptive Sport Suspension Suspension System",
+            "Adaptive Sport Suspension System",
             "Sport Rear Differential with Torque Vectoring"
         ],
         colors: [
@@ -580,7 +580,7 @@ export const vehicleShowroomDatabase = {
             "500 Horsepower / 568 lb-ft of Torque Profile",
             "8-Speed Tiptronic Transmission",
             "quattro All-Wheel Drive Drivetrain System",
-            "Adaptive Air Suspension Suspension System",
+            "Adaptive Air Suspension System",
             "Sport Differential with Active Roll Stabilization"
         ],
         colors: [
@@ -599,7 +599,7 @@ export const vehicleShowroomDatabase = {
             "335 Horsepower / 369 lb-ft of Torque Profile",
             "8-Speed Tiptronic Transmission",
             "quattro All-Wheel Drive Drivetrain System",
-            "Adaptive Air Suspension with Predictive Active Suspension Suspension System",
+            "Adaptive Air Suspension with Predictive Active Suspension System",
             "Extended Wheelbase with Executive Rear Seating"
         ],
         colors: [
@@ -618,7 +618,7 @@ export const vehicleShowroomDatabase = {
             "335 Horsepower / 369 lb-ft of Torque Profile",
             "8-Speed Tiptronic Transmission",
             "quattro All-Wheel Drive Drivetrain System",
-            "Adaptive Air Suspension Suspension System",
+            "Adaptive Air Suspension System",
             "Three-Row Seating with Virtual Cockpit"
         ],
         colors: [
@@ -654,7 +654,7 @@ export const vehicleShowroomDatabase = {
             "621 Horsepower / 627 lb-ft of Torque Profile",
             "8-Speed Tiptronic Transmission",
             "quattro All-Wheel Drive Drivetrain System",
-            "Adaptive Sport Air Suspension Suspension System",
+            "Adaptive Sport Air Suspension System",
             "Carbon Fiber Widebody with Track-Tuned Aero"
         ],
         colors: [
@@ -714,7 +714,7 @@ export const vehicleShowroomDatabase = {
             "755 Horsepower / 590 lb-ft of Torque Profile",
             "7-Speed Dual-Clutch Transmission",
             "Rear-Wheel Drive (RWD) Drivetrain System",
-            "Motorsport-Tuned Track Suspension Suspension System",
+            "Motorsport-Tuned Track Suspension System",
             "Extensive Carbon Fiber Bodywork for Weight Reduction"
         ],
         colors: [
@@ -732,7 +732,7 @@ export const vehicleShowroomDatabase = {
             "612 Horsepower / 465 lb-ft of Torque Profile",
             "7-Speed Dual-Clutch Transmission",
             "Rear-Wheel Drive (RWD) Drivetrain System",
-            "Adaptive Comfort-Tuned Suspension Suspension System",
+            "Adaptive Comfort-Tuned Suspension System",
             "Extended Luggage Bay for Grand Touring"
         ],
         colors: [
@@ -840,7 +840,7 @@ export const vehicleShowroomDatabase = {
             "592 Horsepower / 457 lb-ft of Torque Profile",
             "7-Speed Dual-Clutch Transmission",
             "Rear-Wheel Drive (RWD) Drivetrain System",
-            "Motorsport-Tuned Track Suspension Suspension System",
+            "Motorsport-Tuned Track Suspension System",
             "Longtail Aero Package with Titanium Exhaust"
         ],
         colors: [
@@ -858,7 +858,7 @@ export const vehicleShowroomDatabase = {
             "1035 Horsepower / 848 lb-ft of Torque Profile",
             "8-Speed Dual-Clutch Transmission",
             "Rear-Wheel Drive (RWD) Drivetrain System",
-            "Hydraulic Active Suspension Suspension System",
+            "Hydraulic Active Suspension System",
             "Hybrid Powertrain with Central Driving Position"
         ],
         colors: [
@@ -874,9 +874,9 @@ export const vehicleShowroomDatabase = {
         desc: "A single-seat, track-only hypercar built around a screaming naturally aspirated V10.",
         features: [
             "829 Horsepower / 479 lb-ft of Torque Profile",
-            "Sequential Racing Transmission Transmission",
+            "Sequential Racing Transmission",
             "Rear-Wheel Drive (RWD) Drivetrain System",
-            "Formula-Style Pushrod Suspension Suspension System",
+            "Formula-Style Pushrod Suspension System",
             "Single-Seat Cockpit with Naturally Aspirated V10"
         ],
         colors: [
@@ -901,7 +901,7 @@ export const vehicleShowroomDatabase = {
             "717 Horsepower / 738 lb-ft of Torque Profile",
             "8-Speed M Steptronic (Plug-In Hybrid) Transmission",
             "M xDrive Selectable AWD Drivetrain System",
-            "Adaptive M Suspension Suspension System",
+            "Adaptive M Suspension System",
             "Plug-In Hybrid V8 with up to 29 Miles of Electric Range"
         ],
         colors: [
@@ -919,7 +919,7 @@ export const vehicleShowroomDatabase = {
             "617 Horsepower / 553 lb-ft of Torque Profile",
             "8-Speed M Steptronic Transmission",
             "M xDrive Selectable AWD Drivetrain System",
-            "Adaptive M Suspension Suspension System",
+            "Adaptive M Suspension System",
             "Carbon Fiber Roof with M Sport Differential"
         ],
         colors: [
@@ -937,7 +937,7 @@ export const vehicleShowroomDatabase = {
             "503 Horsepower / 479 lb-ft of Torque Profile",
             "8-Speed M Steptronic Transmission",
             "Rear-Wheel Drive (RWD) Drivetrain System",
-            "Adaptive M Suspension Suspension System",
+            "Adaptive M Suspension System",
             "M Sport Differential with Carbon Fiber Trim"
         ],
         colors: [
@@ -955,7 +955,7 @@ export const vehicleShowroomDatabase = {
             "503 Horsepower / 479 lb-ft of Torque Profile",
             "8-Speed M Steptronic Transmission",
             "Rear-Wheel Drive (RWD) Drivetrain System",
-            "Adaptive M Suspension Suspension System",
+            "Adaptive M Suspension System",
             "M Sport Differential with Carbon Fiber Trim"
         ],
         colors: [
@@ -973,7 +973,7 @@ export const vehicleShowroomDatabase = {
             "617 Horsepower / 553 lb-ft of Torque Profile",
             "8-Speed M Steptronic Transmission",
             "M xDrive Selectable AWD Drivetrain System",
-            "Adaptive M Air Suspension Suspension System",
+            "Adaptive M Air Suspension System",
             "Carbon Ceramic Braking System"
         ],
         colors: [
@@ -991,7 +991,7 @@ export const vehicleShowroomDatabase = {
             "617 Horsepower / 553 lb-ft of Torque Profile",
             "8-Speed M Steptronic Transmission",
             "M xDrive Selectable AWD Drivetrain System",
-            "Adaptive M Air Suspension Suspension System",
+            "Adaptive M Air Suspension System",
             "Coupe-Profile Roofline with Carbon Ceramic Brakes"
         ],
         colors: [
@@ -1009,7 +1009,7 @@ export const vehicleShowroomDatabase = {
             "473 Horsepower / 406 lb-ft of Torque Profile",
             "6-Speed Manual / 8-Speed M Steptronic Transmission",
             "Rear-Wheel Drive (RWD) Drivetrain System",
-            "Adaptive M Suspension Suspension System",
+            "Adaptive M Suspension System",
             "M Sport Differential with Track Mode"
         ],
         colors: [
@@ -1027,7 +1027,7 @@ export const vehicleShowroomDatabase = {
             "593 Horsepower / 586 lb-ft of Torque Profile",
             "1-Speed Direct Drive Transmission",
             "M xDrive Electric AWD Drivetrain System",
-            "Adaptive M Suspension Suspension System",
+            "Adaptive M Suspension System",
             "Dual-Motor Electric Powertrain with 400V Architecture"
         ],
         colors: [
@@ -1045,7 +1045,7 @@ export const vehicleShowroomDatabase = {
             "610 Horsepower / 811 lb-ft of Torque Profile",
             "1-Speed Direct Drive Transmission",
             "M xDrive Electric AWD Drivetrain System",
-            "Adaptive Air Suspension Suspension System",
+            "Adaptive Air Suspension System",
             "Dual-Motor Electric Powertrain with 100+ kWh Battery"
         ],
         colors: [
@@ -1063,7 +1063,7 @@ export const vehicleShowroomDatabase = {
             "644 Horsepower / 590 lb-ft of Torque Profile",
             "8-Speed M Steptronic Transmission",
             "M xDrive Selectable AWD Drivetrain System",
-            "Adaptive M Air Suspension Suspension System",
+            "Adaptive M Air Suspension System",
             "Plug-In Hybrid V8 Powertrain with Illuminated Kidney Grille"
         ],
         colors: [
@@ -1081,7 +1081,7 @@ export const vehicleShowroomDatabase = {
             "543 Horsepower / 479 lb-ft of Torque Profile",
             "8-Speed M Steptronic Transmission",
             "Rear-Wheel Drive (RWD) Drivetrain System",
-            "Motorsport-Tuned Suspension Suspension System",
+            "Motorsport-Tuned Suspension System",
             "Extensive Weight-Reduction Package with Two-Seat Cabin"
         ],
         colors: [
@@ -1099,7 +1099,7 @@ export const vehicleShowroomDatabase = {
             "503 Horsepower / 479 lb-ft of Torque Profile",
             "8-Speed M Steptronic Transmission",
             "M xDrive Selectable AWD Drivetrain System",
-            "Adaptive M Suspension Suspension System",
+            "Adaptive M Suspension System",
             "M Sport Differential with Wagon Practicality"
         ],
         colors: [
@@ -1117,7 +1117,7 @@ export const vehicleShowroomDatabase = {
             "335 Horsepower / 369 lb-ft of Torque Profile",
             "8-Speed Steptronic Sport Transmission",
             "xDrive All-Wheel Drive Drivetrain System",
-            "Adaptive M Suspension Suspension System",
+            "Adaptive M Suspension System",
             "Frameless Four-Door Coupe Silhouette"
         ],
         colors: [
@@ -1135,7 +1135,7 @@ export const vehicleShowroomDatabase = {
             "382 Horsepower / 369 lb-ft of Torque Profile",
             "8-Speed Steptronic Sport Transmission",
             "Rear-Wheel Drive (RWD) Drivetrain System",
-            "Adaptive M Suspension Suspension System",
+            "Adaptive M Suspension System",
             "Retractable Soft Top with Turbocharged Inline-6"
         ],
         colors: [
@@ -1150,7 +1150,7 @@ export const vehicleShowroomDatabase = {
         price: "$115,500",
         desc: "BMW's flagship plug-in hybrid sedan, blending silent electric range with turbocharged reserve power.",
         features: [
-            "612 Horsepower / 590 lb-ft (approx.) of Torque Profile",
+            "612 Horsepower / 590 lb-ft of Torque Profile",
             "8-Speed Steptronic Sport Transmission",
             "xDrive All-Wheel Drive Drivetrain System",
             "Adaptive Air Suspension with Executive Drive Pro Suspension System",
@@ -1171,7 +1171,7 @@ export const vehicleShowroomDatabase = {
             "523 Horsepower / 553 lb-ft of Torque Profile",
             "8-Speed Steptronic Sport Transmission",
             "xDrive All-Wheel Drive Drivetrain System",
-            "Adaptive Air Suspension Suspension System",
+            "Adaptive Air Suspension System",
             "Three-Row Seating with Twin-Turbo V8"
         ],
         colors: [
@@ -1209,12 +1209,12 @@ export const vehicleShowroomDatabase = {
         class: "mercedes",
         name: "Mercedes-AMG GT 63 S E Performance",
         price: "$180,200",
-        desc: "A four-door grand tourer with genuine supercar-baiting acceleration — now boosted further by a dedicated electric rear motor.",
+        desc: "A two-door grand tourer with genuine supercar-baiting acceleration — now boosted further by a dedicated electric rear motor.",
         features: [
             "805 Horsepower / 1047 lb-ft of Torque Profile",
             "AMG SPEEDSHIFT MCT 9-Speed (Hybrid) Transmission",
             "4MATIC+ All-Wheel Drive Drivetrain System",
-            "AMG RIDE CONTROL+ Air Suspension Suspension System",
+            "AMG RIDE CONTROL+ Air Suspension System",
             "Hybrid-Assisted Twin-Turbo V8 with Electric Rear Motor"
         ],
         colors: [
@@ -1250,7 +1250,7 @@ export const vehicleShowroomDatabase = {
             "603 Horsepower / 627 lb-ft of Torque Profile",
             "AMG SPEEDSHIFT MCT 9-Speed Transmission",
             "4MATIC+ All-Wheel Drive Drivetrain System",
-            "AMG RIDE CONTROL+ Air Suspension Suspension System",
+            "AMG RIDE CONTROL+ Air Suspension System",
             "Drift Mode with Biturbo V8"
         ],
         colors: [
@@ -1268,7 +1268,7 @@ export const vehicleShowroomDatabase = {
             "791 Horsepower / 1055 lb-ft of Torque Profile",
             "AMG SPEEDSHIFT 9-Speed Transmission",
             "4MATIC+ All-Wheel Drive Drivetrain System",
-            "AMG Active Ride Control Air Suspension Suspension System",
+            "AMG Active Ride Control Air Suspension System",
             "Plug-In Hybrid V8 with Electric Rear Axle Boost"
         ],
         colors: [
@@ -1286,7 +1286,7 @@ export const vehicleShowroomDatabase = {
             "603 Horsepower / 627 lb-ft of Torque Profile",
             "AMG SPEEDSHIFT TCT 9-Speed Transmission",
             "4MATIC+ All-Wheel Drive Drivetrain System",
-            "AMG Active Ride Control Air Suspension Suspension System",
+            "AMG Active Ride Control Air Suspension System",
             "E-Active Body Control with Biturbo V8"
         ],
         colors: [
@@ -1304,7 +1304,7 @@ export const vehicleShowroomDatabase = {
             "603 Horsepower / 627 lb-ft of Torque Profile",
             "AMG SPEEDSHIFT TCT 9-Speed Transmission",
             "4MATIC+ All-Wheel Drive Drivetrain System",
-            "AMG Active Ride Control Air Suspension Suspension System",
+            "AMG Active Ride Control Air Suspension System",
             "Three-Row Seating with Biturbo V8"
         ],
         colors: [
@@ -1322,7 +1322,7 @@ export const vehicleShowroomDatabase = {
             "577 Horsepower / 590 lb-ft of Torque Profile",
             "AMG SPEEDSHIFT MCT 9-Speed Transmission",
             "4MATIC+ All-Wheel Drive Drivetrain System",
-            "AMG Active Ride Control Air Suspension Suspension System",
+            "AMG Active Ride Control Air Suspension System",
             "Retractable Soft Top with Rear-Axle Steering"
         ],
         colors: [
@@ -1340,7 +1340,7 @@ export const vehicleShowroomDatabase = {
             "720 Horsepower / 590 lb-ft of Torque Profile",
             "AMG SPEEDSHIFT DCT 7-Speed Transmission",
             "Rear-Wheel Drive (RWD) Drivetrain System",
-            "Motorsport-Derived Coil-Over Suspension Suspension System",
+            "Motorsport-Derived Coil-Over Suspension System",
             "Active Aerodynamics with Flat-Plane Crank V8"
         ],
         colors: [
@@ -1358,7 +1358,7 @@ export const vehicleShowroomDatabase = {
             "621 Horsepower / 664 lb-ft of Torque Profile",
             "9G-Tronic 9-Speed Transmission",
             "4MATIC All-Wheel Drive Drivetrain System",
-            "AIRMATIC Adaptive Air Suspension Suspension System",
+            "AIRMATIC Adaptive Air Suspension System",
             "Extended Wheelbase with Executive Rear Cabin"
         ],
         colors: [
@@ -1376,7 +1376,7 @@ export const vehicleShowroomDatabase = {
             "831 Horsepower / 1032 lb-ft of Torque Profile",
             "AMG SPEEDSHIFT MCT 9-Speed (Hybrid) Transmission",
             "4MATIC+ All-Wheel Drive Drivetrain System",
-            "AMG RIDE CONTROL+ Air Suspension Suspension System",
+            "AMG RIDE CONTROL+ Air Suspension System",
             "Rear-Axle Steering with Hybrid-Assisted Biturbo V8"
         ],
         colors: [
@@ -1430,7 +1430,7 @@ export const vehicleShowroomDatabase = {
             "751 Horsepower / 752 lb-ft of Torque Profile",
             "1-Speed Direct Drive Transmission",
             "4MATIC+ Electric All-Wheel Drive Drivetrain System",
-            "AMG Active Ride Control Air Suspension Suspension System",
+            "AMG Active Ride Control Air Suspension System",
             "Dual-Motor Electric Powertrain with Boost Overtake Mode"
         ],
         colors: [
@@ -1466,7 +1466,7 @@ export const vehicleShowroomDatabase = {
             "579 Horsepower / 859 lb-ft of Torque Profile",
             "1-Speed Direct Drive per Axle Transmission",
             "Electric All-Wheel Drive with Tank Turn Drivetrain System",
-            "Adaptive Off-Road Air Suspension Suspension System",
+            "Adaptive Off-Road Air Suspension System",
             "Four Individual Electric Motors with G-Turn Function"
         ],
         colors: [
@@ -1527,7 +1527,7 @@ export const vehicleShowroomDatabase = {
             "789 Horsepower / 530 lb-ft of Torque Profile",
             "7-Speed Dual-Clutch Transmission",
             "Rear-Wheel Drive (RWD) Drivetrain System",
-            "Magnetorheological Adaptive Suspension Suspension System",
+            "Magnetorheological Adaptive Suspension System",
             "Naturally Aspirated V12 with Electric Power Steering"
         ],
         colors: [
@@ -1545,7 +1545,7 @@ export const vehicleShowroomDatabase = {
             "611 Horsepower / 561 lb-ft of Torque Profile",
             "8-Speed Dual-Clutch Transmission",
             "Rear-Wheel Drive (RWD) Drivetrain System",
-            "Adaptive Sport Suspension Suspension System",
+            "Adaptive Sport Suspension System",
             "Retro-Inspired Grand Touring Design"
         ],
         colors: [
@@ -1581,7 +1581,7 @@ export const vehicleShowroomDatabase = {
             "710 Horsepower / 568 lb-ft of Torque Profile",
             "7-Speed Dual-Clutch Transmission",
             "Rear-Wheel Drive (RWD) Drivetrain System",
-            "Adaptive Sport Suspension Suspension System",
+            "Adaptive Sport Suspension System",
             "Twin-Turbo V8 with Side Air Intakes"
         ],
         colors: [
@@ -1599,7 +1599,7 @@ export const vehicleShowroomDatabase = {
             "819 Horsepower / 510 lb-ft of Torque Profile",
             "7-Speed Dual-Clutch Transmission",
             "Rear-Wheel Drive (RWD) Drivetrain System",
-            "Magnetorheological Adaptive Suspension Suspension System",
+            "Magnetorheological Adaptive Suspension System",
             "Independent Rear-Wheel Steering with Naturally Aspirated V12"
         ],
         colors: [
@@ -1617,7 +1617,7 @@ export const vehicleShowroomDatabase = {
             "612 Horsepower / 561 lb-ft of Torque Profile",
             "8-Speed Dual-Clutch Transmission",
             "Rear-Wheel Drive (RWD) Drivetrain System",
-            "Adaptive Sport Suspension Suspension System",
+            "Adaptive Sport Suspension System",
             "Retractable Hardtop with Grand Touring Tuning"
         ],
         colors: [
@@ -1679,7 +1679,7 @@ export const vehicleShowroomDatabase = {
             "631 Horsepower / 417 lb-ft of Torque Profile",
             "7-Speed Dual-Clutch Transmission",
             "Rear-Wheel Drive (RWD) Drivetrain System",
-            "Motorsport-Derived Magnetorheological Suspension Suspension System",
+            "Motorsport-Derived Magnetorheological Suspension System",
             "Race-Derived Bodywork with Central Single Wiper"
         ],
         colors: [
@@ -1697,7 +1697,7 @@ export const vehicleShowroomDatabase = {
             "812 Horsepower / 738 lb-ft of Torque Profile",
             "8-Speed Torque-Converter (Hybrid) Transmission",
             "Permanent All-Wheel Drive Drivetrain System",
-            "Adaptive Dual-Chamber Air Suspension Suspension System",
+            "Adaptive Dual-Chamber Air Suspension System",
             "Plug-In Hybrid Twin-Turbo V8 with 37-Mile Electric Range"
         ],
         colors: [
@@ -1733,7 +1733,7 @@ export const vehicleShowroomDatabase = {
             "631 Horsepower / 417 lb-ft of Torque Profile",
             "7-Speed Dual-Clutch Transmission",
             "Rear-Wheel Drive (RWD) Drivetrain System",
-            "Adaptive Magnetorheological Suspension Suspension System",
+            "Adaptive Magnetorheological Suspension System",
             "Rear-Wheel Steering with Naturally Aspirated V10"
         ],
         colors: [
@@ -1751,7 +1751,7 @@ export const vehicleShowroomDatabase = {
             "631 Horsepower / 417 lb-ft of Torque Profile",
             "7-Speed Dual-Clutch Transmission",
             "All-Wheel Drive (AWD) Drivetrain System",
-            "Adaptive Magnetorheological Suspension Suspension System",
+            "Adaptive Magnetorheological Suspension System",
             "Retractable Soft Top with Naturally Aspirated V10"
         ],
         colors: [
@@ -1769,7 +1769,7 @@ export const vehicleShowroomDatabase = {
             "657 Horsepower / 627 lb-ft of Torque Profile",
             "8-Speed Torque-Converter Transmission",
             "Permanent All-Wheel Drive Drivetrain System",
-            "Adaptive Air Suspension Suspension System",
+            "Adaptive Air Suspension System",
             "Torque Vectoring with Rear-Wheel Steering"
         ],
         colors: [
@@ -1787,7 +1787,7 @@ export const vehicleShowroomDatabase = {
             "602 Horsepower / 413 lb-ft of Torque Profile",
             "7-Speed Dual-Clutch Transmission",
             "All-Wheel Drive (AWD) Drivetrain System",
-            "Raised Off-Road Tuned Suspension Suspension System",
+            "Raised Off-Road Tuned Suspension System",
             "Underbody Protection with All-Terrain Tires"
         ],
         colors: [
@@ -1884,7 +1884,7 @@ export const vehicleShowroomDatabase = {
             "697 Horsepower / 663 lb-ft of Torque Profile",
             "9-Speed Wet-Clutch Automatic Transmission",
             "All-Wheel Drive (AWD) Drivetrain System",
-            "Adaptive Triple-Chamber Air Suspension Suspension System",
+            "Adaptive Triple-Chamber Air Suspension System",
             "Twin-Turbo V8 with Electronic Rear Differential"
         ],
         colors: [
@@ -1902,7 +1902,7 @@ export const vehicleShowroomDatabase = {
             "1160 Horsepower / 664 lb-ft of Torque Profile",
             "7-Speed Single-Clutch Automated Manual Transmission",
             "Rear-Wheel Drive (RWD) Drivetrain System",
-            "Pushrod-Actuated Inboard Suspension Suspension System",
+            "Pushrod-Actuated Inboard Suspension System",
             "Hybrid Naturally Aspirated V12 with F1-Derived Aerodynamics"
         ],
         colors: [
@@ -2016,7 +2016,7 @@ export const vehicleShowroomDatabase = {
             "671 Horsepower / 686 lb-ft of Torque Profile",
             "8-Speed Dual-Clutch (Hybrid) Transmission",
             "All-Wheel Drive with Torque Vectoring Drivetrain System",
-            "Adaptive Air Suspension Suspension System",
+            "Adaptive Air Suspension System",
             "High Performance Hybrid Powertrain with Handcrafted Cabin"
         ],
         colors: [
@@ -2034,7 +2034,7 @@ export const vehicleShowroomDatabase = {
             "730 Horsepower / 738 lb-ft of Torque Profile",
             "8-Speed Dual-Clutch Transmission",
             "All-Wheel Drive with Torque Vectoring Drivetrain System",
-            "Adaptive Air Suspension Suspension System",
+            "Adaptive Air Suspension System",
             "Ultra-Limited Coachbuilt Bodywork by Mulliner"
         ],
         colors: [
@@ -2052,7 +2052,7 @@ export const vehicleShowroomDatabase = {
             "542 Horsepower / 568 lb-ft of Torque Profile",
             "8-Speed Automatic Transmission",
             "All-Wheel Drive with Torque Vectoring Drivetrain System",
-            "Adaptive Air Suspension Suspension System",
+            "Adaptive Air Suspension System",
             "Extended Wheelbase with Executive Rear Cabin"
         ],
         colors: [
@@ -2170,7 +2170,7 @@ export const vehicleShowroomDatabase = {
             "400 Horsepower / 317 lb-ft of Torque Profile",
             "6-Speed Manual / 8-Speed Automatic Transmission",
             "Rear-Wheel Drive (RWD) Drivetrain System",
-            "Adaptive Sport Suspension Suspension System",
+            "Adaptive Sport Suspension System",
             "Supercharged V6 with Lightweight Aluminum Chassis"
         ],
         colors: [
@@ -2224,7 +2224,7 @@ export const vehicleShowroomDatabase = {
             "603 Horsepower / 523 lb-ft of Torque Profile",
             "2-Speed Front / 1-Speed Rear Transmission",
             "Electric All-Wheel Drive Drivetrain System",
-            "Adaptive Air Suspension Suspension System",
+            "Adaptive Air Suspension System",
             "Dual-Motor Electric Powertrain with 800V Charging"
         ],
         colors: [
@@ -2242,7 +2242,7 @@ export const vehicleShowroomDatabase = {
             "410 Horsepower / 310 lb-ft of Torque Profile",
             "6-Speed Manual Transmission",
             "Rear-Wheel Drive (RWD) Drivetrain System",
-            "Motorsport-Tuned Suspension Suspension System",
+            "Motorsport-Tuned Suspension System",
             "Supercharged V6 with Extreme Lightweight Construction"
         ],
         colors: [
@@ -2264,7 +2264,7 @@ export const vehicleShowroomDatabase = {
             "621 Horsepower / 538 lb-ft of Torque Profile",
             "8-Speed Dual-Clutch Transmission",
             "Rear-Wheel Drive (RWD) Drivetrain System",
-            "Adaptive Sport Suspension Suspension System",
+            "Adaptive Sport Suspension System",
             "Twin-Turbo V6 with Butterfly Doors"
         ],
         colors: [
@@ -2282,7 +2282,7 @@ export const vehicleShowroomDatabase = {
             "580 Horsepower / 538 lb-ft of Torque Profile",
             "8-Speed Automatic Transmission",
             "All-Wheel Drive (AWD) Drivetrain System",
-            "Adaptive Air Suspension Suspension System",
+            "Adaptive Air Suspension System",
             "Ferrari-Built Naturally Aspirated V8"
         ],
         colors: [
@@ -2300,7 +2300,7 @@ export const vehicleShowroomDatabase = {
             "523 Horsepower / 457 lb-ft of Torque Profile",
             "8-Speed Automatic Transmission",
             "All-Wheel Drive (AWD) Drivetrain System",
-            "Adaptive Sport Suspension Suspension System",
+            "Adaptive Sport Suspension System",
             "Twin-Turbo V6 with Compact SUV Platform"
         ],
         colors: [
@@ -2318,7 +2318,7 @@ export const vehicleShowroomDatabase = {
             "582 Horsepower / 479 lb-ft of Torque Profile",
             "8-Speed Automatic Transmission",
             "All-Wheel Drive (AWD) Drivetrain System",
-            "Adaptive Sport Suspension Suspension System",
+            "Adaptive Sport Suspension System",
             "Twin-Turbo V6 with Grand Touring Cabin"
         ],
         colors: [
@@ -2336,7 +2336,7 @@ export const vehicleShowroomDatabase = {
             "621 Horsepower / 538 lb-ft of Torque Profile",
             "8-Speed Dual-Clutch Transmission",
             "Rear-Wheel Drive (RWD) Drivetrain System",
-            "Adaptive Sport Suspension Suspension System",
+            "Adaptive Sport Suspension System",
             "Retractable Glass Roof with Twin-Turbo V6"
         ],
         colors: [
@@ -2359,7 +2359,7 @@ export const vehicleShowroomDatabase = {
             "1578 Horsepower / 1180 lb-ft of Torque Profile",
             "7-Speed Dual-Clutch Transmission",
             "All-Wheel Drive (AWD) Drivetrain System",
-            "Adaptive Magnetic Ride Suspension Suspension System",
+            "Adaptive Magnetic Ride Suspension System",
             "Quad-Turbo W16 with Extended Tail for High-Speed Stability"
         ],
         colors: [
@@ -2377,7 +2377,7 @@ export const vehicleShowroomDatabase = {
             "1479 Horsepower / 1180 lb-ft of Torque Profile",
             "7-Speed Dual-Clutch Transmission",
             "All-Wheel Drive (AWD) Drivetrain System",
-            "Motorsport-Tuned Suspension Suspension System",
+            "Motorsport-Tuned Suspension System",
             "Quad-Turbo W16 with Shorter Gearing for Cornering Agility"
         ],
         colors: [
@@ -2395,7 +2395,7 @@ export const vehicleShowroomDatabase = {
             "1800 Horsepower / 922 lb-ft of Torque Profile",
             "Automated Manual with Dedicated Reverse Transmission",
             "All-Wheel Drive (Hybrid) Drivetrain System",
-            "Rocker-Actuated Inboard Suspension Suspension System",
+            "Rocker-Actuated Inboard Suspension System",
             "Hybrid Naturally Aspirated V16 with Three Electric Motors"
         ],
         colors: [
@@ -2417,7 +2417,7 @@ export const vehicleShowroomDatabase = {
             "1600 Horsepower / 1106 lb-ft of Torque Profile",
             "9-Speed Multi-Clutch (Light Speed Transmission) Transmission",
             "Rear-Wheel Drive (RWD) Drivetrain System",
-            "Triplex Adaptive Suspension Suspension System",
+            "Triplex Adaptive Suspension System",
             "Twin-Turbo V8 with Active Rear Wing"
         ],
         colors: [
@@ -2435,7 +2435,7 @@ export const vehicleShowroomDatabase = {
             "1700 Horsepower / 2581 lb-ft of Torque Profile",
             "Direct Drive with Electric Torque Fill Transmission",
             "Electric All-Wheel Drive (Hybrid) Drivetrain System",
-            "Triplex Adaptive Suspension Suspension System",
+            "Triplex Adaptive Suspension System",
             "Hybrid Twin-Turbo 3-Cylinder with Four Seats"
         ],
         colors: [
@@ -2453,7 +2453,7 @@ export const vehicleShowroomDatabase = {
             "1500 Horsepower / 1475 lb-ft of Torque Profile",
             "Direct Drive (No Traditional Gearbox) Transmission",
             "Electric-Assisted Rear-Wheel Drive Drivetrain System",
-            "Triplex Adaptive Suspension Suspension System",
+            "Triplex Adaptive Suspension System",
             "Hybrid Powertrain with Koenigsegg Direct Drive System"
         ],
         colors: [
@@ -2475,7 +2475,7 @@ export const vehicleShowroomDatabase = {
             "720 Horsepower / 738 lb-ft of Torque Profile",
             "7-Speed Automated Manual Transmission",
             "Rear-Wheel Drive (RWD) Drivetrain System",
-            "Adaptive Active Aerodynamic Suspension Suspension System",
+            "Adaptive Active Aerodynamic Suspension System",
             "Twin-Turbo V12 with Active Aero Flaps"
         ],
         colors: [
@@ -2493,7 +2493,7 @@ export const vehicleShowroomDatabase = {
             "852 Horsepower / 811 lb-ft of Torque Profile",
             "7-Speed Manual / Automated Manual Transmission",
             "Rear-Wheel Drive (RWD) Drivetrain System",
-            "Adaptive Active Suspension Suspension System",
+            "Adaptive Active Suspension System",
             "Twin-Turbo V12 with Analog-Focused Cabin Design"
         ],
         colors: [

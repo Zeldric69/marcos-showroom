@@ -31,9 +31,9 @@ jobs:
         run: npm ci
 
       - name: Build
-        env:
-          VITE_ADMIN_EMAIL: ${{ secrets.VITE_ADMIN_EMAIL }}
-        run: npm run build
+        run: |
+          npm run lint
+          npm run build
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

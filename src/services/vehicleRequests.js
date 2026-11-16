@@ -8,10 +8,8 @@ import {
     serverTimestamp,
     where
 } from 'firebase/firestore';
-import { getFirestore } from 'firebase/firestore';
-import { app } from '../firebase/firebaseconfig.js';
+import { db } from '../firebase/firebaseconfig.js';
 
-const db = getFirestore(app);
 const requestsCollection = collection(db, 'vehicleRequests');
 
 export async function createVehicleRequest({ user, actionType, vehicle }) {
@@ -31,7 +29,7 @@ export async function createVehicleRequest({ user, actionType, vehicle }) {
     });
 }
 
-export async function createServiceBooking({ user, serviceType, carModel, preferredDate }) {
+export async function createServiceBooking({ user, serviceType, carModel, preferredDate, fullName, contactEmail, vehicleCategory }) {
     if (!user) {
         throw new Error('Please sign in before submitting a service booking.');
     }
@@ -40,11 +38,32 @@ export async function createServiceBooking({ user, serviceType, carModel, prefer
         requestType: 'service',
         userId: user.uid,
         userEmail: user.email || '',
+        fullName,
+        contactEmail,
+        vehicleCategory,
         actionType: 'serviceBooking',
         vehicleName: carModel || 'Service appointment',
         vehiclePrice: '',
         serviceType,
         preferredDate,
+        status: 'new',
+        createdAt: serverTimestamp()
+    });
+}
+
+export async function createTradeInRequest({ user, vehicleName, vehicleMileage, contactInfo }) {
+    if (!user) {
+        throw new Error('Please sign in before submitting a trade-in request.');
+    }
+
+    return addDoc(requestsCollection, {
+        requestType: 'tradeIn',
+        userId: user.uid,
+        userEmail: user.email || '',
+        actionType: 'tradeIn',
+        vehicleName,
+        vehicleMileage,
+        contactInfo,
         status: 'new',
         createdAt: serverTimestamp()
     });

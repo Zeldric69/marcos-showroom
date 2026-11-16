@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Marcos Premium - type test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..700&family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=Bodoni+Moda:opsz,wght@6..96,400..600&family=Hanken+Grotesk:wght@400;500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#0E1512; --surface:#141D19; --line:#2B3C34; --text:#D6D1C4; --strong:#F1ECDF; --soft:#9DA89F; --accent:#D08A4E; --on:#0E1512; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font-family:'Hanken Grotesk',system-ui,sans-serif; font-synthesis:none; }
+  .wrap { max-width:1100px; margin:0 auto; padding:28px 24px 60px; }
+  h6.pick { margin:44px 0 10px; font:600 13px/1 system-ui; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); }
+  .hero { position:relative; padding:56px 44px 50px; border-radius:6px; overflow:hidden;
+    background:
+      radial-gradient(circle at 18% 28%, rgba(255,255,255,.22), transparent 26%),
+      radial-gradient(circle at 72% 58%, rgba(208,138,78,.35), transparent 30%),
+      repeating-linear-gradient(100deg,#2a3430 0 22px,#3b4741 22px 41px,#1b221f 41px 74px); }
+  .hero::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg,rgba(14,21,18,.80),rgba(14,21,18,.10)); }
+  .hero > * { position:relative; z-index:1; }
+  .nav { display:flex; gap:26px; margin-bottom:46px; }
+  .nav span:first-child { color:var(--accent); }
+  .eyebrow { color:var(--accent); margin:0 0 14px; }
+  h1 { margin:0 0 18px; color:var(--strong); max-width:760px; }
+  p.lead { max-width:520px; margin:0 0 26px; font-size:1.1rem; line-height:1.65; color:var(--text); }
+  .btn { display:inline-block; background:var(--accent); color:var(--on); padding:15px 30px; border-radius:3px; }
+  .cards { display:flex; gap:18px; margin-top:18px; }
+  .card { background:var(--surface); border:1px solid var(--line); border-radius:4px; padding:18px 20px; width:290px; }
+  .card .brand { color:var(--soft); margin-bottom:4px; }
+  .card .name { color:var(--strong); font-size:1.15rem; margin-bottom:10px; }
+  .card .price { color:var(--accent); font-size:1.35rem; }
+  .card .spec { color:var(--soft); font-size:.9rem; margin-top:6px; }
+
+  /* A - refined modern */
+  .A h1 { font-family:'Jost',sans-serif; font-weight:400; letter-spacing:-.015em; line-height:1.05; font-size:clamp(2.4rem,5vw,4.4rem); }
+  .A .nav, .A .eyebrow, .A .btn, .A .brand { font-family:'Hanken Grotesk',sans-serif; text-transform:uppercase; font-weight:600; font-size:.8rem; letter-spacing:.16em; }
+  .A .name { font-family:'Jost',sans-serif; font-weight:500; } .A .price { font-family:'Hanken Grotesk'; font-weight:600; font-variant-numeric:lining-nums tabular-nums; }
+  /* B - supercar wide */
+  .B h1 { font-family:'Archivo',sans-serif; font-stretch:112%; font-weight:500; text-transform:uppercase; letter-spacing:.015em; line-height:1.05; font-size:clamp(2rem,4.2vw,3.6rem); }
+  .B .nav, .B .eyebrow, .B .btn, .B .brand { font-family:'Archivo',sans-serif; font-stretch:112%; text-transform:uppercase; font-weight:600; font-size:.75rem; letter-spacing:.16em; }
+  .B .name { font-family:'Archivo'; font-stretch:106%; font-weight:600; } .B .price { font-family:'Archivo'; font-stretch:106%; font-weight:600; }
+  /* C - motorsport */
+  .C { font-family:'Barlow',sans-serif; }
+  .C h1 { font-family:'Barlow Condensed',sans-serif; font-weight:600; text-transform:uppercase; letter-spacing:.02em; line-height:1; font-size:clamp(2.6rem,6vw,5rem); }
+  .C .nav, .C .eyebrow, .C .btn, .C .brand { font-family:'Barlow Condensed',sans-serif; text-transform:uppercase; font-weight:600; font-size:1rem; letter-spacing:.14em; }
+  .C .name { font-family:'Barlow Condensed'; font-weight:600; font-size:1.4rem; text-transform:uppercase; letter-spacing:.04em; } .C .price { font-family:'Barlow Condensed'; font-weight:700; font-size:1.6rem; }
+  /* D - the serif, at the weight it should have had (no faux bold) */
+  .D h1 { font-family:'Bodoni Moda',serif; font-weight:500; letter-spacing:0; line-height:1.08; font-size:clamp(2.3rem,4.6vw,4rem); }
+  .D .nav, .D .eyebrow, .D .btn, .D .brand { font-family:'Barlow Condensed',sans-serif; text-transform:uppercase; font-weight:600; font-size:1rem; letter-spacing:.16em; }
+  .D .name { font-family:'Bodoni Moda'; font-weight:500; } .D .price { font-family:'Barlow Condensed'; font-weight:700; font-size:1.5rem; }
+</style>
+</head>
+<body><div class="wrap">
+  <h1 style="font:600 15px/1.5 system-ui;color:var(--strong);margin:0">Marcos Premium type test. Compare A, B, C, D on a busy background, then tell me the letter. (Fonts load from Google, so you need internet.)</h1>
+
+  <h6 class="pick">A &nbsp;·&nbsp; Refined modern &nbsp;(Jost + Hanken Grotesk)</h6>
+  <section class="A"><div class="hero"><div class="nav"><span>Home</span><span>About</span><span>Service</span><span>Collection</span><span>Contact</span></div>
+    <div class="eyebrow">Hybrid showroom</div><h1>The Precision Engineered Fleet</h1>
+    <p class="lead">Explore new arrivals, best sellers and brand inventories from fifteen of the world's most exceptional marques.</p><span class="btn">Explore catalog</span></div>
+    <div class="cards"><div class="card"><div class="brand">Porsche</div><div class="name">911 GT3 RS</div><div class="price">$241,300</div><div class="spec">518 hp · 342 lb-ft · RWD</div></div>
+    <div class="card"><div class="brand">Aston Martin</div><div class="name">Vanquish</div><div class="price">$429,000</div><div class="spec">824 hp · 738 lb-ft · RWD</div></div></div></section>
+
+  <h6 class="pick">B &nbsp;·&nbsp; Supercar wide &nbsp;(Archivo semi-expanded + Hanken Grotesk)</h6>
+  <section class="B"><div class="hero"><div class="nav"><span>Home</span><span>About</span><span>Service</span><span>Collection</span><span>Contact</span></div>
+    <div class="eyebrow">Hybrid showroom</div><h1>The Precision Engineered Fleet</h1>
+    <p class="lead">Explore new arrivals, best sellers and brand inventories from fifteen of the world's most exceptional marques.</p><span class="btn">Explore catalog</span></div>
+    <div class="cards"><div class="card"><div class="brand">Porsche</div><div class="name">911 GT3 RS</div><div class="price">$241,300</div><div class="spec">518 hp · 342 lb-ft · RWD</div></div>
+    <div class="card"><div class="brand">Aston Martin</div><div class="name">Vanquish</div><div class="price">$429,000</div><div class="spec">824 hp · 738 lb-ft · RWD</div></div></div></section>
+
+  <h6 class="pick">C &nbsp;·&nbsp; Motorsport &nbsp;(Barlow Condensed + Barlow)</h6>
+  <section class="C"><div class="hero"><div class="nav"><span>Home</span><span>About</span><span>Service</span><span>Collection</span><span>Contact</span></div>
+    <div class="eyebrow">Hybrid showroom</div><h1>The Precision Engineered Fleet</h1>
+    <p class="lead">Explore new arrivals, best sellers and brand inventories from fifteen of the world's most exceptional marques.</p><span class="btn">Explore catalog</span></div>
+    <div class="cards"><div class="card"><div class="brand">Porsche</div><div class="name">911 GT3 RS</div><div class="price">$241,300</div><div class="spec">518 hp · 342 lb-ft · RWD</div></div>
+    <div class="card"><div class="brand">Aston Martin</div><div class="name">Vanquish</div><div class="price">$429,000</div><div class="spec">824 hp · 738 lb-ft · RWD</div></div></div></section>
+
+  <h6 class="pick">D &nbsp;·&nbsp; The serif you saw, fixed &nbsp;(Bodoni Moda at weight 500, no fake bold)</h6>
+  <section class="D"><div class="hero"><div class="nav"><span>Home</span><span>About</span><span>Service</span><span>Collection</span><span>Contact</span></div>
+    <div class="eyebrow">Hybrid showroom</div><h1>The Precision Engineered Fleet</h1>
+    <p class="lead">Explore new arrivals, best sellers and brand inventories from fifteen of the world's most exceptional marques.</p><span class="btn">Explore catalog</span></div>
+    <div class="cards"><div class="card"><div class="brand">Porsche</div><div class="name">911 GT3 RS</div><div class="price">$241,300</div><div class="spec">518 hp · 342 lb-ft · RWD</div></div>
+    <div class="card"><div class="brand">Aston Martin</div><div class="name">Vanquish</div><div class="price">$429,000</div><div class="spec">824 hp · 738 lb-ft · RWD</div></div></div></section>
+</div></body></html>

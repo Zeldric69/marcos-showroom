@@ -1,5 +1,5 @@
 import React, { lazy, Suspense, useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigationType, Link } from 'react-router-dom';
 import { Navbar, Footer } from './main/components.jsx';
 import { auth } from './firebase/firebaseconfig.js';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
@@ -12,7 +12,20 @@ const About = lazy(() => import('./about_page/about.jsx'));
 const Services = lazy(() => import('./services_page/services.jsx'));
 const Profile = lazy(() => import('./profile_page/profile.jsx'));
 
-const ADMIN_EMAIL = (import.meta.env.VITE_ADMIN_EMAIL || '').trim().toLowerCase();
+function ScrollToTop() {
+    const location = useLocation();
+    const navigationType = useNavigationType();
+
+    useEffect(() => {
+        if (navigationType !== 'POP') window.scrollTo(0, 0);
+    }, [location.pathname, navigationType]);
+
+    return null;
+}
+
+function NotFound() {
+    return <main className="container min-vh-100 d-flex flex-column align-items-center justify-content-center text-center text-normal"><h1>Page not found</h1><p className="text-soft">The page you requested does not exist.</p><Link className="btn btn-brand" to="/">Return home</Link></main>;
+}
 
 function Layout() {
     const location = useLocation();
@@ -20,8 +33,19 @@ function Layout() {
     const [isAuthReady, setIsAuthReady] = useState(false);
     const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
     const [hasAdminClaim, setHasAdminClaim] = useState(false);
-    const isConfiguredAdmin = Boolean(user?.email && ADMIN_EMAIL && user.email.toLowerCase() === ADMIN_EMAIL);
-    const isAdmin = hasAdminClaim || isConfiguredAdmin;
+    const [toastMessage, setToastMessage] = useState('');
+    const isAdmin = hasAdminClaim;
+
+    useEffect(() => {
+        const pageTitle = {
+            '/': 'Home',
+            '/collection': 'Collection',
+            '/about': 'About',
+            '/services': 'Services',
+            '/profile': 'Profile'
+        }[location.pathname] || 'Page not found';
+        document.title = `${pageTitle} | Marcos Premium`;
+    }, [location.pathname]);
 
     // Track Firebase authentication state live
     useEffect(() => {
@@ -46,7 +70,8 @@ function Layout() {
     const handleLogout = async () => {
         try {
             await signOut(auth);
-            alert('Signed out successfully.');
+            setToastMessage('Signed out successfully.');
+            window.setTimeout(() => setToastMessage(''), 3000);
         } catch (error) {
             console.error('Sign out error:', error);
         }
@@ -59,6 +84,7 @@ function Layout() {
 
     return (
         <>
+            <ScrollToTop />
             <Navbar 
                 currentPage={currentPage} 
                 user={user} 
@@ -68,11 +94,12 @@ function Layout() {
             />
             <Suspense fallback={<main className="d-flex justify-content-center align-items-center min-vh-100 text-light">Loading showroom...</main>}>
                 <Routes>
-                    <Route path="/" element={<Front />} />
-                    <Route path="/collection" element={<Collection user={user} onOpenAuth={() => setIsAuthModalOpen(true)} />} />
+                    <Route path="/" element={<Front user={user} onOpenAuth={() => setIsAuthModalOpen(true)} />} />
+                    <Route path="/collection" element={<Collection user={user} onOpenAuth={() => setIsAuthModalOpen(true)} isAdmin={isAdmin} />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/services" element={<Services user={user} onOpenAuth={() => setIsAuthModalOpen(true)} />} />
                     <Route path="/profile" element={<Profile user={user} isAdmin={isAdmin} isAuthReady={isAuthReady} onOpenAuth={() => setIsAuthModalOpen(true)} onLogout={handleLogout} />} />
+                    <Route path="*" element={<NotFound />} />
                 </Routes>
             </Suspense>
             <Footer />
@@ -81,6 +108,7 @@ function Layout() {
                 isOpen={isAuthModalOpen} 
                 onClose={() => setIsAuthModalOpen(false)} 
             />
+            {toastMessage && <div className="toast show position-fixed bottom-0 end-0 m-3" role="status" style={{ zIndex: 1100 }}><div className="toast-body">{toastMessage}</div></div>}
         </>
     );
 }

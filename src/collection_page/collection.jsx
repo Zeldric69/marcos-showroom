@@ -1,87 +1,102 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import './collection.css';
 import '../main/shared.css';
-import { getVehicleImage } from './vehicleImages.js';
+import { getVehicleImage, getVehicleImageCredit } from './vehicleImages.js';
 import { createVehicleRequest } from '../services/vehicleRequests.js';
-import { subscribeToVehicles } from '../services/vehicles.js';
+import { useVehicles } from './useVehicles.js';
+import { SmartImage } from '../main/SmartImage.jsx';
+import { EmptyState, ErrorState, LoadingButton, SkeletonGrid, SuccessState, offlineError, signInRequired, useAsyncAction } from '../main/states.jsx';
 
-export default function Collection({ user, onOpenAuth }) {
+const parsePrice = (priceStr) => {
+    if (!priceStr) return null;
+    const amount = parseFloat(priceStr.replace(/[^0-9.-]+/g, ''));
+    if (!Number.isFinite(amount)) return null;
+    return { amount, currency: priceStr.includes('€') ? 'EUR' : 'USD' };
+};
+
+const comparePrice = (firstPriceText, secondPriceText, direction) => {
+    const firstPrice = parsePrice(firstPriceText);
+    const secondPrice = parsePrice(secondPriceText);
+    if (!firstPrice || !secondPrice) return firstPrice ? -1 : secondPrice ? 1 : 0;
+    if (firstPrice.currency !== secondPrice.currency) return firstPrice.currency === 'EUR' ? 1 : -1;
+    return (firstPrice.amount - secondPrice.amount) * direction;
+};
+
+export default function Collection({ user, onOpenAuth, isAdmin }) {
     const [activePage, setActivePage] = useState(1);
     const [currentBrandFilter, setCurrentBrandFilter] = useState('all');
     const [currentSearchQuery, setCurrentSearchQuery] = useState('');
     const [currentSortOrder, setCurrentSortOrder] = useState('default');
     const [selectedCar, setSelectedCar] = useState(null);
     const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
-    const [requestMessage, setRequestMessage] = useState('');
-    const [requestError, setRequestError] = useState('');
-    const [isRequestSubmitting, setIsRequestSubmitting] = useState(false);
-    const [vehicles, setVehicles] = useState([]);
-    const [vehiclesLoading, setVehiclesLoading] = useState(true);
-    const [vehiclesError, setVehiclesError] = useState('');
+    const requestAction = useAsyncAction({ context: 'request' });
+    const lastAction = useRef('purchase');
+    const { vehicles, status, error: loadError, retry } = useVehicles();
+    const modalRef = useRef(null);
 
-    useEffect(() => {
-        setVehiclesLoading(true);
-        return subscribeToVehicles(
-            (nextVehicles) => {
-                setVehicles(nextVehicles);
-                setVehiclesLoading(false);
-                setVehiclesError('');
-            },
-            (loadError) => {
-                console.error('Vehicle loading error:', loadError);
-                setVehiclesLoading(false);
-                setVehiclesError('The showroom inventory is temporarily unavailable.');
-            }
-        );
-    }, []);
+    const clearFilters = () => {
+        setCurrentSearchQuery('');
+        setCurrentBrandFilter('all');
+        setCurrentSortOrder('default');
+        setActivePage(1);
+    };
 
     useEffect(() => {
         if (!isDetailsModalOpen) return undefined;
 
         const previousOverflow = document.body.style.overflow;
         document.body.style.overflow = 'hidden';
+        const modal = modalRef.current;
+        const focusableElements = () => modal?.querySelectorAll('button:not(:disabled)') || [];
+        focusableElements()[0]?.focus();
+        const handleKeyDown = (event) => {
+            if (event.key === 'Escape') setIsDetailsModalOpen(false);
+            if (event.key !== 'Tab') return;
+            const elements = focusableElements();
+            const first = elements[0];
+            const last = elements[elements.length - 1];
+            if (event.shiftKey && document.activeElement === first) {
+                event.preventDefault();
+                last?.focus();
+            } else if (!event.shiftKey && document.activeElement === last) {
+                event.preventDefault();
+                first?.focus();
+            }
+        };
+        document.addEventListener('keydown', handleKeyDown);
         requestAnimationFrame(() => {
             document.getElementById('configuratorModal')?.scrollTo(0, 0);
         });
 
         return () => {
             document.body.style.overflow = previousOverflow;
+            document.removeEventListener('keydown', handleKeyDown);
         };
     }, [isDetailsModalOpen]);
 
     const itemsPerPage = 12;
     const vehicleMap = useMemo(() => Object.fromEntries(vehicles.map((vehicle) => [vehicle.id, vehicle])), [vehicles]);
     const keys = useMemo(() => vehicles.map((vehicle) => vehicle.id), [vehicles]);
-
-    useEffect(() => {
-        if (window.history.scrollRestoration) {
-            window.history.scrollRestoration = 'manual';
-        }
-        window.scrollTo(0, 0);
-    }, []);
-
-    // Helper to format/parse price
-    const parsePrice = (priceStr) => {
-        if (!priceStr) return 0;
-        return parseFloat(priceStr.replace(/[^0-9.-]+/g, "")) || 0;
-    };
+    const keysRef = useRef(keys);
+    keysRef.current = keys;
 
     // Filter and Sort Keys
     const visibleKeys = useMemo(() => {
         let filtered = keys.filter(key => {
             const carData = vehicleMap[key];
+            if (!carData) return false;
             const matchesBrand = currentBrandFilter === "all" || 
                 (carData.class && carData.class.toLowerCase() === currentBrandFilter.toLowerCase()) || 
                 (carData.make && carData.make.toLowerCase() === currentBrandFilter.toLowerCase());
-            const matchesSearch = carData.name.toLowerCase().includes(currentSearchQuery.toLowerCase());
+            const matchesSearch = String(carData.name || '').toLowerCase().includes(currentSearchQuery.toLowerCase());
             return matchesBrand && matchesSearch;
         });
 
         if (currentSortOrder === "low-high") {
-            filtered.sort((a, b) => parsePrice(vehicleMap[a].price) - parsePrice(vehicleMap[b].price));
+            filtered.sort((a, b) => comparePrice(vehicleMap[a]?.price, vehicleMap[b]?.price, 1));
         } else if (currentSortOrder === "high-low") {
-            filtered.sort((a, b) => parsePrice(vehicleMap[b].price) - parsePrice(vehicleMap[a].price));
+            filtered.sort((a, b) => comparePrice(vehicleMap[a]?.price, vehicleMap[b]?.price, -1));
         }
 
         return filtered;
@@ -90,82 +105,87 @@ export default function Collection({ user, onOpenAuth }) {
     const totalPages = Math.ceil(visibleKeys.length / itemsPerPage);
     const paginatedKeys = visibleKeys.slice((activePage - 1) * itemsPerPage, activePage * itemsPerPage);
 
-    // Random Best Sellers & Last 3 New Releases
+    // Best sellers stay stable while inventory records are updated.
     const newReleases = keys.slice(-3);
-    const mostSold = useMemo(() => [...keys].sort(() => 0.5 - Math.random()).slice(0, 3), [keys]);
+    // Keep the sample stable unless the inventory size changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const mostSold = useMemo(() => [...keysRef.current].sort(() => 0.5 - Math.random()).slice(0, 3), [keys.length]);
 
     const handleVehicleRequest = async (actionType) => {
-        setRequestMessage('');
-        setRequestError('');
-
+        lastAction.current = actionType;
+        if (typeof navigator !== 'undefined' && navigator.onLine === false) {
+            requestAction.fail(offlineError());
+            return;
+        }
         if (!user) {
-            setRequestError('Please sign in before submitting a vehicle request.');
+            requestAction.fail(signInRequired());
             onOpenAuth?.();
             return;
         }
 
-        setIsRequestSubmitting(true);
-        try {
+        await requestAction.run(async () => {
             await createVehicleRequest({ user, actionType, vehicle: selectedCar });
-            setRequestMessage(actionType === 'purchase'
-                ? 'Your purchase request has been recorded. Our team will contact you shortly.'
-                : 'Your test-drive request has been recorded. Our team will contact you shortly.');
-        } catch (error) {
-            console.error('Vehicle request error:', error);
-            setRequestError('We could not save your request. Please ensure the showroom database is enabled and try again.');
-        } finally {
-            setIsRequestSubmitting(false);
-        }
+            return actionType;
+        });
     };
 
     // Card Renderer Helper Component matching your generator function
-    const renderCarCard = (key, car) => (
-        <div className="col" key={key}>
-            <div className="card bg-dark text-white border-secondary h-100 shadow-sm vehicle-card">
-                <img loading="lazy" decoding="async" src={getVehicleImage(car)} className="card-img-top" alt={car.name} style={{ height: '190px', objectFit: 'cover' }} />
-                <div className="card-body d-flex flex-column">
-                    <h5 className="card-title fw-bold mb-1">{car.name}</h5>
-                    <p className="text-warning fw-bold mb-1 numeric-text">{car.price}</p>
-                    <p className="card-text text-muted small mb-2 text-uppercase">{car.class || 'Luxury vehicle'}</p>
-                    <button 
-                        className="btn btn-outline-warning btn-sm mt-auto w-100"
-                        onClick={() => {
-                            setSelectedCar({ ...car, id: key });
-                            setIsDetailsModalOpen(true);
-                        }}
-                    >
-                        View Details
-                    </button>
+    const renderCarCard = (key, car) => {
+        if (!car) return null;
+        const imageSrc = getVehicleImage(car);
+        return (
+            <div className="col" key={key}>
+                <div className="card bg-page text-strong border-line h-100 shadow-sm vehicle-card">
+                    <SmartImage key={imageSrc} src={imageSrc} className="card-img-top" alt={car.name} style={{ height: '190px' }} />
+                    {getVehicleImageCredit(car) && <small className="px-3 pt-2 text-soft">Photo: <a href={getVehicleImageCredit(car).sourceUrl} target="_blank" rel="noopener noreferrer" className="text-accent">{getVehicleImageCredit(car).author}</a> · <a href={getVehicleImageCredit(car).licenseUrl} target="_blank" rel="noopener noreferrer" className="text-accent">{getVehicleImageCredit(car).license}</a></small>}
+                    <div className="card-body d-flex flex-column">
+                        <h5 className="card-title fw-bold mb-1">{car.name}</h5>
+                        <p className="text-accent fw-bold mb-1 numeric-text">{car.price}</p>
+                        <p className="card-text text-soft small mb-2 text-uppercase">{car.class || 'Luxury vehicle'}</p>
+                        <button
+                            className="btn btn-brand-outline btn-sm mt-auto w-100"
+                            onClick={() => {
+                                setSelectedCar({ ...car, id: key });
+                                requestAction.reset();
+                                setIsDetailsModalOpen(true);
+                            }}
+                        >
+                            View Details
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-    );
+        );
+    };
 
     return (
-        <div className="collection-page-wrapper bg-dark text-white">
+        <div className="collection-page-wrapper bg-page text-strong">
             <div className="ng"></div>
 
             {/* --- HERO BANNER --- */}
-            <div className="service-hero-stats-wrapper position-relative overflow-hidden">
-                <img decoding="async"
-                    src="https://images.unsplash.com/photo-1692863211226-cbba732754c9?w=1280&auto=format&fit=crop&q=75" 
+            <div className="collection-hero-stats-wrapper position-relative overflow-hidden">
+                <SmartImage
+                    key="collection-hero"
+                    src="https://images.unsplash.com/photo-1692863211226-cbba732754c9?w=1280&auto=format&fit=crop&q=75"
                     className="hero-bg-img w-100" 
                     alt="Fleet Background"
-                    style={{ height: '350px', objectFit: 'cover', filter: 'brightness(0.4)' }} 
+                    style={{ height: '380px', filter: 'brightness(0.35)' }}
                 />
                 <div className="hero-overlay"></div>
-                <div className="container banner-text-holder text-center w-100 position-absolute top-50 start-50 translate-middle" style={{ zIndex: 2 }}>
+                <div className="container banner-text-holder text-center w-100 position-absolute start-50 translate-middle" style={{ top: '44%', zIndex: 2 }}>
                     <h1 className="display-3 text-white fw-bold text-uppercase">The Marcos Fleet</h1>
                     <p className="accent-brand-text fw-bold text-uppercase mt-2">Explore New Arrivals, Best Sellers, and Brand Inventories</p>
                 </div>
             </div>
 
-            <section className="py-5 bg-dark text-white">
+            <section className="py-5">
                 <div className="container py-4">
 
+                    {(status === 'live' || status === 'saved') && (
+                        <>
                     {/* --- NEW RELEASES SECTION --- */}
                     <div className="mb-5">
-                        <h3 className="fw-bold text-uppercase mb-4" style={{ color: '#c5a059' }}>New Releases</h3>
+                        <h3 className="fw-bold text-uppercase mb-4" style={{ color: 'var(--accent)' }}>New Releases</h3>
                         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center">
                             {newReleases.map(key => renderCarCard(key, vehicleMap[key]))}
                         </div>
@@ -173,11 +193,13 @@ export default function Collection({ user, onOpenAuth }) {
 
                     {/* --- MOST SOLD SECTION --- */}
                     <div className="mb-5">
-                        <h3 className="fw-bold text-uppercase mb-4" style={{ color: '#c5a059' }}>Best Sellers & Most Sold</h3>
+                        <h3 className="fw-bold text-uppercase mb-4" style={{ color: 'var(--accent)' }}>Best Sellers & Most Sold</h3>
                         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center">
                             {mostSold.map(key => renderCarCard(key, vehicleMap[key]))}
                         </div>
                     </div>
+                        </>
+                    )}
 
                     <hr className="border-secondary mb-5" />
 
@@ -186,20 +208,20 @@ export default function Collection({ user, onOpenAuth }) {
                         <div className="search-box-wrapper position-relative" style={{ minWidth: '280px' }}>
                             <input 
                                 type="text"
-                                className="form-control bg-dark text-white border-secondary ps-5"
+                                className="form-control ps-5"
                                 placeholder="Search models (e.g. 911, Artura)..."
                                 value={currentSearchQuery}
                                 onChange={(e) => { setCurrentSearchQuery(e.target.value); setActivePage(1); }}
-                                style={{ borderColor: '#23382c', fontSize: '0.9rem' }}
+                                style={{ fontSize: '0.9rem' }}
                             />
-                            <i className="fas fa-search text-warning position-absolute top-50 translate-middle-y start-0 ms-3"></i>
+                            <i className="fas fa-search text-accent position-absolute top-50 translate-middle-y start-0 ms-3"></i>
                         </div>
 
                         <select 
-                            className="form-select bg-dark text-white border-secondary"
+                            className="form-select"
                             value={currentSortOrder}
                             onChange={(e) => { setCurrentSortOrder(e.target.value); setActivePage(1); }}
-                            style={{ width: 'auto', borderColor: '#23382c', fontSize: '0.9rem' }}
+                            style={{ width: 'auto', fontSize: '0.9rem' }}
                         >
                             <option value="default">Sort by: Featured</option>
                             <option value="low-high">Price: Low to High</option>
@@ -225,11 +247,39 @@ export default function Collection({ user, onOpenAuth }) {
                         {visibleKeys.length === 0 ? "Showing 0 vehicles" : `Showing ${(activePage - 1) * itemsPerPage + 1}–${Math.min(activePage * itemsPerPage, visibleKeys.length)} of ${visibleKeys.length} vehicles`}
                     </div>
 
+                    {status === 'saved' && (
+                        <div className="alert alert-secondary text-center small" role="status">
+                            Showing our saved catalogue while the live inventory reconnects. Prices and availability may differ.
+                        </div>
+                    )}
+
                     {/* --- MAIN COLLECTION GRID --- */}
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5 justify-content-center mb-5">
-                        {paginatedKeys.length === 0 ? (
-                            <div className="text-center text-secondary py-5 w-100">
-                                <h5 className="fw-light">No luxury vehicles found matching your criteria.</h5>
+                        {status === 'loading' ? (
+                            <SkeletonGrid count={12} columnClass="col" />
+                        ) : status === 'error' ? (
+                            <div className="col-12"><ErrorState error={loadError} onRetry={retry} /></div>
+                        ) : status === 'empty' ? (
+                            <div className="col-12">
+                                <EmptyState
+                                    icon="fa-car-side"
+                                    title="The showroom is being restocked"
+                                    message={isAdmin
+                                        ? 'There are no vehicles in the database yet. Add one from the admin dashboard, or run npm run seed:vehicles to import the full catalogue.'
+                                        : 'New arrivals are on their way. Please check back soon, or contact the showroom to ask about upcoming vehicles.'}
+                                    action={isAdmin
+                                        ? { label: 'Open admin dashboard', to: '/profile#admin-panel' }
+                                        : { label: 'Contact the showroom', href: '#contact-footer' }}
+                                />
+                            </div>
+                        ) : paginatedKeys.length === 0 ? (
+                            <div className="col-12">
+                                <EmptyState
+                                    icon="fa-magnifying-glass"
+                                    title="No cars match your search"
+                                    message="Try a different model name, or clear the filters to see the full collection."
+                                    action={{ label: 'Clear filters', onClick: clearFilters }}
+                                />
                             </div>
                         ) : (
                             paginatedKeys.map(key => renderCarCard(key, vehicleMap[key]))
@@ -266,24 +316,38 @@ export default function Collection({ user, onOpenAuth }) {
 
             {/* --- CONFIGURATOR MODAL --- */}
             {isDetailsModalOpen && selectedCar && createPortal((
-            <div className="modal fade show d-block text-dark" id="configuratorModal" tabIndex="-1" role="dialog" aria-modal="true" style={{ backgroundColor: 'rgba(0, 0, 0, 0.75)', zIndex: 1060 }}>
+            <div ref={modalRef} className="modal fade show d-block text-dark" id="configuratorModal" tabIndex="-1" role="dialog" aria-modal="true" aria-labelledby="vehicle-details-title" style={{ backgroundColor: 'rgba(0, 0, 0, 0.75)', zIndex: 1060 }}>
                 <div className="modal-dialog modal-dialog-centered modal-lg">
-                    <div className="modal-content bg-dark text-white border border-secondary shadow-lg">
+                    <div className="modal-content shadow-lg">
                         <div className="modal-header border-bottom border-secondary">
-                            <h5 className="modal-title fw-bold">Vehicle Details</h5>
+                            <h5 id="vehicle-details-title" className="modal-title fw-bold">Vehicle Details</h5>
                             <button type="button" className="btn-close btn-close-white" onClick={() => setIsDetailsModalOpen(false)} aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
-                            {requestMessage && <div className="alert alert-success py-2" role="status">{requestMessage}</div>}
-                            {requestError && <div className="alert alert-danger py-2" role="alert">{requestError}</div>}
+                            {requestAction.status === 'success' && (
+                                <SuccessState
+                                    compact
+                                    title={requestAction.data === 'purchase' ? 'Purchase request sent' : 'Test drive requested'}
+                                    message="Our team will contact you shortly. You can follow it under My Vehicles / Bookings in your profile."
+                                />
+                            )}
+                            {requestAction.status === 'error' && (
+                                <ErrorState
+                                    compact
+                                    error={requestAction.error}
+                                    onRetry={() => handleVehicleRequest(lastAction.current)}
+                                    onDismiss={requestAction.reset}
+                                />
+                            )}
                             <div className="row align-items-center">
                                     <div className="col-md-5 mb-3 mb-md-0">
-                                        <img loading="lazy" decoding="async" src={getVehicleImage(selectedCar)} className="img-fluid rounded shadow border border-secondary w-100" alt="Vehicle" style={{ height: '260px', objectFit: 'cover' }} />
+                                        <SmartImage key={getVehicleImage(selectedCar)} src={getVehicleImage(selectedCar)} className="img-fluid rounded shadow border border-secondary w-100" alt={selectedCar.name} style={{ height: '260px' }} />
+                                        {getVehicleImageCredit(selectedCar) && <small className="d-block mt-2 text-muted">Photo: <a href={getVehicleImageCredit(selectedCar).sourceUrl} target="_blank" rel="noopener noreferrer" className="text-warning">{getVehicleImageCredit(selectedCar).author}</a> · <a href={getVehicleImageCredit(selectedCar).licenseUrl} target="_blank" rel="noopener noreferrer" className="text-warning">{getVehicleImageCredit(selectedCar).license}</a></small>}
                                     </div>
                                     <div className="col-md-7">
-                                        <h6 className="text-uppercase fw-bold mb-2" style={{ color: '#c5a059' }}>{selectedCar.name} - <span className="numeric-text">{selectedCar.price}</span></h6>
+                                        <h6 className="text-uppercase fw-bold mb-2" style={{ color: 'var(--accent)' }}>{selectedCar.name} - <span className="numeric-text">{selectedCar.price}</span></h6>
                                         <p className="text-light mb-3" style={{ fontSize: '0.9rem', lineHeight: '1.5' }}>{selectedCar.desc}</p>
-                                        <h6 className="text-uppercase fw-bold mb-2" style={{ color: '#c5a059' }}>Vehicle Features Sheet</h6>
+                                        <h6 className="text-uppercase fw-bold mb-2" style={{ color: 'var(--accent)' }}>Vehicle Features Sheet</h6>
                                         <div style={{ maxHeight: '160px', overflowY: 'auto' }} className="custom-scrollbar">
                                             <ul className="text-light ps-3 mb-0" style={{ fontSize: '0.85rem', lineHeight: '1.6' }}>
                                                 {selectedCar.features && selectedCar.features.map((feat, index) => (
@@ -296,8 +360,26 @@ export default function Collection({ user, onOpenAuth }) {
                         </div>
                         <div className="modal-footer border-top border-secondary d-flex justify-content-between">
                             <div className="d-flex gap-2">
-                                <button type="button" className="btn btn-outline-warning btn-sm" onClick={() => handleVehicleRequest('purchase')} disabled={isRequestSubmitting}><i className="fas fa-shopping-cart me-1"></i> {isRequestSubmitting ? 'Saving...' : 'Book Now'}</button>
-                                <button type="button" className="btn btn-outline-light btn-sm" onClick={() => handleVehicleRequest('testDrive')} disabled={isRequestSubmitting}><i className="fas fa-tachometer-alt me-1"></i> Test Drive</button>
+                                <LoadingButton
+                                    type="button"
+                                    className="btn btn-outline-warning btn-sm"
+                                    loading={requestAction.loading && lastAction.current === 'purchase'}
+                                    loadingText="Sending..."
+                                    disabled={requestAction.loading}
+                                    onClick={() => handleVehicleRequest('purchase')}
+                                >
+                                    <i className="fas fa-shopping-cart me-1"></i> Book Now
+                                </LoadingButton>
+                                <LoadingButton
+                                    type="button"
+                                    className="btn btn-outline-light btn-sm"
+                                    loading={requestAction.loading && lastAction.current === 'testDrive'}
+                                    loadingText="Sending..."
+                                    disabled={requestAction.loading}
+                                    onClick={() => handleVehicleRequest('testDrive')}
+                                >
+                                    <i className="fas fa-tachometer-alt me-1"></i> Test Drive
+                                </LoadingButton>
                             </div>
                             <button type="button" className="btn btn-secondary btn-sm" onClick={() => setIsDetailsModalOpen(false)}>Close Details</button>
                         </div>

@@ -2,36 +2,38 @@
 
 /* --- Global Body & Background Settings --- */
 body {
-    background-color: #0b0f19 !important;
-    color: #f3f4f6 !important;
+    background-color: var(--bg);
+    color: var(--text-strong);
     background-attachment: scroll;
     min-height: 100vh;
-    font-family: 'Manrope', sans-serif;
-   
-}
-.bg-black, 
-.bg-dark, 
-div[style*="background-color: #111827"] {
-    background-color: rgba(17, 24, 39, 0.6) !important;
-}
-section,
-div[style*="background-color"] {
-    background-color: transparent !important;
-    background-image: none !important;
-    border-top: none !important;
-    border-bottom: none !important;
+    font-family: var(--font-body);
 }
 
+.bg-black,
+.bg-dark {
+    background-color: rgb(var(--bg-rgb) / 0.6);
+}
+
+section,
+div[style*="background-color"] {
+    background-color: transparent;
+    background-image: none;
+    border-top: none;
+    border-bottom: none;
+}
+
+.collection-hero-stats-wrapper,
 .service-hero-stats-wrapper {
     position: relative;
-    min-height: 400px !important;
+    min-height: 380px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    padding-bottom: 40px !important;
-    width: 100% !important;
+    justify-content: center;
+    padding-top: 40px;
+    padding-bottom: 24px;
+    width: 100%;
     overflow: hidden;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid var(--line);
 }
 
 /* Forces the image to cover the container naturally without weird zooming/stretching */
@@ -41,8 +43,8 @@ div[style*="background-color"] {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Keeps natural proportions */
-    object-position: center 40%; /* Adjusts the focal point */
+    object-fit: cover;
+    object-position: center 40%;
     z-index: 0;
 }
 
@@ -53,31 +55,35 @@ div[style*="background-color"] {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.65));
+    background: linear-gradient(rgb(var(--bg-rgb) / 0.3), rgb(var(--bg-rgb) / 0.65));
     z-index: 1;
 }
 
 .accent-brand-text {
-    color: #c5a059 !important;
+    color: var(--accent);
     letter-spacing: 2px;
+}
+
+.banner-text-holder p {
+    color: var(--text-strong);
 }
 
 /* --- Typography & Headings --- */
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Cormorant Garamond', serif;
-    color: #ffffff;
+    font-family: var(--font-display);
+    color: var(--text-strong);
 }
 
 p, span {
-    color: #c2c9c5;
+    color: var(--text);
 }
 
 /* --- Showroom Vehicle Grid --- */
 #showroom-grid, .inventory-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
-    justify-content: center !important;
-    justify-items: center !important;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    justify-content: center;
+    justify-items: center;
     gap: 30px;
     padding: 40px;
     max-width: 1400px;
@@ -88,9 +94,9 @@ p, span {
 /* --- Showroom Cards (Heritage Green Theme) --- */
 .card {
     min-width: 210px;
-    background-color: #142018 !important;
-    color: #ffffff !important;
-    border: 1px solid #23382c !important;
+    background-color: var(--surface);
+    color: var(--text-strong);
+    border: 1px solid var(--line);
     border-radius: 8px;
     transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.6s cubic-bezier(0.25, 1, 0.5, 1);
     overflow: hidden;
@@ -98,7 +104,7 @@ p, span {
 
 .card:hover {
     transform: perspective(1000px) rotate(-4deg) scale(1.03);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 25px 50px rgb(var(--bg-rgb) / 0.8);
 }
 
 .card-img-top {
@@ -115,39 +121,39 @@ p, span {
     position: absolute;
     inset: 0 0 auto;
     height: 220px;
-    background: linear-gradient(180deg, rgba(8, 12, 16, 0.04), rgba(8, 12, 16, 0.28));
+    background: linear-gradient(180deg, rgb(var(--bg-rgb) / 0.04), rgb(var(--bg-rgb) / 0.28));
     pointer-events: none;
     z-index: 1;
 }
 
 .vehicle-card .card-img-top {
     aspect-ratio: 16 / 10;
-    height: auto !important;
-    object-fit: cover !important;
+    height: auto;
+    object-fit: cover;
     object-position: center;
 }
 
 #configuratorModal {
-    position: fixed !important;
-    inset: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    min-height: 0 !important;
-    max-height: none !important;
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    min-height: 0;
+    max-height: none;
     overflow-x: hidden;
     overflow-y: auto;
-    background-color: rgba(0, 0, 0, 0.75) !important;
+    background-color: rgba(0, 0, 0, 0.75);
 }
 
 #configuratorModal .modal-dialog {
-    height: auto !important;
-    min-height: calc(100vh - 2rem) !important;
-    margin: 1rem auto !important;
-    align-items: flex-start !important;
+    height: auto;
+    min-height: calc(100vh - 2rem);
+    margin: 1rem auto;
+    align-items: flex-start;
 }
 
 #configuratorModal .modal-content {
-    background-color: rgba(17, 24, 39, 0.98) !important;
+    background-color: rgb(var(--bg-rgb) / 0.98);
 }
 
 .card-body {
@@ -159,11 +165,11 @@ p, span {
 }
 
 .card-title {
-    color: #ffffff !important;
+    color: var(--text-strong);
 }
 
 .card-text {
-    color: #b0bfc0 !important;
+    color: var(--text-soft);
 }
 
 /* --- Card Badges (Warm Tan Theme) --- */
@@ -172,90 +178,89 @@ p, span {
     top: 10px;
     right: 10px;
     padding: 5px 10px;
-    background: #c5a059 !important;
-    color: #0a0f0d !important;
+    background: var(--accent);
+    color: var(--on-accent);
     font-weight: bold;
     border-radius: 4px;
     font-size: 0.85rem;
     z-index: 2;
 }
 
-
-
 /* --- Filter Buttons Override (Fixes Bootstrap conflicts) --- */
 .catalog-filter-nav .filter-brand-btn {
-    color: #ffffff !important;
-    background-color: transparent !important;
-    border: 1px solid #23382c !important;
+    color: var(--text-strong);
+    background-color: transparent;
+    border: 1px solid var(--line);
     transition: all 0.3s ease;
 }
 
 /* Hover State: Turns Golden */
 .catalog-filter-nav .filter-brand-btn:hover {
-    color: #c5a059 !important;
-    border-color: #c5a059 !important;
-    background-color: rgba(197, 160, 89, 0.05) !important;
+    color: var(--accent);
+    border-color: var(--accent);
+    background-color: rgb(var(--accent-rgb) / 0.05);
 }
 
 /* Active / Clicked State: Filled Golden with Dark Text */
 .catalog-filter-nav .filter-brand-btn.active,
 .catalog-filter-nav .filter-brand-btn:active {
-    color: #0a0f0d !important; 
-    background-color: #c5a059 !important; 
-    border-color: #c5a059 !important;
+    color: var(--on-accent);
+    background-color: var(--accent);
+    border-color: var(--accent);
     font-weight: bold;
 }
 
 /* --- General Buttons --- */
 .btn-outline-light {
-    border-color: #c5a059 !important;
-    color: #c5a059 !important;
+    border-color: var(--accent);
+    color: var(--accent);
     transition: 0.3s;
 }
 
 .btn-outline-light:hover {
-    background: #c5a059 !important;
-    color: #0a0f0d !important;
-    border-color: #c5a059 !important;
+    background: var(--accent);
+    color: var(--on-accent);
+    border-color: var(--accent);
 }
+
 @media (min-width: 576px) and (max-width: 991.98px) {
     .service-hero-stats-wrapper {
-        min-height: 340px !important;
-        padding-bottom: 28px !important;
+        min-height: 340px;
+        padding-bottom: 28px;
     }
 
     .service-hero-stats-wrapper .hero-bg-img {
-        height: 340px !important;
+        height: 340px;
     }
 
     .banner-text-holder h1 {
-        font-size: clamp(2.7rem, 7vw, 4.5rem) !important;
+        font-size: clamp(2.7rem, 7vw, 4.5rem);
     }
 
     #showroom-grid,
     .inventory-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 20px;
         padding: 28px 20px;
     }
 
     .collection-page-wrapper .container.py-4 {
-        padding-top: 2rem !important;
+        padding-top: 2rem;
     }
 }
 
 @media (max-width: 575.98px) {
     .service-hero-stats-wrapper {
-        min-height: 300px !important;
-        padding-bottom: 22px !important;
+        min-height: 300px;
+        padding-bottom: 22px;
     }
 
     .service-hero-stats-wrapper .hero-bg-img {
-        height: 300px !important;
+        height: 300px;
     }
 
     .banner-text-holder h1 {
-        font-size: clamp(2.25rem, 12vw, 3.5rem) !important;
+        font-size: clamp(2.25rem, 12vw, 3.5rem);
         line-height: 0.92;
     }
 
@@ -267,16 +272,16 @@ p, span {
 
     #showroom-grid,
     .inventory-grid {
-        grid-template-columns: 1fr !important;
+        grid-template-columns: 1fr;
         gap: 16px;
         padding: 20px 12px;
     }
 
     .collection-page-wrapper .container.py-4 {
-        padding-top: 1.25rem !important;
-        padding-bottom: 1.25rem !important;
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 
     .collection-page-wrapper .row {
@@ -294,13 +299,13 @@ p, span {
     }
 
     .collection-page-wrapper .d-flex.justify-content-center.align-items-center {
-        align-items: stretch !important;
+        align-items: stretch;
     }
 
     .search-box-wrapper,
     .collection-page-wrapper .form-select {
-        width: 100% !important;
-        min-width: 0 !important;
+        width: 100%;
+        min-width: 0;
     }
 
     .vehicle-card .card-img-top {

@@ -1,0 +1,806 @@
+{
+  "porsche-panamera-turbo-s": {
+    "author": "Sarah Larson from Ann Arbor, MI, USA",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2013_Porsche_Panamera_Turbo_S_(8404035404).jpg"
+  },
+  "audi-a8-l": {
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAudi_A8_L_D5_IMG_0067.jpg"
+  },
+  "porsche-panamera-gts": {
+    "author": "Alexandre Prévot from Nancy, France",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3APorsche_Panamera_GTS_(19106049272).jpg"
+  },
+  "mclaren-720s": {
+    "author": "Ermell",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMaclaren_720S_PA280972-PSD.jpg"
+  },
+  "porsche-taycan-4s": {
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3APorsche_Taycan_4S_IMG_3526.jpg"
+  },
+  "mclaren-765lt": {
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMcLaren_765LT_IMG_3931.jpg"
+  },
+  "audi-rs5-coupe": {
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAudi_RS5_Coupe_IMG_0912.jpg"
+  },
+  "audi-rs7-sportback": {
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAudi_RS7_C8_IMG_4323.jpg"
+  },
+  "audi-rsq8": {
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAudi_RSQ8_IMG_4308.jpg"
+  },
+  "audi-rsq3": {
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAudi_RS_Q3_Sportback_IMG_4828.jpg"
+  },
+  "audi-rs-etron-gt": {
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAudi_RS_e-tron_GT_IMG_4310.jpg"
+  },
+  "porsche-cayenne-turbo-gt": {
+    "author": "MrWalkr",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3APorsche_Cayenne_Turbo_GT.jpg"
+  },
+  "porsche-911-carrera-s": {
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3APorsche_992_Carrera_S_coupe_IMG_5838.jpg"
+  },
+  "audi-etron-gt-quattro": {
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAudi_e-tron_GT_IMG_5689.jpg"
+  },
+  "audi-rs3-sedan": {
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAudi_RS3_8Y_Sedan_IMG_6030.jpg"
+  },
+  "audi-sq8": {
+    "author": "Damian B Oh",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAudi_SQ8_MLB_black_(1).jpg"
+  },
+  "porsche-911-carrera-gts": {
+    "author": "MrWalkr",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3APorsche_911_(992)_Carrera_GTS.jpg"
+  },
+  "porsche-911-gt3": {
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3APorsche_992_GT3_1X7A0323.jpg"
+  },
+  "porsche-911-carrera-4s": {
+    "author": "Alexandre Prevot from Nancy, France",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3APorsche_992_Carrera_4S_(51943917084).jpg"
+  },
+  "porsche-taycan-turbo-s": {
+    "author": "DestinationFearFan",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2020_Porsche_Taycan_Turbo_S.jpg"
+  },
+  "porsche-911-turbo-s": {
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3APorsche_992_Turbo_S_1X7A0411.jpg"
+  },
+  "audi-q8-etron": {
+    "author": "Alexander-93",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAudi_Q8_e-tron_55_quattro_1X7A6952.jpg"
+  },
+  "audi-rs6-avant": {
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAudi_RS6_Avant_C8_1X7A0305.jpg"
+  },
+  "porsche-718-cayman-gts-40": {
+    "author": "Alexander-93",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3APorsche_718_Cayman_GTS_1X7A7165.jpg"
+  },
+  "porsche-911-gt3-rs": {
+    "author": "Alexander-93",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3APorsche_911_GT3_RS_(2022)_1X7A7164.jpg"
+  },
+  "porsche-taycan-gts": {
+    "author": "Ethan Llamas",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3APorsche_Taycan_GTS_2023.jpg"
+  },
+  "audi-tt-rs": {
+    "author": "Alexandre Prevot from Nancy, France",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAudi_TT_RS_Iconic_Edition_(53342624369).jpg"
+  },
+  "porsche-911-dakar": {
+    "author": "Calreyn88",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2023_Porsche_911_Dakar_2.jpg"
+  },
+  "mclaren-artura": {
+    "author": "Alexander-93",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMcLaren_Artura_IMG_0527.jpg"
+  },
+  "audi-r8-v10-performance": {
+    "author": "MoCars",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2023_Audi_R8_Coupe_V10_Performance_RWD_at_Audi_Manchester_02.jpg"
+  },
+  "audi-rs4-avant": {
+    "author": "MoCars",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2023_Audi_RS4_Avant_in_Navarra_Blue_01.jpg"
+  },
+  "mclaren-gt": {
+    "author": "Matti Blume",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMcLaren_GTS%2C_Frankfurt_am_Main_(P1032583).jpg"
+  },
+  "audi-q7": {
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2025_Audi_Q7_(4M)_DSC_7473.jpg"
+  },
+  "porsche-718-cayman-gt4": {
+    "author": "Calreyn88",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2023_Porsche_718_Cayman_GT4_2.jpg"
+  },
+  "porsche-718-spyder-rs": {
+    "author": "Calreyn88",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2024_Porsche_718_Spyder_RS.jpg"
+  },
+  "porsche-911-targa-4-gts": {
+    "author": "Calreyn88",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2024_Porsche_911_992_Targa_4_GTS.jpg"
+  },
+  "audi-rs6-avant-gt": {
+    "author": "Johnny Vesterlund",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAudi_RS6_Avant_GT.jpg"
+  },
+  "audi-r8-spyder": {
+    "author": "Alexandre Prevot",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAudi_R8_Spyder_V10_performance_quattro_(2).jpg"
+  },
+  "porsche-macan-gts": {
+    "author": "Alexandre Prevot from Nancy, France",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3APorsche_Macan_Turbo_(55027447703).jpg"
+  },
+  "audi-s8": {
+    "author": "Charles from Port Chester, New York",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAudi_S8_(2025)_(54801905644).jpg"
+  },
+  "bmw-z4-m40i": {
+    "author": "Tokumeigakarinoaoshima",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ABMW_Z4_M40i_(G29)_front.jpg"
+  },
+  "mclaren-720s-spider": {
+    "author": "Vauxford",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2019_McLaren_MSO_720S_Spider.jpg"
+  },
+  "mclaren-speedtail": {
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMcLaren_Speedtail_Genf_2019_1Y7A5636.jpg"
+  },
+  "mercedes-amg-e63s": {
+    "author": "Tokumeigakarinoaoshima",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMercedes-AMG_E63_S_4MATIC%2B_(W213).jpg"
+  },
+  "mercedes-amg-cla45s": {
+    "author": "Tokumeigakarinoaoshima",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMercedes-AMG_CLA_45_S_4MATIC%2B_Coup%C3%A9_(C118)_front.jpg"
+  },
+  "bmw-x6m-competition": {
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ABMW_X6_M_Competition_(G06)_IMG_3572.jpg"
+  },
+  "mercedes-amg-glc63s": {
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMercedes-AMG_GLC_63_(X253)_IMG_2597.jpg"
+  },
+  "mclaren-elva": {
+    "author": "MrWalkr",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMcLaren_Elva.jpg"
+  },
+  "mercedes-amg-a45s": {
+    "author": "Damian B Oh",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMercedes-Amg_A45_S_(W177)_black_(2).jpg"
+  },
+  "mercedes-maybach-s680": {
+    "author": "Jengtingchen",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMercedes-Maybach_S_680_Pullman_001.jpg"
+  },
+  "bmw-m8-competition": {
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ABMW_M8_Competition_IMG_5708.jpg"
+  },
+  "mercedes-amg-gt-4-door-63s": {
+    "author": "crash71100",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMercedes_AMG_GT_4_Doors_63_S_(48536796706).jpg"
+  },
+  "mclaren-600lt": {
+    "author": "Maksym Shkinder",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMcLaren_600LT.jpg"
+  },
+  "bmw-i4-m50": {
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ABMW_i4_M50_IMG_6685.jpg"
+  },
+  "bmw-840i-gran-coupe": {
+    "author": "Damian B Oh",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ABMW_840i_Gran_Coupe_G16_black_(2).jpg"
+  },
+  "bmw-ix-m60": {
+    "author": "Wikisympathisant",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2022-05_BMW_IX-M60.jpg"
+  },
+  "mercedes-amg-gt-black-series": {
+    "author": "Fiver, der Hellseher",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMercedes-AMG_GT_Black_Series.jpg"
+  },
+  "bmw-m3-competition": {
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ABMW_M3_Competition_(G80)_1X7A0170.jpg"
+  },
+  "bmw-m4-csl": {
+    "author": "MrWalkr",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2022_BMW_M4_CSL.jpg"
+  },
+  "mercedes-amg-sl63": {
+    "author": "Alexander-93",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMercedes-AMG_SL_63_(R232)_1X7A7035.jpg"
+  },
+  "bmw-xm": {
+    "author": "Stefan Oberreuter",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2023_BMW_XM.jpg"
+  },
+  "mclaren-750s": {
+    "author": "MrWalkr",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMcLaren_750S.jpg"
+  },
+  "bmw-x5m-competition": {
+    "author": "Alexander-93",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ABMW_X5_M_(G05)_1X7A7047.jpg"
+  },
+  "mclaren-solus-gt": {
+    "author": "MrWalkr",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2023_McLaren_Solus_GT.jpg"
+  },
+  "bmw-x7-m60i": {
+    "author": "Alexander-93",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ABMW_G07_X7_M60i_1X7A7226.jpg"
+  },
+  "bmw-m2": {
+    "author": "Alexander-93",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ABMW_G87_M2_1X7A1838.jpg"
+  },
+  "mercedes-eqg": {
+    "author": "Tokumeigakarinoaoshima",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMercedes-Benz_Concept_EQG.jpg"
+  },
+  "mercedes-amg-c63s-e-performance": {
+    "author": "Tokumeigakarinoaoshima",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMercedes-AMG_C_63_S_E_Performance_(W206)_front.jpg"
+  },
+  "mercedes-amg-s63": {
+    "author": "Tokumeigakarinoaoshima",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AThe_frontview_of_Mercedes-AMG_S_63_E_PERFORMANCE_(W223).jpg"
+  },
+  "bmw-m5-competition": {
+    "author": "Alexander-93",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ABMW_M5_(G90)_DSC_6010.jpg"
+  },
+  "mercedes-amg-gle63s": {
+    "author": "Alexander-93",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2023_Mercedes-AMG_GLE_63_S_4MATIC_IMG_9842.jpg"
+  },
+  "bmw-760e-xdrive": {
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ABMW_G70_M760e_xDrive_DSC_7348.jpg"
+  },
+  "bmw-m3-touring": {
+    "author": "Calreyn88",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ABMW_M3_Touring.jpg"
+  },
+  "mercedes-amg-gt63s": {
+    "author": "Tokumeigakarinoaoshima",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMercedes-AMG_GT_63_S_E_Performance_Coupe_(C192)_front.jpg"
+  },
+  "mercedes-eqs-amg-53": {
+    "author": "OWS Photography",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMercedes-AMG_EQS53_(V297)_Washington_DC_Metro_Area%2C_USA_(2).jpg"
+  },
+  "bmw-m4-competition": {
+    "author": "OWS Photography",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ABMW_M4_Competition_(G82)_Washington_DC_Metro_Area%2C_USA_(1).jpg"
+  },
+  "mercedes-amg-gls63": {
+    "author": "Alexandre Prevot from Nancy, France",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMercedes-AMG_GLS_63_(53580565692).jpg"
+  },
+  "rolls-royce-wraith": {
+    "author": "FR",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ASpectre_-_Rolls-Royce_Wraith.jpg"
+  },
+  "mclaren-senna": {
+    "author": "Charles from Port Chester, New York",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMcLaren_Senna_(2021)_(55082448159).jpg"
+  },
+  "mclaren-artura-spider": {
+    "author": "C.Stadler/Bwag ( talk / email )",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMcLaren_Artura_Spider.JPG"
+  },
+  "mercedes-amg-g63": {
+    "author": "Charles from Port Chester, New York",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMercedes-Benz_G-Klasse_(W463)_G_63_AMG_(2023)_(53967592162).jpg"
+  },
+  "lamborghini-huracan-evo-spyder": {
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ALamborghini_Huracan_Evo_Spyder_Genf_2019_1Y7A5556.jpg"
+  },
+  "aston-martin-db11": {
+    "author": "TJSRX",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAston_Martin_DB11_V12.jpg"
+  },
+  "ferrari-f8-tributo": {
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFerrari_F8_Tributo_IMG_3273.jpg"
+  },
+  "ferrari-812-superfast": {
+    "author": "Y.Leclercq",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFerrari_812_Superfast.jpg"
+  },
+  "ferrari-portofino-m": {
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFerrari_Portofino_M_IMG_4351.jpg"
+  },
+  "bentley-continental-gt-speed": {
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ABentley_Continental_GT_Speed_(3rd_gen.)_IMG_0015.jpg"
+  },
+  "lamborghini-aventador-svj": {
+    "author": "Bryan S",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ALamborghini_Aventador_SVJ_63.jpg"
+  },
+  "lotus-evija": {
+    "author": "Liam Walker",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2020_Lotus_Evija.jpg"
+  },
+  "ferrari-296-gtb": {
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFerrari_296_GTB_1X7A6377.jpg"
+  },
+  "lamborghini-huracan-sto": {
+    "author": "The Essex car spotter",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ALamborghini_Huracan_STO.jpg"
+  },
+  "aston-martin-dbs-superleggera": {
+    "author": "Calreyn88",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2022_Aston_Martin_DBS_Superleggera.jpg"
+  },
+  "rolls-royce-ghost": {
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ARolls-Royce_Ghost_II_IAA_2021_1X7A0005.jpg"
+  },
+  "lamborghini-revuelto": {
+    "author": "江草慧至",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ALamborghini_Revuelto.jpg"
+  },
+  "lamborghini-urus-performante": {
+    "author": "Alexander-93",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ALamborghini_Urus_Performante_1X7A6803.jpg"
+  },
+  "bentley-bentayga-speed": {
+    "author": "Calreyn88",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2023_Bentley_Bentayga.jpg"
+  },
+  "ferrari-sf90-stradale": {
+    "author": "Charles from Port Chester, New York",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFerrari_SF90_Stradale_(2023)_(52864606180).jpg"
+  },
+  "bentley-bentayga-ewb": {
+    "author": "Calreyn88",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2023_Bentley_Bentayga.jpg"
+  },
+  "lotus-emira": {
+    "author": "Calreyn88",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2023_Lotus_Emira_V6_First_Edition.jpg"
+  },
+  "lamborghini-huracan-tecnica": {
+    "author": "Alexander-93",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ALamborghini_Hurac%C3%A1n_Tecnica_1X7A7430.jpg"
+  },
+  "ferrari-812-competizione": {
+    "author": "Calreyn88",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2023_Ferrari_812_Competizione_Aperta.jpg"
+  },
+  "lamborghini-huracan-sterrato": {
+    "author": "MrWalkr",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2023_Lamborghini_Huracan_Sterrato.jpg"
+  },
+  "rolls-royce-spectre": {
+    "author": "User 3204",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2023_Rolls-Royce_Spectre.jpg"
+  },
+  "lotus-eletre": {
+    "author": "Alexander-93",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ALotus_Eletre_IAA_2023_1X7A0668.jpg"
+  },
+  "aston-martin-valkyrie": {
+    "author": "Calreyn88",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2022_Aston_Martin_Valkyrie_1.jpg"
+  },
+  "bentley-mulliner-batur": {
+    "author": "MrWalkr",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ABentley_Mulliner_Batur.jpg"
+  },
+  "bentley-flying-spur-speed": {
+    "author": "Calreyn88",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2023_Bentley_Flying_Spur_Speed.jpg"
+  },
+  "lotus-emeya": {
+    "author": "JustAnotherCarDesigner",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ALotus_Emeya_003.jpg"
+  },
+  "lamborghini-urus-s": {
+    "author": "JustAnotherCarDesigner",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ALamborghini_Urus_SE_001.jpg"
+  },
+  "bentley-continental-gtc": {
+    "author": "Calreyn88",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2024_Bentley_Continental_GTC_Speed.jpg"
+  },
+  "ferrari-purosangue": {
+    "author": "Alexander-93",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFerrari_Purosangue_IMG_9554.jpg"
+  },
+  "ferrari-roma": {
+    "author": "Alexander-93",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFerrari_Roma_IMG_9620.jpg"
+  },
+  "aston-martin-vantage": {
+    "author": "Matti Blume",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAston_Martin_Vantage%2C_EMS_2024%2C_Essen_(P1032159).jpg"
+  },
+  "lamborghini-temerario": {
+    "author": "Alexandre Prevot",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ALamborghini_Temerario.jpg"
+  },
+  "rolls-royce-cullinan": {
+    "author": "Calreyn88",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2024_Rolls-Royce_Cullinan_(70701).jpg"
+  },
+  "rolls-royce-phantom": {
+    "author": "Dietmar Rabich",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ARolls-Royce_Phantom_II_--_2024.jpg"
+  },
+  "aston-martin-db12": {
+    "author": "Tokumeigakarinoaoshima",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAston_Martin_DB12_Coup%C3%A9.jpg"
+  },
+  "aston-martin-dbx707": {
+    "author": "Calreyn88",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2024_Aston_Martin_DBX707.jpg"
+  },
+  "lotus-exige": {
+    "author": "No machine-readable author provided. Sfoskett~commonswiki assumed (based on copyright claims).",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ALotus_Exige.jpg"
+  },
+  "aston-martin-vanquish": {
+    "author": "Calreyn88",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2025_Aston_Martin_Vanquish_1.jpg"
+  },
+  "ferrari-296-gts": {
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFerrari_296_GTS_DSC_9039.jpg"
+  },
+  "bugatti-chiron-super-sport": {
+    "author": "MrWalkr",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ABugatti_Chiron_Super_Sport.jpg"
+  },
+  "bugatti-chiron-pur-sport": {
+    "author": "MrWalkr",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ABugatti_Chiron_Pur_Sport.jpg"
+  },
+  "maserati-levante-trofeo": {
+    "author": "MrWalkr",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2021_Maserati_Levante_Trofeo.jpg"
+  },
+  "pagani-huayra": {
+    "author": "Autoviva",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3APaganiHuayra.jpg"
+  },
+  "koenigsegg-gemera": {
+    "author": "MrWalkr",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AKoenigsegg_Gemera.jpg"
+  },
+  "maserati-mc20-cielo": {
+    "author": "MrWalkr",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2022_Maserati_MC20_Cielo.jpg"
+  },
+  "koenigsegg-jesko": {
+    "author": "Thomas Vogt from Paderborn, Deutschland",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AKoenigsegg_Jesko_(52558091721).jpg"
+  },
+  "maserati-grecale-trofeo": {
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMaserati_Grecale_Trofeo_1X7A6383.jpg"
+  },
+  "pagani-utopia": {
+    "author": "MrWalkr",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3APagani_Utopia.jpg"
+  },
+  "maserati-mc20": {
+    "author": "Mr.choppers",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2023_Maserati_MC20_in_Digital_Mint%2C_rear_right.jpg"
+  },
+  "bugatti-tourbillon": {
+    "author": "MrWalkr",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ABugatti_Tourbillon.jpg"
+  },
+  "maserati-granturismo-trofeo": {
+    "author": "Alexander-93",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMaserati_GranTurismo_Trofeo_IMG_7283.jpg"
+  },
+  "koenigsegg-regera": {
+    "author": "Calreyn88",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AKoenigsegg_Regera_(31491).jpg"
+  }
+}

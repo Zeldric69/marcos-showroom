@@ -1,0 +1,172 @@
+.state-panel {
+    padding: 2rem 1.5rem;
+    border-radius: 16px;
+    background: var(--surface);
+    color: var(--text-strong);
+    text-align: center;
+}
+
+.state-panel h3 {
+    margin: 1rem 0 .5rem;
+    font-size: 1.25rem;
+}
+
+.state-panel p {
+    max-width: 46ch;
+    margin: 0 auto 1rem;
+    color: var(--text-soft);
+}
+
+.state-body {
+    min-width: 0;
+}
+
+.state-error {
+    border: 1px solid var(--danger);
+}
+
+.state-success {
+    border: 1px solid var(--success);
+}
+
+.state-empty {
+    border: 1px dashed var(--line);
+}
+
+.state-icon {
+    color: var(--danger);
+    font-size: 2.2rem;
+}
+
+.state-icon--muted {
+    color: var(--accent);
+}
+
+.state-steps {
+    max-width: 44ch;
+    margin: 0 auto 1.25rem;
+    padding-left: 1.2rem;
+    color: var(--text-strong);
+    text-align: left;
+}
+
+.state-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .75rem;
+}
+
+.state-tech {
+    margin-top: 1rem;
+    color: var(--text-soft);
+    font-size: .8rem;
+}
+
+.state-tech code {
+    word-break: break-all;
+    color: var(--text);
+}
+
+.state-panel--compact {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem 1.25rem;
+    text-align: left;
+}
+
+.state-panel--compact h3 {
+    margin: 0 0 .25rem;
+    font-size: 1rem;
+}
+
+.state-panel--compact p {
+    max-width: none;
+    margin: 0 0 .75rem;
+}
+
+.state-panel--compact .state-steps {
+    max-width: none;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.state-panel--compact .state-actions {
+    justify-content: flex-start;
+}
+
+.state-tick {
+    display: block;
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 1rem;
+    color: var(--success);
+}
+
+.state-tick__circle {
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-dasharray: 151;
+    stroke-dashoffset: 151;
+    animation: state-draw .55s ease-out forwards;
+}
+
+.state-tick__check {
+    stroke: currentColor;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 50;
+    stroke-dashoffset: 50;
+    animation: state-draw .35s .4s ease-out forwards;
+}
+
+.state-spinner {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-right: .55rem;
+    vertical-align: -.15em;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: state-spin .7s linear infinite;
+}
+
+.state-skeleton {
+    height: 340px;
+    border-radius: 12px;
+    background: linear-gradient(110deg, var(--surface) 30%, var(--surface-2) 50%, var(--surface) 70%);
+    background-size: 200% 100%;
+    animation: state-shimmer 1.4s linear infinite;
+}
+
+@keyframes state-draw {
+    to { stroke-dashoffset: 0; }
+}
+
+@keyframes state-spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes state-shimmer {
+    to { background-position: -200% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .state-tick__circle,
+    .state-tick__check {
+        animation: none;
+        stroke-dashoffset: 0;
+    }
+
+    .state-spinner {
+        animation-duration: 1.8s;
+    }
+
+    .state-skeleton {
+        animation: none;
+    }
+}

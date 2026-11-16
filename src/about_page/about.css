@@ -1,59 +1,58 @@
 /* --- About Page Specific Styles --- */
 
 body {
-    background-color: #0b0f19 !important;
-    color: #f3f4f6 !important;
-    font-family: 'Manrope', sans-serif;
-}    
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Cormorant Garamond', serif;
+    background-color: var(--bg);
+    color: var(--text-strong);
+    font-family: var(--font-body);
 }
 
-.bg-black, 
-.bg-dark, 
-div[style*="background-color: #111827"] {
-    background-color: rgba(17, 24, 39, 0.6) !important;
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+}
+
+.bg-black,
+.bg-dark {
+    background-color: rgb(var(--bg-rgb) / 0.6);
 }
 
 /* --- Unified Hero Banner (Matching Services Page Style) --- */
 .about-hero-stats-wrapper {
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.75)),
-        url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1600') !important;
-    background-position: center center !important;
-    background-repeat: no-repeat !important;
-    background-size: cover !important;
-    min-height: 420px !important;
+    background: linear-gradient(rgb(var(--bg-rgb) / 0.45), rgb(var(--bg-rgb) / 0.8)),
+        url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1600');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 380px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end !important;
-    padding-bottom: 30px !important;
-    padding-top: 40px !important;
-    width: 100% !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    justify-content: center;
+    padding-top: 40px;
+    padding-bottom: 24px;
+    width: 100%;
+    border-bottom: 1px solid var(--line);
 }
 
 .about-header-banner {
-    min-height: auto !important;
-    padding: 0 !important;
-    background: transparent !important;
-    border: none !important;
+    min-height: auto;
+    padding: 0;
+    background: transparent;
+    border: none;
 }
 
 /* Brand Accent & Typography */
 .accent-brand-text {
-    color: #c5a059 !important;
+    color: var(--accent);
     letter-spacing: 2px;
 }
 
 #company-history {
     font-size: 1.1rem;
     line-height: 1.8;
-    color: #ccc;
+    color: var(--text);
 }
 
 .description-text {
-    color: #cbd5e1;
+    color: var(--text);
 }
 
 /* --- Compact Capabilities Styling --- */
@@ -63,20 +62,20 @@ div[style*="background-color: #111827"] {
 
 /* --- Core Values Cards Glassmorphism --- */
 .col-md-4 .bg-dark {
-    background: rgba(26, 26, 26, 0.7) !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    background: var(--surface);
+    border: 1px solid var(--line);
     transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .col-md-4 .bg-dark:hover {
     transform: translateY(-5px);
-    border-color: #c5a059 !important;
+    border-color: var(--accent);
 }
 
 /* --- Distinct Footer Separation --- */
 footer.footer-section {
-    background: #09090b !important;
-    border-top: 1px solid rgba(197, 160, 89, 0.3) !important;
+    background: var(--bg);
+    border-top: 1px solid rgb(var(--accent-rgb) / 0.3);
     margin-top: 40px;
     position: relative;
     z-index: 10;

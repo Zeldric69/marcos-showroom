@@ -1,0 +1,231 @@
+/* src/main/theme.css  -  the ONLY place colours and fonts are defined */
+:root {
+  /* 60% - background family */
+  --bg: #0B0C0E;
+  --surface: #14161B;
+  --surface-2: #1D2027;
+  --line: #2B2F3A;
+
+  /* 30% - text family */
+  --text: #E2E4E9;
+  --text-strong: #F4F5F7;
+  --text-soft: #8F96A3;
+
+  /* 10% - accent (bold / highlighted text, prices, primary buttons) */
+  --accent: #C5A059;
+  --accent-hover: #D4AF67;
+  --on-accent: #0B0C0E;
+
+  /* system states */
+  --danger: #E55353;
+  --success: #4EBA87;
+  --warning: #E5A83B;
+
+  /* rgb triplets for transparent overlays: rgb(var(--accent-rgb) / .3) */
+  --bg-rgb: 11 12 14;
+  --accent-rgb: 197 160 89;
+
+  /* fonts */
+  --font-display: 'Syne', system-ui, sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-label: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* type scale */
+  --fs-xs: 0.8125rem;
+  --fs-sm: 0.9375rem;
+  --fs-base: 1.0625rem;
+  --fs-md: 1.25rem;
+  --fs-lg: clamp(1.5rem, 1rem + 1.6vw, 2rem);
+  --fs-xl: clamp(2rem, 1rem + 3vw, 3rem);
+  --fs-2xl: clamp(2.6rem, 0.5rem + 5.5vw, 5rem);
+  --fs-stat: clamp(2.4rem, 1rem + 4vw, 4rem);
+
+  --radius: 4px;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* Bootstrap 5.3 reads these variables, so its own components follow the palette */
+:root, [data-bs-theme="dark"] {
+  --bs-body-bg: var(--bg);
+  --bs-body-bg-rgb: 11, 12, 14;
+  --bs-body-color: var(--text);
+  --bs-body-color-rgb: 226, 228, 233;
+  --bs-body-font-family: var(--font-body);
+  --bs-body-font-size: var(--fs-base);
+  --bs-body-line-height: 1.65;
+  --bs-heading-color: var(--text-strong);
+  --bs-emphasis-color: var(--text-strong);
+  --bs-secondary-color: var(--text-soft);
+  --bs-border-color: var(--line);
+  --bs-link-color: var(--accent);
+  --bs-link-color-rgb: 197, 160, 89;
+  --bs-link-hover-color: var(--accent-hover);
+  --bs-link-hover-color-rgb: 212, 175, 103;
+  --bs-dark: var(--surface);
+  --bs-dark-rgb: 20, 22, 27;
+}
+
+html { color-scheme: dark; }
+html, body, #root {
+  background-color: var(--bg) !important;
+  color: var(--text);
+}
+body {
+  background: var(--bg) !important;
+  background-color: var(--bg) !important;
+  color: var(--text) !important;
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-body); font-weight: 600; color: var(--text-strong); line-height: 1.2; text-wrap: balance; }
+::selection { background: var(--accent); color: var(--on-accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+a { text-underline-offset: 0.25em; }
+
+/* ---------- opt-in type styles (overridden by type fix pack below) ---------- */
+.display { font-family: var(--font-display); font-weight: 400; letter-spacing: -0.015em; line-height: 1.05; color: var(--text-strong); text-wrap: balance; }
+.display em, .display i { font-style: normal; color: var(--accent); }
+.display-hero { font-size: clamp(2.4rem, 1rem + 4.4vw, 4.5rem); }
+.display-section { font-size: clamp(1.9rem, 1rem + 2.4vw, 2.75rem); }
+.eyebrow { font-family: var(--font-body); font-weight: 600; font-size: var(--fs-xs); letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+.label { font-family: var(--font-body); font-weight: 600; font-size: var(--fs-xs); letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-soft); }
+.price, .spec-num { font-family: var(--font-body); font-weight: 600; letter-spacing: 0.01em; font-variant-numeric: lining-nums tabular-nums; color: var(--accent); }
+.price { font-size: var(--fs-md); }
+.stat-number { font-family: var(--font-display); font-size: var(--fs-stat); font-weight: 300; line-height: 1; color: var(--accent); font-variant-numeric: lining-nums; }
+.quote { font-family: var(--font-display); font-style: normal; font-size: var(--fs-lg); font-weight: 300; line-height: 1.4; color: var(--text-strong); }
+
+/* ---------- colour utilities (replace Bootstrap's !important ones) ---------- */
+.text-accent { color: var(--accent); }
+.text-strong { color: var(--text-strong); }
+.text-normal { color: var(--text); }
+.text-soft { color: var(--text-soft); }
+.surface { background-color: var(--surface); }
+.surface-2 { background-color: var(--surface-2); }
+.bg-page { background-color: var(--bg); }
+.border-line { border-color: var(--line); }
+
+/* ---------- buttons ---------- */
+.btn-brand, .btn-brand-outline, .btn-brand-ghost {
+  --bs-btn-border-radius: var(--radius);
+  font-family: var(--font-label); font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+  transition: background-color 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+.btn-brand {
+  --bs-btn-color: var(--on-accent); --bs-btn-bg: var(--accent); --bs-btn-border-color: var(--accent);
+  --bs-btn-hover-color: var(--on-accent); --bs-btn-hover-bg: var(--accent-hover); --bs-btn-hover-border-color: var(--accent-hover);
+  --bs-btn-active-color: var(--on-accent); --bs-btn-active-bg: var(--accent-hover); --bs-btn-active-border-color: var(--accent-hover);
+  --bs-btn-disabled-color: var(--on-accent); --bs-btn-disabled-bg: var(--accent); --bs-btn-disabled-border-color: var(--accent);
+  --bs-btn-focus-shadow-rgb: 197, 160, 89;
+  background: var(--accent) !important;
+  background-color: var(--accent) !important;
+  background-image: none !important;
+  border-color: var(--accent) !important;
+  color: var(--on-accent) !important;
+}
+.btn-brand:hover, .btn-brand:focus, .btn-brand:active {
+  background: var(--accent-hover) !important;
+  background-color: var(--accent-hover) !important;
+  background-image: none !important;
+  border-color: var(--accent-hover) !important;
+  color: var(--on-accent) !important;
+}
+.btn-brand-outline {
+  --bs-btn-color: var(--accent); --bs-btn-bg: transparent; --bs-btn-border-color: var(--accent);
+  --bs-btn-hover-color: var(--on-accent); --bs-btn-hover-bg: var(--accent); --bs-btn-hover-border-color: var(--accent);
+  --bs-btn-active-color: var(--on-accent); --bs-btn-active-bg: var(--accent-hover); --bs-btn-active-border-color: var(--accent-hover);
+  --bs-btn-disabled-color: var(--accent); --bs-btn-disabled-bg: transparent; --bs-btn-disabled-border-color: var(--accent);
+  --bs-btn-focus-shadow-rgb: 197, 160, 89;
+}
+.btn-brand-ghost {
+  --bs-btn-color: var(--text); --bs-btn-bg: transparent; --bs-btn-border-color: var(--line);
+  --bs-btn-hover-color: var(--text-strong); --bs-btn-hover-bg: var(--surface-2); --bs-btn-hover-border-color: var(--accent);
+  --bs-btn-active-color: var(--text-strong); --bs-btn-active-bg: var(--surface-2); --bs-btn-active-border-color: var(--accent);
+  --bs-btn-disabled-color: var(--text-soft); --bs-btn-disabled-bg: transparent; --bs-btn-disabled-border-color: var(--line);
+  --bs-btn-focus-shadow-rgb: 197, 160, 89;
+}
+
+/* ---------- forms and alerts ---------- */
+.form-control, .form-select { background-color: var(--surface-2); border-color: var(--line); color: var(--text); border-radius: var(--radius); }
+.form-control:focus, .form-select:focus { background-color: var(--surface-2); color: var(--text-strong); border-color: var(--accent); box-shadow: 0 0 0 0.2rem rgb(var(--accent-rgb) / 0.25); }
+.form-control::placeholder { color: var(--text-soft); }
+.alert-brand { background: var(--surface-2); border: 1px solid var(--accent); color: var(--text); }
+.alert-error { background: var(--surface-2); border: 1px solid var(--danger); color: var(--text); }
+
+/* ---------- Bootstrap components follow the palette (no !important needed) ---------- */
+.card {
+  --bs-card-bg: var(--surface);
+  --bs-card-color: var(--text);
+  --bs-card-border-color: var(--line);
+  --bs-card-border-radius: var(--radius);
+  --bs-card-cap-bg: var(--surface-2);
+  background-color: var(--surface) !important;
+  border-color: var(--line) !important;
+  color: var(--text);
+}
+.modal-content {
+  --bs-modal-bg: var(--surface);
+  --bs-modal-color: var(--text);
+  --bs-modal-border-color: var(--line);
+  --bs-modal-border-radius: var(--radius);
+  background-color: var(--surface) !important;
+  border-color: var(--line) !important;
+}
+.dropdown-menu { --bs-dropdown-bg: var(--surface-2); --bs-dropdown-color: var(--text); --bs-dropdown-border-color: var(--line); --bs-dropdown-link-color: var(--text); --bs-dropdown-link-hover-color: var(--text-strong); --bs-dropdown-link-hover-bg: var(--surface); --bs-dropdown-link-active-bg: var(--accent); --bs-dropdown-link-active-color: var(--on-accent); }
+.navbar {
+  --bs-navbar-color: var(--text);
+  --bs-navbar-hover-color: var(--accent);
+  --bs-navbar-active-color: var(--accent);
+  --bs-navbar-brand-color: var(--text-strong);
+  --bs-navbar-brand-hover-color: var(--accent);
+  background-color: rgb(var(--bg-rgb) / 0.92) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line) !important;
+}
+.navbar .nav-link.active,
+.navbar .nav-link:hover {
+  color: var(--accent) !important;
+}
+.pagination { --bs-pagination-bg: var(--surface); --bs-pagination-color: var(--text); --bs-pagination-border-color: var(--line); --bs-pagination-hover-bg: var(--surface-2); --bs-pagination-hover-color: var(--accent); --bs-pagination-hover-border-color: var(--line); --bs-pagination-focus-bg: var(--surface-2); --bs-pagination-focus-color: var(--accent); --bs-pagination-active-bg: var(--accent); --bs-pagination-active-color: var(--on-accent); --bs-pagination-active-border-color: var(--accent); --bs-pagination-disabled-bg: var(--surface); --bs-pagination-disabled-color: var(--text-soft); --bs-pagination-disabled-border-color: var(--line); }
+
+.bg-dark { background-color: var(--surface) !important; }
+.bg-black { background-color: var(--bg) !important; }
+.border-secondary { border-color: var(--line) !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+
+/* ---------- optional light theme: add data-theme="light" on <html> ---------- */
+[data-theme="light"] {
+  --bg: #F1EDE4; --surface: #FAF8F3; --surface-2: #E8E3D8; --line: #CFC8B8;
+  --text: #2A322D; --text-strong: #121815; --text-soft: #5A645D;
+  --accent: #14503C; --accent-hover: #0E3E2E; --on-accent: #F1EDE4;
+  --danger: #B03A2E; --success: #1F7A52; --warning: #8A5A00;
+  --bg-rgb: 241 237 228; --accent-rgb: 20 80 60;
+}
+[data-theme="light"] html, html[data-theme="light"] { color-scheme: light; }
+
+/* ===== type fix pack ===== */
+/* font-synthesis: none prevents the browser ever faking a bold/italic */
+html { font-synthesis: none; }
+
+/* Override :root font vars with Archivo + Inter */
+:root {
+  --font-display: 'Archivo', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-label: var(--font-body);
+}
+
+/* btn fonts */
+.btn-brand, .btn-brand-outline, .btn-brand-ghost { font-family: var(--font-body); font-weight: 600; letter-spacing: 0.14em; }
+
+/* nav links: small, uppercase, spaced */
+.navbar .nav-link { font-family: var(--font-body); font-weight: 500; font-size: 0.8125rem; letter-spacing: 0.14em; text-transform: uppercase; }
+
+/* STOPGAP: Bootstrap's fw-bold is !important — force display headings to weight 500 */
+h1.fw-bold, h2.fw-bold, h3.fw-bold, .display.fw-bold { font-weight: 500 !important; }
+
